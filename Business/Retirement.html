@@ -1,0 +1,1215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Retirement Planning</title>
+
+
+  <style>
+
+*{
+              padding: 0;
+              margin: 0;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #loader{
+              position: fixed;
+              width: 100%;
+              top: 0;
+              left: 0;
+              height: 100vh;
+              background: white;
+              z-index: 999;
+              display: flex; 
+              flex-wrap: wrap;
+              justify-content: center;
+              align-items: center;
+            }
+            #loader img{
+                width: 700px;
+                height: 500px;
+                border-radius: 50%;
+            }
+            #loader-top{
+              width: 100%;
+              height: 48%;
+              top: 0;
+              position: absolute;
+              background-color: #27669e;
+              animation: loader-top 1s linear forwards;
+            }
+            @keyframes loader-top {
+              0%{
+                height: 48%;
+              }
+              100%{
+                height: 0%;
+              }
+            }
+
+            #loader-bottom{
+              width: 100%;
+              height: 48%;
+              bottom: 0;
+              position: absolute;
+              background-color: #27669e;
+              animation: loader-bottom 1s linear forwards;
+            }
+            @keyframes loader-bottom {
+              0%{
+                height: 48%;
+              }
+              100%{
+                height: 0%;
+              }
+            }
+
+
+            .container{
+              width: 100%;
+              height: 100vh;
+              /* background-color: violet; */
+            }
+            .navbar_main{
+              width: 100%;
+              height: 60px;
+              background-color: #27669e;
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              position: sticky;
+              top: 0;
+              z-index: 990;
+            }
+            .navbar{
+              width: 800px;
+              height: max-content;
+              /* background-color: aquamarine; */
+            }
+            .navbar ul{
+              list-style: none;
+              font-size: 16px;
+              color: white;
+              display: flex;
+              justify-content: space-evenly;
+              align-items: center;
+            }
+            .navbar ul li{
+              position: relative;
+              height: 60px;
+              padding: 0 20px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              overflow: hidden;
+              cursor: pointer;
+            }
+            .navbar ul li:nth-child(1)::after{
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 0%;
+              width: 100%;
+              height: 3px;
+              background-color: rgb(255, 238, 0);
+              transition: 0.6s ease-in;
+            } 
+            .navbar ul li::after{
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: -100%;
+              width: 100%;
+              height: 3px;
+              background-color: rgb(255, 238, 0);
+              transition: 0.6s ease-in;
+            }
+            .navbar ul li:hover:after{
+              left: 0;
+            }
+            .navbar_hide{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 10%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide p{
+              width: 200px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+
+            .navbar_hide-2{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 16%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide-2 p{
+              width: 200px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide-2 p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+            
+            .navbar_hide-3{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 24%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide-3 p{
+              width: 200px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide-3 p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+            .navbar_hide-4{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 31%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide-4 p{
+              width: 150px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide-4 p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+
+            .navbar_hide-5{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 38%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide-5 p{
+              width: 200px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide-5 p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+
+            .navbar_hide-6{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 45%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide-6 p{
+              width: 200px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide-6 p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+            .navbar_logo{
+              width: max-content;
+              height: 60px;
+              background-color: #183a58;
+              display: flex;
+              color: white;
+              justify-content: center;
+              align-items: center;
+              font-size: 14px;
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+
+
+
+
+
+    /* ------------------------------------ Taxation --------------------------------------*/
+
+
+          .taxation{
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center center;
+            background-image: url(./Business-images/bg_breadcrumb.jpg);
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .taxation::after{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+          }
+          .taxation_text{
+            width: 80%;
+            height: 120px;
+            z-index: 111;
+            position: relative;
+            /* background-color: violet; */
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+          .taxation_text p{
+            color: white;
+            font-size: 40px;
+          }
+          .taxation_nav{
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            border-radius: 5px;
+            font-size: 13px;
+            color: rgb(136, 136, 136);
+            background-color: rgb(238, 238, 238);
+          }
+          .taxation_nav span{ 
+            margin-left: 1vw;
+          }
+          .taxation_nav .fa-home{
+            color: #27669e;
+          }
+
+
+
+
+          /* --------------------------------------- Taxation-Main ----------------------------- */
+
+
+
+
+          .taxation_main{
+            width: 100%;
+            height: max-content;
+            /* background-color: aqua; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .taxation_inner{
+            width: 80%;
+            height: max-content;
+            /* background-color: coral; */
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+          }
+          .taxation_left{
+            width: 23%;
+            height: 98%;
+            /* background-color: darkgoldenrod; */
+          }
+          .taxation_left_1{
+            width: 270px;
+            height: 400px;
+            margin: auto;
+            /* background-color: blue;  */
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+          }
+          .taxation_left_1 a{
+            text-decoration: none;
+            color: black;
+          }
+          .taxation_left_1 p{
+            width: 100%;
+            height: 45px;
+            border-radius: 1px;
+            display: flex;
+            align-items: center;
+            background-color: rgb(238, 238, 238);
+          }
+          .taxation_left_1 p:hover{
+            background-color: rgb(241, 241, 241);
+            color: #27669e;
+          }
+          .taxation_left_2{
+            width: 250px;
+            height: 250px;
+            margin: 3vh auto;
+            border: 1px solid rgb(136, 136, 136);
+            border-radius: 1px; 
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+          }
+          .taxation_left_2 h3{
+            margin-left: 2vw;
+            color: rgb(44, 44, 44);
+          }
+          .taxation_left_2 p{
+            margin-left: 2vw;
+            width: 180px;
+            color: rgb(136, 136, 136);
+          }
+          .taxation_left_2 button{
+            width: max-content;
+            padding: 15px 40px;
+            background-color: #27669e;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 5px;
+            border: none;
+            margin-left: 2vw;
+          }
+          
+          .taxation_left_3{
+            width: 250px;
+            height: 350px;
+            margin: 3vh auto;
+            border: 1px solid rgb(136, 136, 136);
+            border-radius: 1px; 
+            display: flex;
+            justify-content: space-evenly;
+            flex-direction: column;
+          }
+          .taxation_left_3 h3{
+            margin-left: 2vw;
+            color: rgb(44, 44, 44);
+          }
+          .taxation_left_3 p{
+            margin-left: 2vw;
+            width: 180px;
+            color: rgb(136, 136, 136);
+          }
+          .taxation_left_3 span{
+            margin-left: 2vw;
+            width: 180px;
+            color: #27669e;
+          }
+          
+
+
+
+
+          .taxation_right{
+            width: 68%;
+            height: max-content;
+            /* height: 98%; */
+            margin-top: 100px;
+            /* background-color: darkgreen; */
+          }
+          .taxation_right_1{
+            width: 100%;
+            height: 400px;
+          }
+          .taxation_right_1 img{
+            width: 100%;
+            height: 100%;
+          }
+          .taxation_right_2{
+            width: 100%;
+            height: 350px;
+            /* background-color: salmon; */
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+          }
+          .taxation_right_2_a{
+            width: 420px;
+            height: 300px;
+            /* background-color: slateblue; */
+          }
+          .taxation_right_2_a h2{
+            color: rgb(44, 44, 44);
+          }
+          .taxation_right_2_a p{
+            color: rgb(136, 136, 136);
+          }
+          .taxation_right_2_b{
+            width: 370px;
+            height: 300px;
+            background-color: #27669e;
+          }
+          .taxation_right_2_b p{
+            color: white;
+            font-size: 20px;
+            margin-left: 2vw;
+            margin-top: 6vh;
+          }
+          .taxation_right_2_b button{
+            padding: 16px 170px 16px 30px;
+            background-color: white;
+            color: rgb(44, 44, 44);
+            font-size: 16px;
+            border: none;
+            margin-top: 1vh;
+            margin-left: 2vw;
+            border-radius: 5px;
+          }
+
+          .taxation_right_3{
+            width: 100%;
+            height: 400px;
+            /* background-color: salmon; */
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+          }
+          .taxation_right_3_a{
+            width: 420px;
+            height: 350px;
+            /* background-color: slateblue; */
+          }
+          .taxation_right_3_a h2{
+            color: rgb(44, 44, 44);
+            font-size: 20px;
+          }
+          .taxation_right_3_a p{
+            color: rgb(136, 136, 136);
+            font-size: 16px;
+            margin-top: 2vh;
+          }
+          .taxation_right_3_image{
+            width: 100%;
+            height: 250px;
+            /* background-color: seagreen; */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+          }
+          .taxation_right_3_image1{
+            width: 250px;
+            height: 220px;
+            /* background-color: green; */
+          }
+          .taxation_right_3_image1 img{
+            width: 100%;
+            height: 100%;
+          }
+          .taxation_right_3_image2{
+            width: 200px;
+            height: 100px;
+            /* background-color: darkmagenta; */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-evenly;
+            align-items: center;
+          }
+          .taxation_right_image2_1{
+            width: 100px;
+            height: 30px;
+            /* background-color: darkorange; */
+            display: flex;
+          }
+          .taxation_right_image2_1 img{
+            width: 20px;
+            height: 20px;
+          }
+
+
+          .taxation_right_3_b{
+            width: 370px;
+            height: 350px;
+            /* background-color: #27669e; */
+          }
+          .taxation_right_3_b h2{
+            color: rgb(44, 44, 44);
+            font-size: 20px;
+          }
+          .taxation_right_3_b p{
+            color: rgb(136, 136, 136);
+            font-size: 16px;
+          }
+          .taxation_right_3_b p i{
+            color:#27669e;
+          }
+
+
+
+
+
+          /* --------------------------------- Research ------------------------------------ */
+          
+
+
+
+          .research_main{
+            width: 100%;
+            height: max-content;
+            /* background-color: darkslateblue; */
+          }
+          .research_main h2{
+            color: rgb(44, 44, 44);
+            font-size: 20px;
+          }
+          .research{
+            width: 100%;
+            height: max-content;
+            /* background-color: darkslategray; */
+          }
+          .research1{
+            width: 100%;
+            /* height: 40px; */
+            height: max-content;
+            margin-top: 6px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-between;
+            color: rgb(136, 136, 136);
+            background-color: rgb(238, 238, 238);
+            /* border: 1px solid rgb(136, 136, 136); */
+            overflow: hidden;
+          }
+          .research1-a{
+            width: 100%;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            color: rgb(136, 136, 136);
+            background-color: rgb(238, 238, 238);
+            /* border: 1px solid rgb(136, 136, 136); */
+            position: relative;
+          }
+          .research1-b{
+            width: 99%;
+            height: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgb(136, 136, 136);
+            background-color: white;
+            position: relative;
+            overflow: hidden;
+            /* display: none; */
+            border: 1px solid rgb(136, 136, 136);
+          }
+          .research1-b p{  
+            width: 90%;
+          }
+          .research1 i{
+            margin-right: 10px;
+          }
+
+
+          
+
+
+      /* -------------------------------------------- Footer ----------------------------------------------- */
+      
+
+      .footer_main{
+        width: 100%;
+        height: 650px;
+        /* background-color: blueviolet; */
+      }
+      .footer_information{
+        width: 100%;
+        height: 170px;
+        margin-top: 100px;
+        background-color: rgb(46,87,151);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer_information_text{
+        width: 700px;
+        height: 100px;
+        /* background-color: firebrick; */
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .footer_information_text h1{
+        color: white;
+        font-size: 40px;
+      }
+      .footer_information_text p{
+        color: rgb(185, 185, 185);
+        font-size: 18px;
+      }
+      .footer_information_subscribe{
+        width: 500px;
+        height: 100px;
+        /* background-color: darkturquoise; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer_information_subscribe input{
+        width: 380px;
+        height: 50px;
+        border-radius: 5px 0 0 5px;
+        background-color: white;
+        border: none;
+        color: rgb(49, 49, 49);
+        outline: none;
+      }
+      .footer_information_subscribe button{
+        width: 100px;
+        height: 50px;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 0 5px 5px 0;
+        background-color: rgb(255, 238, 0);
+        border: none;
+        margin-left: -5px;
+        color: rgb(49, 49, 49);
+      }
+
+
+
+      .footer{
+        width: 100%;
+        height: 400px;
+        background-color: rgb(34,34,34);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer_1{
+        width: 400px;
+        height: 350px;
+        /* background-color: saddlebrown; */
+      }
+      .footer_1 h1{
+        color: rgb(185, 185, 185);
+        font-size: 30px;
+        margin-top: 4vh;
+      }
+      .footer_1 p{
+        width: 350px;
+        color: rgb(185, 185, 185);
+        font-size: 16px;
+        margin-top: 4vh;
+      }
+      .footer_1 span{
+        color: #27669e;
+        font-size: 20px;
+      }
+
+
+      .footer_2{
+        width: 220px;
+        height: 350px;
+        /* background-color: seagreen; */
+      }
+      .footer_2 h1{
+        color: white;
+        font-size: 30px;
+        margin-top: 4vh;
+      }
+      .footer_2 hr{
+        width: 50px;
+        height: 5px;
+        background-color: rgb(255, 238, 0);
+        border-radius: 10px;
+        margin-top: 2vh;
+        border: none;
+      }
+      .footer_2 p{
+        color: rgb(185, 185, 185);
+        font-size: 15px;
+        margin-top: 2.5vh;
+        transition: 0.4s;
+      }
+      .footer_2 p:hover{
+        color: white;
+        cursor: pointer;
+      }
+
+
+      .footer_3{
+        width: 220px;
+        height: 350px;
+        /* background-color: slateblue; */
+      }
+      .footer_3 h1{
+        color: white;
+        font-size: 30px;
+        margin-top: 4vh;
+      }
+      .footer_3 hr{
+        width: 50px;
+        height: 5px;
+        background-color: rgb(255, 238, 0);
+        border-radius: 10px;
+        margin-top: 2vh;
+        border: none;
+      }
+      .footer_3 p{
+        color: rgb(185, 185, 185);
+        font-size: 15px;
+        margin-top: 2.5vh;
+        transition: 0.4s;
+      }
+      .footer_3 p:hover{
+        color: white;
+        cursor: pointer;
+      }
+
+
+      .footer_4{
+        width: 400px;
+        height: 350px;
+        /* background-color: deeppink; */
+      }
+      .footer_4 h1{
+        color: white;
+        font-size: 30px;
+        margin-top: 4vh;
+      }
+      .footer_4 hr{
+        width: 50px;
+        height: 5px;
+        background-color: rgb(255, 238, 0);
+        border-radius: 10px;
+        margin-top: 2vh;
+        border: none;
+      }
+      .footer_4 p{
+        color: rgb(185, 185, 185);
+        font-size: 15px;
+        margin-top: 3vh;
+        transition: 0.4s;
+      }
+
+
+      .footer_copyright{
+        width: 100%;
+        height: 80px;
+        background-color: rgb(24,24,24);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(185, 185, 185);
+      }
+          
+
+
+
+
+
+
+  </style>
+
+
+</head>
+<body>
+
+  <div id="loader">
+    <div id="loader-top"></div>
+    <img src="./Business-images/Curve-Loading.gif" alt="">
+    <div id="loader-bottom"></div>
+</div>
+
+
+
+
+
+<div class="navbar_main">
+  <div class="navbar">
+      <ul>
+        <li><a href="./Business.html" style="text-decoration: none; color: white;">Home</a></li>
+        <div class="navbar_hide">
+          <p> &nbsp; Home 02</p>
+          <p> &nbsp; Home 03</p>
+          <p> &nbsp; Home 04</p>
+        </div>
+        <li>Services</li>
+        <div class="navbar_hide-2">
+          <p> &nbsp;  Accumulation</p>
+          <p> &nbsp;  Business Planning</p>
+          <p> &nbsp;  Estate Planning</p>
+          <p> &nbsp;  Retirement Planning</p>
+          <p> &nbsp;  Risk Management</p>
+          <p> &nbsp;  Stock</p>
+          <a href="./Taxation.html" style="text-decoration: none; color: white;"><p> &nbsp;  Taxation</p></a>
+          <p> &nbsp;  Trades</p>
+        </div>
+        <li>Project</li>
+        <div class="navbar_hide-3">
+          <p> &nbsp; Projects 02</p>
+          <p> &nbsp; Projects 03</p>
+          <p> &nbsp; Projects 04</p>
+        </div>
+        <li>News</li>
+        <div class="navbar_hide-4">
+          <p> &nbsp; News 02</p>
+          <p> &nbsp; News 03</p>
+          <p> &nbsp; News 04</p>
+        </div>
+        <li>Our team</li>
+        <div class="navbar_hide-5">
+          <p> &nbsp; Team 02</p>
+          <p> &nbsp; Team 03</p>
+          <p> &nbsp; Team 04</p>
+          <p> &nbsp; Team 05</p>
+          <p> &nbsp; Team 06</p>
+          <p> &nbsp; Team 07</p>
+          <p> &nbsp; Team 08</p>
+        </div>
+        <li>pages</li>
+        <div class="navbar_hide-6">
+          <p> &nbsp; Pages 02</p>
+          <p> &nbsp; Pages 03</p>
+          <p> &nbsp; Pages 04</p>
+        </div>
+        <li>Contect Us</li>
+      </ul>
+  </div>
+  <div class="navbar_logo">GET AN APPOINTMENT</div>
+
+
+</div>
+
+    <div class="taxation">
+        <div class="taxation_text">
+            <p>Retirement Planning</p>
+            <div class="taxation_nav"> &nbsp;&nbsp;&nbsp;
+                <span><i class="fas fa-home"></i> Home &nbsp; 
+                  <i class="fas fa-angle-right"></i> 
+                  <i class="fas fa-angle-double-right"></i>
+                </span>
+                <span> Services &nbsp; 
+                  <i class="fas fa-angle-right"></i> 
+                  <i class="fas fa-angle-double-right"></i>
+                </span>
+                <span>   Retirement Planning</span>
+              </div>
+        </div>
+    </div>
+
+    <div class="taxation_main">
+
+        <div class="taxation_inner">
+          
+            <div class="taxation_left">
+
+                <div class="taxation_left_1">
+                    <a href="./accasum.html"><p>&nbsp; Accumulation</p></a>
+                    <a href="./busi.html"><p>&nbsp; Business Planning</p></a>
+                    <a href="./estate-planninag.html"><p>&nbsp; Estate Planning</p></a>
+                    <a href="./Retirement.html"><p style="border-left: 4px solid #27669e;width: 266px;">&nbsp; Retirement Planning</p></a>
+                    <a href="./risk-management.html"><p>&nbsp; Risk Management</p></a>
+                    <a href="./stock.html"><p>&nbsp; Stock</p></a>
+                    <a href="./Taxation.html"><p>&nbsp; Taxation</p></a>
+                    <a href="./trads.html"><p>&nbsp; Trades</p></a>
+                </div>
+
+                <div class="taxation_left_2">
+                    <h3>Our Brochure</h3>
+                    <p>View our 2016 financial prospectus brochure for an easy to read guide on all of the services offered.</p>
+                    <button>Download .PDF</button>
+                </div>
+                
+                <div class="taxation_left_3">
+                    <h3>Testimonials</h3>
+                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quam laboriosam excepturi, sint placeat impedit sapiente quaerat dignissimos ab recusandae debitis ea quidem expedita explicabo neque est quibusdam iure autem earum..</p>
+                    <span>Kyle Hoffman</span>
+                    <p>Customer Service</p>
+                </div>
+
+            </div>
+
+            <div class="taxation_right">
+
+                <div class="taxation_right_1">
+                    <img src="./Business-images/img_about02.jpg" alt="">
+                </div>
+
+                <div class="taxation_right_2">
+                    <div class="taxation_right_2_a">
+                        <h2>Taxation</h2><br>
+                        <p>
+                          Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.
+                          <br><br>
+                          Nemo ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.
+                        </p>
+                    </div>
+                    <div class="taxation_right_2_b">
+                        <p>This awesome service brings full interest information for your purpose</p>
+                        <button style="margin-top: 8vh;">Download .PDF</button>
+                        <button>Download .DOC</button>
+                    </div>
+                </div>
+
+                <div class="taxation_right_3">
+                  <div class="taxation_right_3_a">
+                      <h2>Strategy Development</h2>
+                      <p>You can transform your business to a revenue-producing asset that lets you work as much or as little as you want.</p>
+                      <div class="taxation_right_3_image">
+                          <div class="taxation_right_3_image1">
+                              <img src="./Business-images/img_chart.png" alt="">
+                          </div>
+                          <div class="taxation_right_3_image2">
+                              <div class="taxation_right_image2_1">
+                                <img src="./Business-images/chart_red.png" alt="">
+                                &nbsp; Red
+                              </div>
+                              <div class="taxation_right_image2_1">
+                                <img src="./Business-images/chart_green.png" alt="">
+                                &nbsp; Green
+                              </div>
+                              <div class="taxation_right_image2_1">
+                                <img src="./Business-images/chart_purple.png" alt="">
+                                &nbsp; Purple
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="taxation_right_3_b">
+                        <h2>Strategic & tactical planning</h2><br>
+                        <p>Our renowned coaching programs will allow you to:</p>
+                        <br>
+                        <p>&nbsp;
+                          <i class="fas fa-check-circle"></i> &nbsp; 
+                          Work fewer hours — and make more money</p>
+                          <br>
+                        <p>&nbsp;
+                          <i class="fas fa-check-circle"></i> &nbsp; 
+                          Attract and retain quality,</p>
+                          <br>
+                        <p>&nbsp;
+                          <i class="fas fa-check-circle"></i> &nbsp; 
+                          Work fewer hours and make more money</p>
+                          <br>
+                        <p>&nbsp;
+                          <i class="fas fa-check-circle"></i> &nbsp; 
+                          Hone sharp leadership skills to manage team.</p>
+                          <br>
+                        <p>&nbsp;
+                          <i class="fas fa-check-circle"></i> &nbsp; 
+                          Attract and retain quality.</p>
+                  </div>
+              </div>
+
+              <div class="research_main">
+                  <h2>Research beyond the business plan</h2><br>
+                  <div class="research">
+                      <div class="research1">
+                            <div class="research1-a"> &nbsp;
+                            Strategy Development
+                            <i class="fas fa-plus"></i>
+                          </div>
+                          <div class="research1-b">
+                            <p>Good strategy is the antidote to competition. Strategic thinking is the process of developing a strategy that defines your value proposition and your unique value chain. This process includes market and competitive research as well as an assessment of the company’s capabilities and the industry forces impacting it.</p>
+                          </div>
+                      </div>
+                      <div class="research1">
+                            <div class="research1-a"> &nbsp;
+                              Strategic Plan Development
+                              <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="research1-b">
+                              <p>Good strategy is the antidote to competition. Strategic thinking is the process of developing a strategy that defines your value proposition and your unique value chain. This process includes market and competitive research as well as an assessment of the company’s capabilities and the industry forces impacting it.</p>
+                            </div>
+                      </div>
+                      <div class="research1">
+                            <div class="research1-a"> &nbsp;
+                              Strategic Plan Execution Management
+                              <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="research1-b">
+                              <p>Good strategy is the antidote to competition. Strategic thinking is the process of developing a strategy that defines your value proposition and your unique value chain. This process includes market and competitive research as well as an assessment of the company’s capabilities and the industry forces impacting it.</p>
+                            </div>
+                      </div>
+                  </div>
+              </div>
+                
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    <div class="footer_main">
+
+      <div class="footer_information">
+          <div class="footer_information_text">
+              <h1>Need more information?</h1>
+              <p>We can call you and help with your problem, just leave us your phone number.</p>
+          </div>
+          <div class="footer_information_subscribe">
+              <input type="text">
+              <button>Subscribe</button>
+          </div>
+      </div>
+
+        <div class="footer">
+            <div class="footer_1">
+                <h1>Footer Logo</h1>
+                <p>Lorem ipsum dolor sit consectetur adipiscing elit
+                  sed do eiusmod tempor incididunt ut labore et
+                  dolore magna veniam aliqua.</p>
+                  <br><br>
+                  <span><i class="fas fa-phone"></i> &nbsp; 2700 - 345 - 9889</span>
+                  <p style="margin-top: 0; margin-left: 2vw;"> support24.7@domain.com</p>
+            </div>    
+            <div class="footer_2">
+                <h1>Follow us</h1>
+                <hr>
+                <p><i class="fab fa-facebook-f"></i> &nbsp; Facebook</p>
+                <p><i class="fab fa-twitter"></i> &nbsp; Twitter</p>
+                <p><i class="fab fa-google-plus-g"></i> &nbsp; Google Plus</p>
+                <p><i class="fab fa-linkedin-in"></i> &nbsp; Linkedin</p>
+                <p><i class="fab fa-youtube"></i> &nbsp; Youtube</p>
+            </div>    
+            <div class="footer_3">
+              <h1>Our Services</h1>
+              <hr>
+              <p><i class="fas fa-caret-right"></i> &nbsp; Accumulation</p>
+              <p><i class="fas fa-caret-right"></i> &nbsp; Taxation</p>
+              <p><i class="fas fa-caret-right"></i> &nbsp; Risk Management</p>
+              <p><i class="fas fa-caret-right"></i> &nbsp; Estate Planning</p>
+              <p><i class="fas fa-caret-right"></i> &nbsp; Business Planning</p>
+            </div>    
+            <div class="footer_4">
+              <h1>Business Hours</h1>
+              <hr>
+              <p>Our suppoer available to help you 24 <br> hours a day, seven days week</p>
+              <p>Monday-Saturday: ............... 8.00-18.00</p>
+              <p>Sunday: ............................................ Closed</p>
+              <p>Sunday: ............................................ Closed</p> 
+            </div>    
+        </div>
+
+      <div class="footer_copyright">
+        © 2016 Develop by Innovation theme. All rights reserved
+      </div>
+
+    </div>
+
+
+
+
+
+  <script>
+
+//  PreLoader
+
+          var preloader = document.getElementById('loader'); 
+                    function pre() {
+                        preloader.style.display = 'none';
+                  }        
+                  setInterval(() => {
+                     pre() 
+                  }, 1500);
+
+
+
+
+// Research
+
+            var research1 = document.querySelectorAll(".research1-a");
+
+            research1.forEach(function(e){
+
+                if(e.nextElementSibling.style.height = "0px"){
+                    e.addEventListener("click", function(){
+                      e.nextElementSibling.style.height = "120px"
+                    })
+                }
+                else{
+                    e.addEventListener("click", function(){
+                      e.nextElementSibling.style.height = "0px"
+                    })
+                }
+
+              })
+
+
+
+
+
+
+
+// Navbar DropDpwn On Hover 
+        
+       var navbar_list = document.querySelectorAll(".navbar ul li");
+        
+        navbar_list.forEach(function(e){
+          e.addEventListener("mouseenter", function(){
+            e.nextElementSibling.style.display = "block";
+            e.nextElementSibling.addEventListener("mouseenter", function(){
+              e.nextElementSibling.style.display = "block"
+            })
+            e.nextElementSibling.addEventListener("mouseleave", function(){
+              e.nextElementSibling.style.display = "none"
+            })
+          })
+          e.addEventListener("mouseleave", function(){
+            e.nextElementSibling.style.display = "none";
+          })
+        })
+
+
+  </script>
+  
+</body>
+</html>

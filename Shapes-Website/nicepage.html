@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>NicePage</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+
+
+      <style>
+
+            *{
+              padding: 0;
+              margin: 0;
+              font-family: Arial, Helvetica, sans-serif;
+              scroll-behavior: smooth;
+            }
+            body{
+              overflow-x: hidden;
+            }
+            #main-home{
+              width: 100%;
+              height: 130vh;
+              background-size: cover;
+              /* background-attachment: fixed; */
+              background-position: center center;
+              background-image: url(./Shapes-images/bg2.jpg);
+            }
+            #navbar{
+              width: 100%;
+              height: 70px;
+              background-color: white;
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+            }
+            #logo{
+              width: 200px;
+              height: 50px;
+              margin-left: 1vw;
+              /* background-color: darkgreen; */
+            }
+            #logo img{
+              width: 70%;
+              height: 100%;
+            }
+            #nav{
+              width: 50vw;
+              height: 20px;
+              margin-left: -20vw;
+              /* background-color: darkmagenta; */
+            }
+            #nav ul{
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              list-style: none;
+            }
+            #nav ul li{
+              position: relative;
+            }
+            #nav ul li a{
+              color: black;
+              font-size: 1.2vw;
+              text-decoration: none;
+            }
+            #nav ul li:hover #design-hide{
+              visibility: visible;
+              clip-path: polygon(20% 0%, 80% 0%, 100% 13%, 100% 86%, 80% 100%, 20% 100%, 0 87%, 0 13%)
+            }
+            #design-hide{
+              width: 12vw;
+              height: 33vh;
+              background-color: rgb(61, 123, 240);
+              position: absolute;
+              z-index: 111;
+              color: white;
+              border-radius: 5px;
+              box-shadow: 0 0 10px 0 gray;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+              visibility: hidden;
+              left: -50%;
+            }
+            #design-hide p{
+              text-align: center;
+              font-size: 20px;
+              line-height: 35px;
+              width: 100%;
+            }
+            #design-hide p:hover{
+              cursor: pointer;
+              background-color: rgb(51,108,211);
+            }
+            #nav-end{
+              width: 200px;
+              height: 60px;
+              display: flex;
+              align-items: center;
+              justify-content: space-evenly;
+              /* background-color: darkturquoise; */
+            }
+            #nav-end span{
+              cursor: pointer;
+              font-size: 16px;
+            }
+            #nav-end span:hover{
+              color: rgb(51,108,211);
+            }
+
+            #home{
+              width: 40vw;
+              height: 750px;
+              margin-left: 150px;
+              margin-top: 90px;
+              padding: 1px;
+              background: linear-gradient(to bottom, rgb(51,108,211), rgb(174,61,140));
+            }
+            #home-content{
+              width: 60vw;
+              height: 550px;
+              margin-left: 40px;
+              margin-top: 60px;
+              padding: 1px;
+              position: relative;
+              background-color: rgba(12, 35, 77, 0.89);
+            }
+            #home-top-shape{
+              width: 260px;
+              height: 150px;
+              margin-left: -110px;
+              margin-top: -120px;
+              transition: 1s;
+              /* background-color: saddlebrown; */
+            }
+            #home-top-shape img{
+              width: 100%;
+              height: 100%;
+            }
+            #home-bottom-shape{
+              width: 260px;
+              height: 160px;
+              margin-left: 700px;
+              transition: 0.7s;
+              margin-top: -120px;
+              z-index: 1111;
+              /* background-color: saddlebrown; */
+            }
+            #home-bottom-shape img{
+              width: 100%;
+              height: 100%;
+            }
+            
+            #home-text{
+              width: 55vw;
+              height: 370px;
+              /* background-color: seagreen; */
+            }
+            #home-text p{
+              font-size: 25px;
+              color: rgb(219, 217, 217);
+              margin-top: 2vh;
+              margin-left: 5vw;
+            }
+            #home-text h1{
+              font-size: 70px;
+              margin-top: 2vh;
+              margin-left: 5vw;
+              color: white;
+            }
+            #home-text h2{
+              font-size: 25px;
+              margin-left: 5vw;
+              margin-top: 1vh;
+              color: white;
+            }
+            #home-text button:hover{
+              background-color: rgb(173, 38, 31);
+            }
+            #home-text button{
+              cursor: pointer;
+              padding: 15px 50px;
+              border: none;
+              border-radius: 5px;
+              color: white;
+              font-weight: bold;
+              font-size: 20px;
+              margin-left: 20vw;
+              margin-top: 5vh;
+              background-color: rgb(241,80,72);
+            }
+
+            #home-List{
+              width: 75vw;
+              height: 250px;
+              margin-top: 5vh;
+              margin-left: 5vw;
+              display: flex;
+              justify-content: space-evenly;
+              align-items: center;
+              /* background-color: hotpink; */
+            }
+            #home-list-a{
+              width: 220px;
+              height: 190px;
+              display: flex;
+              justify-content: center;
+              flex-direction: column;
+              align-items: center;
+              cursor: pointer;
+              background-color: rgba(51, 107, 211, 0.836);
+            }
+            #home-list-a:hover{
+              background-color: rgb(61, 123, 240);
+            }
+            #home-list-a i{
+                font-size: 80px;
+                color: rgb(175,199,238);
+            }
+            #home-list-a .fa-angle-double-right{
+                font-size: 12px;
+                color: white;
+            }
+            #home-list-a p{
+              text-align: center;
+                font-size: 20px;
+                color: white;
+            }
+
+            #number{
+              width: 250px;
+              height: 220px;
+              position: absolute;
+              top: 160px;
+              right: 220px;
+              transition: 0.6s;
+              background-color: rgba(51, 107, 211, 0.836);
+            }
+            #number:hover{
+              background-color: rgb(241,80,72);
+            }
+            #number:hover #number-circle{
+              /* opacity: 0; */
+              background-color: rgb(51,108,211);
+            }
+            #number p{
+              color: white;
+              font-size: 35px;
+              text-align: center;
+            }
+            #number h1{
+              color: white;
+              font-size: 160px;
+              text-align: center;
+            }
+            #number-circle{
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              margin-top: -100px;
+              margin-left: 100px;
+              position: relative;
+              background-color: rgb(241,80,72);
+              transition: 0.6s;
+            }
+
+            #features{
+              width: 100%;
+              height: 90vh;
+              background-color: rgb(241, 241, 241);
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              position: relative;
+            }
+            #features-bottom-shape{
+              width: 260px;
+              height: 150px;
+              position: absolute;
+              bottom: 0;
+              z-index: 1;
+              transition: 0.5s;
+              right: 20vw;
+              /* margin-left: -110px; */
+              /* margin-top: -120px; */
+              /* background-color: saddlebrown; */
+            }
+            #features-bottom-shape img{
+              width: 100%;
+              height: 100%;
+            }
+            #features-content{
+              width: 50%;
+              height: 90vh;
+              background-color: white;
+            }
+            #features-video{
+              width: 50%;
+              height: 90vh;
+              position: relative;
+              background-color: rgb(241, 241, 241);
+            }
+            #features-video-main{
+              width: 850px;
+              height: 500px;
+              position: absolute;
+              right: 100px;
+              top: 80px;
+              background-color: rgb(61, 123, 240);
+            }
+            #features-video video{
+              width: 95%;
+              height: 90%;
+              position: absolute;
+              left: -40px;
+              top: -20px;
+              /* background-color: darkmagenta; */
+            }
+            /* #features-video video::before{
+              content: "";
+              position: relative;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+              background-color: red;
+            } */
+
+
+            #features-content-text{
+              width: 300px;
+              height: 400px;
+              margin-left: 15vw;
+              margin-top: 20vh;
+              /* background-color: darkmagenta; */
+            }
+            #features-content-text h1{
+              color: black;
+              font-size: 40px;
+            }
+            #features-content-text p{
+              color: black;
+              font-size: 20px;
+              margin-top: 5vh;
+            }
+            #features-content-text button{
+              color: white;
+              font-size: 16px;
+              margin-top: 5vh;
+              font-weight: bold;
+              padding: 14px 40px;
+              border: none;
+              border-radius: 5px;
+              box-shadow: 0 0 10px 0 gray;
+              background-color: rgb(174,61,140);
+            }
+
+
+
+            /* --------------------------- Design ----------------------------- */
+
+
+
+            #design{
+              width: 100%;
+              height: 90vh;
+              display: flex;
+              position: relative;
+              background: linear-gradient(to left, rgb(61, 123, 240), rgb(174,61,140));
+            }
+            #design-text{
+              width: 50%;
+              height: 100%;
+              /* background-color: brown; */
+            }
+            #design-text-contect{
+              width: 300px;
+              height: 400px;
+              /* background-color: violet; */
+              margin-left: 15vw;
+              margin-top: 28vh;
+            }
+            #design-text-contect h1{  
+              font-size: 50px;
+              color: white;  
+            }
+            #design-text-contect p{  
+              font-size: 18px;
+              color: white; 
+              margin-top: 3vh; 
+            }
+            #design-text-contect button{  
+              font-size: 16px;
+              margin-top: 5vh;
+              font-weight: bold;
+              padding: 12px 40px;
+              border: none;
+              border-radius: 5px;
+              background-color: rgb(241,80,72);
+              color: white;  
+            }
+            #design-image{
+              width: 50%;
+              height: 100%;
+              /* background-color: saddlebrown; */
+            }
+            #design-image-1{
+              width: 26vw;
+              height: 440px;
+              margin-left: 12vw;
+              margin-top: 18vh;
+              /* background-color: darkmagenta; */
+            }
+            #design-image-1 img{
+              width: 100%;
+              height: 100%;
+            }
+            #design-image-2{
+              width: 22vw;
+              height: 350px;
+              top: 24%;
+              left: 35vw; 
+              position: absolute;
+              /* background-color: darkmagenta; */
+            }
+            #design-image-2 img{
+              width: 100%;
+              height: 100%;
+            }
+            #design-image-3{
+              width: 22vw;
+              height: 200px;
+              top: 8vh;
+              transition: 1s;
+              left: 41vw; 
+              position: absolute;
+              /* background-color: darkmagenta; */
+            }
+            #design-image-3 img{
+              width: 100%;
+              height: 100%;
+            }
+
+
+
+
+            /* --------------------------------- Service ------------------------- */
+            
+
+
+
+            #service{
+              width: 100%;
+              height: 100vh;
+              padding: 1px; 
+              /* background-color: darkolivegreen; */
+            }
+            #service-text{
+              width: max-content;
+              height: 80px;
+              font-size: 50px;
+              font-weight: bold;
+              color: black;
+              margin: 8vh auto;
+              /* background-color: darkorange; */
+            }
+            #service-list{
+              width: 80%;
+              height: 400px;
+              /* background-color: darkslateblue;     */
+              margin: auto;
+              display: flex;
+              justify-content: space-evenly;
+              align-items: center;
+            }
+            #service-list-1{
+              width: 22%;
+              height: 90%;
+              cursor: pointer;
+              clip-path: polygon(20% 0%, 80% 0%, 100% 13%, 100% 86%, 80% 100%, 20% 100%, 0 87%, 0 13%);
+              background-color: rgb(61, 123, 240);
+            }
+            #service-list-1:hover #service-list-1-text{
+              clip-path: none;
+              width: 100%;
+              height: 75%;
+            }
+            #service-list-1-icon{
+              width: 50%;
+              height: 100px;
+              display: flex;
+              font-size: 60px;
+              margin: auto;
+              justify-content: center;
+              align-items: center;
+              /* background-color: sienna; */
+            }
+            #service-list-1-text{
+              transition: 0.3s;
+              width: 80%;
+              height: 70%;
+              margin: auto;
+              position: relative;
+              clip-path: polygon(20% 0%, 80% 0%, 100% 13%, 100% 86%, 80% 100%, 20% 100%, 0 87%, 0 13%);
+              padding: 1px;
+              background-color: white;
+            }
+            #service-list-1-text h1{
+              width: 200px;
+              transition: 0.6s;
+              /* background-color: violet; */
+              margin: auto;
+              font-size: 22px;
+              text-align: center;
+              margin-top: 6vh;
+            }
+            #service-list-1-text p{
+              width: 200px;
+              /* background-color: violet; */
+              margin: auto;
+              font-size: 20px;
+              text-align: center;
+              margin-top: 4vh;
+            }
+
+            #service-list-4{
+              width: 22%;
+              height: 90%;
+              cursor: pointer;
+              margin-top: -80px;
+              clip-path: polygon(20% 0%, 80% 0%, 100% 13%, 100% 86%, 80% 100%, 20% 100%, 0 87%, 0 13%);
+              background-color: rgb(251,144,86);
+            }
+            #service-list-4:hover #service-list-4-text{
+              clip-path: none;
+              width: 100%;
+              height: 75%;
+            }
+            #service-list-4-icon{
+              width: 50%;
+              height: 100px;
+              display: flex;
+              font-size: 60px;
+              margin: auto;
+              justify-content: center;
+              align-items: center;
+              /* background-color: sienna; */
+            }
+            #service-list-4-text{
+              transition: 0.3s;
+              width: 80%;
+              height: 70%;
+              margin: auto;
+              position: relative;
+              clip-path: polygon(20% 0%, 80% 0%, 100% 13%, 100% 86%, 80% 100%, 20% 100%, 0 87%, 0 13%);
+              padding: 1px;
+              background-color: white;
+            }
+            #service-list-4-text h1{
+              width: 200px;
+              transition: 0.6s;
+              /* background-color: violet; */
+              margin: auto;
+              font-size: 22px;
+              text-align: center;
+              margin-top: 6vh;
+            }
+            #service-list-4-text p{
+              width: 200px;
+              /* background-color: violet; */
+              margin: auto;
+              font-size: 20px;
+              text-align: center;
+              margin-top: 4vh;
+            }
+
+
+            #service-list-2{
+              width: 22%;
+              height: 90%;
+              cursor: pointer;
+              margin-top: -80px;
+              clip-path: polygon(20% 0%, 80% 0%, 100% 13%, 100% 86%, 80% 100%, 20% 100%, 0 87%, 0 13%);
+              background-color: rgb(241,80,72);
+            }
+            #service-list-2:hover #service-list-2-text{
+              clip-path: none;
+              width: 100%;
+              height: 75%;
+            }
+            #service-list-2-icon{
+              width: 50%;
+              height: 100px;
+              display: flex;
+              font-size: 60px;
+              margin: auto;
+              justify-content: center;
+              align-items: center;
+              /* background-color: sienna; */
+            }
+            #service-list-2-text{
+              transition: 0.3s;
+              width: 80%;
+              height: 70%;
+              margin: auto;
+              position: relative;
+              clip-path: polygon(20% 0%, 80% 0%, 100% 13%, 100% 86%, 80% 100%, 20% 100%, 0 87%, 0 13%);
+              padding: 1px;
+              background-color: white;
+            }
+            #service-list-2-text h1{
+              width: 200px;
+              transition: 0.6s;
+              /* background-color: violet; */
+              margin: auto;
+              font-size: 22px;
+              text-align: center;
+              margin-top: 6vh;
+            }
+            #service-list-2-text p{
+              width: 200px;
+              /* background-color: violet; */
+              margin: auto;
+              font-size: 20px;
+              text-align: center;
+              margin-top: 4vh;
+            }
+
+
+            #service-list-3{
+              width: 22%;
+              cursor: pointer;
+              height: 90%;
+              clip-path: polygon(20% 0%, 80% 0%, 100% 13%, 100% 86%, 80% 100%, 20% 100%, 0 87%, 0 13%);
+              background-color: seagreen;
+            }
+            #service-list-3:hover #service-list-3-text{
+              clip-path: none;
+              width: 100%;
+              height: 75%;
+            }
+            #service-list-3-icon{
+              width: 50%;
+              height: 100px;
+              display: flex;
+              font-size: 60px;
+              margin: auto;
+              justify-content: center;
+              align-items: center;
+              /* background-color: sienna; */
+            }
+            #service-list-3-text{
+              transition: 0.3s;
+              width: 80%;
+              height: 70%;
+              margin: auto;
+              position: relative;
+              clip-path: polygon(20% 0%, 80% 0%, 100% 13%, 100% 86%, 80% 100%, 20% 100%, 0 87%, 0 13%);
+              padding: 1px;
+              background-color: white;
+            }
+            #service-list-3-text h1{
+              width: 200px;
+              transition: 0.6s;
+              /* background-color: violet; */
+              margin: auto;
+              font-size: 22px;
+              text-align: center;
+              margin-top: 6vh;
+            }
+            #service-list-3-text p{
+              width: 200px;
+              /* background-color: violet; */
+              margin: auto;
+              font-size: 20px;
+              text-align: center;
+              margin-top: 4vh;
+            }
+
+
+            #service-button{
+              width: max-content;
+              height: max-content;
+              padding: 12px 40px;
+              border-radius: 5px;
+              color: white;
+              cursor: pointer;
+              background-color: rgb(174,61,140);
+              font-size: 15px;
+              font-weight: bold;
+              margin: 4vh auto;
+            }
+            #service-button:hover{
+              background-color: rgb(138, 37, 107);
+            }
+
+
+
+            /* --------------------------------- Qoutation ------------------------ */
+
+
+
+            #qoutation{
+              width: 100%;
+              height: 700px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: rgb(15,37,87);
+            }
+            #qoutation-1{
+              width: 25%;
+              height: 80%;
+              /* border: 1px solid; */
+              /* background-  color: salmon; */
+            }
+            #qoutation-1-image{
+              width: 100%;
+              height: 75%;
+              transform: rotate(-20deg);
+              /* background-color: darkturquoise; */
+              margin-top: -120px;
+              margin-left: -50px;
+              clip-path: polygon(0% 15%, 15% 15%, 15% 0%, 85% 0%, 85% 15%, 100% 15%, 100% 85%, 85% 85%, 85% 100%, 15% 100%, 15% 85%, 0% 85%);
+            }
+            #qoutation-1-image img{
+              width: 100%;
+              height: 100%;
+            }
+            #qoutation-1 i{
+              font-size: 100px;
+              margin-left: 2vw;
+              color: white;
+            }
+            #qoutation-1 p{
+              font-size: 28px;
+              margin-top: 2vh;
+              margin-left: 2vw;
+              color: white;
+            }
+            #qoutation-1 h3{
+              font-size: 20px;
+              margin-top: 2vh;
+              margin-left: 2vw;
+              color: white;
+            }
+            #qoutation-1 span{
+              font-size: 15px;
+              margin-top: 2vh;
+              margin-left: 2vw;
+              color: white;
+            }
+            #qoutation-1 h1{
+              font-size: 40px;
+              color: white;
+              margin-top: 10vh;
+              margin-left: 2vw;
+            }
+            #qoutation-1-b2{
+              transition: 0.8s;
+              margin-top: -200px;
+            }
+
+
+
+
+            /* --------------------------- Footer --------------------------- */
+            
+
+
+            
+            #footer{
+              width: 100%;
+              height: 600px;
+              margin-top: -200px;
+              position: relative;
+              /* background-color: rgb(253,225,15); */
+              color: rgb(251,144,86);            
+            }
+            #footer-content{
+              width: 800px;
+              height: 350px;
+              top: 200px;
+              left: 100px;
+              position: absolute;
+              /* background-color: seagreen; */
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: center;
+            }
+            #footer-content-icons{
+              width: 60%;
+              height: 80px;
+              display: flex;
+              justify-content: space-evenly;
+              align-items: center;
+              /* background-color: slateblue; */
+            }
+            #footer-content-icon-1{
+              width: 60px;
+              height: 60px;
+              border-radius: 50%;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              background-color: rgb(15,37,87);
+            }
+            #footer-content-icon-1:hover{
+              cursor: pointer;
+              background-color: rgb(173, 38, 31);
+            }
+            #footer-content-icon-1 i{
+              font-size: 20px;
+              color: white;
+            }
+
+            #footer-content-list{
+              width: 110%;
+              height: 100px;
+              display: flex;
+              flex-wrap: wrap;
+              justify-content: space-evenly;
+              align-items: center;
+              /* background-color: blue; */
+            }
+            #footer-content-list span a{
+              padding: 25px;
+              text-decoration: none;
+              color: rgb(15,37,87);
+              font-weight: bold;
+              font-family: 'Courier New', Courier, monospace;
+              font-size: 25px;
+            }
+            #footer-content-list span a:hover{
+              color: rgb(173, 38, 31);
+              font-size: 28px;
+            }
+
+
+            #footer-content-copyright{
+              width: 50%;
+              height: 40px;
+              position: absolute;
+              bottom: 0;
+              left: 25%;
+              font-size: 18px;
+              color: rgb(15,37,87);
+              text-align: center;
+              /* background-color: slateblue; */
+            }
+
+            
+
+            /* clip-path: polygon(0% 29%, 2% 25%, 5% 23%, 7% 20%, 10% 17%, 12% 15%, 15% 14%, 17% 14%, 21% 15%, 24% 17%, 27% 18%, 30% 20%, 32% 22%, 36% 24%, 38% 26%, 42% 27%, 46% 27%, 50% 26%, 52% 23%, 55% 19%, 58% 15%, 60% 11%, 63% 6%, 66% 4%, 69% 2%, 72% 2%, 76% 3%, 79% 4%, 82% 5%, 85% 9%, 89% 13%, 92% 15%, 94% 16%, 96% 17%, 98% 17%, 100% 16%, 100% 100%, 0% 100%); */
+            
+
+
+
+            
+
+
+
+
+            
+      </style>
+
+
+</head>
+<body>
+
+
+        <div id="main-home">
+
+            <div id="navbar">
+                <div id="logo">
+                   <img src="./Shapes-images/logo-w.png" alt="">
+                </div>
+                <div id="nav">
+                    <ul>
+                      <li><a href="#main-home">Home</a></li>
+                      <li><a href="#design">About</a></li>
+                      <li><a href="#service">Service</a></li>
+                      <li><a href="#features">Features</a></li>
+                      <li>
+                        <a href="#design">Design <i class="fas fa-sort-down"></i></a>
+                          <div id="design-hide">
+                              <p>Design number 01</p>
+                              <p>Design number 02</p>
+                              <p>Design number 03</p>
+                              <p>Design 04</p>
+                              <p>Design number 05</p>
+                              <p>Design number 06</p>
+                          </div>
+                      </li>
+                      <li><a href="#">Forums</a></li>
+                      <li>
+                        <a href="#qoutation">Blog <i class="fas fa-sort-down"></i></a>
+                        <div id="design-hide">
+                          <p>Blog 01</p>
+                          <p>Blog 02</p>
+                          <p>Blog 03</p>
+                          <p>Blog 04</p>
+                          <p>Blog 05</p>
+                          <p>Blog 06</p>
+                      </div>
+                      </li>
+                      <li><a href="#footer">Footer</a></li>
+                    </ul>
+                </div>
+                <div id="nav-end">
+                  <span>Sign in</span>
+                  <span>Registor</span>
+                </div>
+            </div>
+
+            <div id="home">
+
+                <div id="home-content">
+                      <div id="home-top-shape">
+                        <img src="./Shapes-images/bars2.png" alt="">
+                      </div>
+                      <div id="home-text">
+                          <p>Ultimate Freehand. Web Design 3.0</p>
+                          <h1>Create stunning websites and themes</h1>
+                          <p>Website Builder Software. Mobile-Friendly. No Coding</p>
+                          <h2>WordPress, Joomla, HTML5, Windows, Mac OS and Online</h3>
+                          <button>DOWNLOAD NOW</button>
+                      </div>
+                      <div id="home-List">
+                          <div id="home-list-a">
+                            <i class="fab fa-windows"></i>
+                            <p>Download</p>
+                            <p>
+                              Windows App &nbsp;
+                              <i class="fas fa-angle-double-right"></i>
+                            </p>
+                          </div>
+                          <div id="home-list-a">
+                            <i class="fab fa-apple"></i>
+                            <p>Download</p>
+                            <p>
+                              Mac OS App &nbsp;
+                              <i class="fas fa-angle-double-right"></i>
+                            </p>
+                          </div>
+                          <div id="home-list-a">
+                            <i class="fab fa-wordpress"></i>
+                            <p>Get</p>
+                            <p>
+                              Wordpress Plugin &nbsp;
+                              <i class="fas fa-angle-double-right"></i>
+                            </p>
+                          </div>
+                          <div id="home-list-a">
+                            <i class="fas fa-link"></i>
+                            <p>Get</p>
+                            <p>
+                              Joomla Extention &nbsp;
+                              <i class="fas fa-angle-double-right"></i>
+                            </p>
+                          </div>
+                          <div id="home-list-a">
+                            <i class="fas fa-globe"></i>
+                            <p>Start</p>
+                            <p>
+                              Nicepage Online &nbsp;
+                              <i class="fas fa-angle-double-right"></i>
+                            </p>
+                          </div>
+                      </div>
+
+                      <div id="home-bottom-shape" data-aos="fade-down">
+                        <img src="./Shapes-images/bars2.png" alt="">
+                      </div>
+
+                    </div>
+
+                <div id="number">
+                    <p>WEB DESIGN</p>
+                    <h1>30</h1>
+                    <div id="number-circle"></div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div id="features">
+          <div id="features-bottom-shape" data-aos="fade-up">
+            <img src="./Shapes-images/bars2.png" alt="">
+          </div>
+            <div id="features-content">
+                <div id="features-content-text">
+                    <h1>Absolute Creativity With
+                      No Coding</h1>
+                      <p>Simple drag-and-drop website builder software to <br> implement any ideas</p>
+                      <button>ALL FEATURES</button>
+                </div>
+            </div>
+            <div id="features-video">
+              <div id="features-video-main">
+                <video src="./Shapes-images/editor.mp4" controls autoplay></video>
+              </div>
+            </div>
+        </div>
+
+        <div id="design">
+            <div id="design-image">
+                <div id="design-image-1">
+                  <img src="./Shapes-images/old.jpg" alt="">
+                </div>
+                <div id="design-image-2">
+                  <img src="./Shapes-images/new.jpg" alt="">
+                </div>
+                <div id="design-image-3"  data-aos="fade-right">
+                  <img src="./Shapes-images/arrow350.png" alt="">
+                </div>
+            </div>
+            <div id="design-text">
+              <div id="design-text-contect">
+              <h1>What Is <br> Web Design 3.0?</h1>
+              <p>Learn how to build the trendiest websites and themes on the Web. </p>
+              <button>DISCOVER THE SECRET</button>
+            </div>
+            </div>
+        </div>
+
+        <div id="service">
+            <div id="service-text">All You Need And More</div>
+            <div id="service-list">
+                <div id="service-list-1">
+                    <div id="service-list-1-icon">
+                        <i class="far fa-lightbulb"></i>
+                    </div>
+                    <div id="service-list-1-text">  
+                        <h1>1000s of Website & Block Templates</h1>
+                        <p>Select from a huge variety of designer-made templates.</p>
+                    </div>
+                </div>
+                <div id="service-list-2">
+                  <div id="service-list-2-icon">
+                    <i class="far fa-handshake"></i>
+                  </div>
+                  <div id="service-list-2-text">  
+                      <h1>Easy Drag-n-Drop</h1>
+                      <p>Select from a huge variety of designer-made.</p>
+                  </div>
+              </div>
+              <div id="service-list-3">
+                <div id="service-list-3-icon">
+                  <i class="fas fa-tv"></i>
+                </div>
+                <div id="service-list-3-text">  
+                    <h1>No Coding</h1>
+                    <p>Select from a huge variety of designer-made templates.</p>
+                </div>
+            </div>
+            <div id="service-list-4">
+              <div id="service-list-4-icon">
+                <i class="fas fa-blender-phone"></i>
+              </div>
+              <div id="service-list-4-text">  
+                  <h1>Mobile-Friendly</h1>
+                  <p>Select from a huge variety of designer-made templates.</p>
+              </div>
+          </div>
+            </div>
+            <div id="service-button">SEE ALL FEATURES</div>
+        </div>
+
+        <div id="qoutation">
+            <div id="qoutation-1">
+                <div id="qoutation-1-image">
+                  <img src="./Shapes-images/robot.jfif" alt="">
+                </div>
+            </div>
+            <div id="qoutation-1">
+              <i class="fas fa-quote-left"></i>
+              <p>
+                Nicepage is a must-have tool for any webmaster. It’s like a real assistant, but works 100 times faster.
+              </p>
+              <h3>Alan Hollander</h3>
+              <span>Web Designer</span>
+            </div>
+            <div id="qoutation-1">
+                <img id="qoutation-1-b2" src="./Shapes-images/b2.png" alt=""  data-aos="fade-down">
+                <h1>More happy customers</h1>
+                <p>Create modern sites and get more customers</p>
+            </div>
+        </div>
+
+
+        <div id="footer">
+          <svg viewBox="0 -20 700 110" width="100%" height="600px" preserveAspectRatio="none">
+            <path transform="translate(0, -20)" d="M0,10 c80,-22 240,0 350,18 c90,17 260,7.5 350,-20 v50 h-700" fill="rgb(253,225,15)" />
+            <path d="M0,10 c80,-18 230,-12 350,7 c80,13 260,17 350,-5 v100 h-700z" fill="rgb(251,144,86)" />
+          </svg>
+
+          <div id="footer-content">
+              <div id="footer-content-icons">
+                  <div id="footer-content-icon-1">
+                      <i class="fab fa-facebook-f"></i>
+                  </div>
+                  <div id="footer-content-icon-1">
+                      <i class="fab fa-twitter"></i>
+                  </div>
+                  <div id="footer-content-icon-1">
+                      <i class="fab fa-linkedin-in"></i>
+                  </div>
+                  <div id="footer-content-icon-1">
+                      <i class="fab fa-instagram"></i>
+                  </div>
+                  <div id="footer-content-icon-1">
+                      <i class="fab fa-pinterest-p"></i>
+                  </div>
+                  <div id="footer-content-icon-1">
+                      <i class="fab fa-quora"></i>
+                  </div>
+              </div>
+              <div id="footer-content-list">
+                  <span><a href="#main-home">Home</a></span>
+                  <span><a href="#features">About</a></span>
+                  <span><a href="#service">Service</a></span>
+                  <span><a href="#qoutation">Blog</a></span>
+                  <span><a href="#features">Features</a></span>
+                  <span><a href="#design">Design</a></span>
+              </div>
+            </div>
+            <div id="footer-content-copyright">
+              © 2021 Nicepage Free Website Builder Software - All Rights Reserved
+            </div>
+            
+          </div>
+
+
+  
+
+        <script>
+          AOS.init();
+        </script>
+</body>
+</html>

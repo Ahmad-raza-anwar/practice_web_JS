@@ -1,0 +1,3434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Dashboard</title>
+
+    <style>
+
+        body{
+          overflow-x: hidden;
+        }
+        *{
+          padding: 0;
+          margin: 0;
+          font-family: Arial, Helvetica, sans-serif;
+        }
+
+        #toasts{
+          width: max-content;
+          height: max-content;
+          padding: 10px;
+          color: white;
+          /* position: absolute; */
+          /* top: 650px; */
+          z-index: 11;
+          /* left: 650px; */
+          /* position: fixed; */
+          /* border: 2px solid red; */
+          position: fixed;
+          bottom: 10px;
+          right: 40%;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+        }
+        .toast{
+          margin-bottom: 10px;
+          font-size: 20px;
+          font-weight: bold;
+          font-family: 'Courier New', Courier, monospace;
+          width: 400px;
+          height: 100px;
+          text-align: center;
+          border-radius: 10px;
+          background-color: #3f6ad8;
+          position: relative;
+          overflow: hidden;
+        }
+        .toast-bar{
+          width: 0%;
+          height: 5px;
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          background-color: red;
+          animation: bar 3s linear;
+        }
+        @keyframes bar {
+            0%{
+              width: 100%;
+            }
+            100%{
+              width: 0%;
+            }
+        }
+
+        .navbar{
+          width: 100%;
+          height: 60px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background-color: white;
+          z-index: 111;
+          /* position: relative; */
+          position: sticky;
+          top: 0;
+          box-shadow: 0 0 10px 0 gray;
+        }
+        .navbar_1{
+          width: 20%;
+          height: 60px;
+          transition: 0.5s;
+          /* background-color: green; */
+          display: flex;
+          position: relative;
+        }
+        .navbar_1 img{
+          width: 100px;
+          height: 22px;
+          margin-left: 20px;
+          margin-top: 20px;
+        }
+        .bars-main{
+          width: 35px;
+          height: 27px;
+          position: absolute;
+          right: 30px;
+          top: 20px;
+          /* background-color: darkmagenta; */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+          cursor: pointer;
+        }
+        .bar_1{
+          width: 30px;
+          height: 3px;
+          border-radius: 20px;
+          background-color: #3f6ad8;
+          transform-origin: left;
+          transition: 0.5s;
+        }
+        .bar_2{
+          width: 30px;
+          height: 2px;
+          border-radius: 20px;
+          transition: 0.5s;
+          background-color: #3f6ad8;
+        }
+        .bar_3{
+          transform-origin: left;
+          width: 30px;
+          height: 3px;
+          border-radius: 20px;
+          transition: 0.5s;
+          background-color: #3f6ad8;
+        }
+
+
+
+        .navbar_2{
+          width: 40%;
+          height: 60px;
+          /* background-color: darkblue; */
+          display: flex;
+          transition: 0.5s;
+          /* justify-content: center; */
+          align-items: center;
+          position: relative;
+        }
+        .search{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          /* margin-top: 10px; */
+          margin-left: 10px;
+          background-color: rgb(235, 235, 235);
+          z-index: -1;
+          transition: 0.5s ease-out;
+        }
+        .search_input{
+          /* opacity: 0; */
+          transition: 0.5s ease-in;
+          width: 250px;
+          height: 40px;
+          border: none;
+          color: gray;
+          background-color: rgb(235, 235, 235);
+          font-size:16px;
+          position: absolute;
+          margin-left: 40px;
+          z-index: -11;
+          border-radius: 30px;
+        }
+        #number{
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white;
+          z-index: -1;
+          background-color: #dd3b62;
+        }
+        .search i{
+          color: #3f6ad8;
+          font-size: 20px;
+        }
+        .navbar_2 .fa-times{
+          color: #3f6ad8;
+          font-size: 25px;
+          position: absolute;
+          left: 45px;
+          z-index: -111;
+          transition: 0.8s ease-in;
+        }
+        .nav{
+          width: 400px;
+          height: 40px;
+          font-size: 1vw;
+          /* font-size: 14px;    */
+          color: rgb(158, 158, 158);
+          /* background-color: violet; */
+        }
+        .nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        .nav ul li{
+          height: 40px;
+          display: flex;
+          justify-content: center;
+          cursor: pointer;
+          align-items: center;
+          position: relative;
+        }
+        .nav ul li:hover i{
+          color: #3f6ad8;
+        }
+        .hide_list_1{
+          width: 900px;
+          height: 240px;
+          top: 20px;
+          left: -150px;
+          position: absolute;
+          box-shadow: 0 0 30px 0 gray;
+          border-radius: 10px;
+          visibility: hidden;
+          background-color: white;
+          transition: 0.4s ease-out;
+        }
+        .hide_list_1::before{
+          content: "";
+          position: absolute;
+          top: -10px;
+          left: 200px;
+          border-right: 10px solid transparent;
+          border-left: 10px solid transparent;
+          border-bottom: 10px solid white;
+        }
+
+        .hide_list_2{
+          width: 200px;
+          height: 300px;
+          top: 20px;
+          left: -30px;
+          position: absolute;
+          box-shadow: 0 0 30px 0 gray;
+          transition: 0.4s ease-out;
+          border-radius: 10px;
+          visibility: hidden;
+          background-color: white;
+        }
+        .hide_list_3{
+          width: 300px;
+          height: 400px;
+          top: 20px;
+          left: -50px;
+          position: absolute;
+          box-shadow: 0 0 30px 0 gray;
+          transition: 0.4s ease-out;
+          border-radius: 10px;
+          visibility: hidden;
+          background-color: white;
+        }
+
+
+        .navbar_3{
+          width: 40%;
+          height: 60px;
+          /* background-color: darkgoldenrod; */
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+        }
+        .navbar_3_circles{
+          width: 38%;
+          height: 35px;
+          display: flex;
+          border-right: 1px solid rgb(236, 211, 211);
+          /* justify-content: space-evenly; */
+          align-items: center;
+          /* background-color: darkmagenta; */
+        }
+        .navbar_3_circle_1{
+          width: 40px;
+          margin-left: 0.6vw;
+          height: 40px;
+          border-radius: 50%;
+          background-color: rgb(179, 200, 245);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          color: #3f6ad8;
+          cursor: pointer;
+          z-index: -1;
+        }
+        .navbar_3_circle_1:hover{
+          background-color: rgb(152, 183, 250);
+        }
+        .navbar_3_circle_2{
+          width: 40px;
+          height: 40px;
+          margin-left: 0.6vw;
+          border-radius: 50%;
+          background-color: rgb(236, 211, 211);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          cursor: pointer;
+          z-index: -1;
+          color: #dd3b62;
+        }
+        .navbar_3_circle_2:hover{
+          background-color: rgb(238, 185, 185);
+        }
+        .navbar_3_circle_3{
+          width: 40px;
+          height: 40px;
+          margin-left: 0.6vw;
+          border-radius: 50%;
+          background-color: rgb(235, 235, 235);
+          display: flex;
+          justify-content: center;
+          cursor: pointer;
+          z-index: -1;
+          align-items: center;
+        }
+        .navbar_3_circle_3:hover{
+          background-color: rgb(214, 212, 212);
+        }
+        .navbar_3_circle_3 img{
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+        }
+        .navbar_3_circle_4{
+          width: 40px;
+          height: 40px;
+          margin-left: 0.6vw;
+          border-radius: 50%;
+          background-color: rgb(211, 236, 199);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 16px;
+          cursor: pointer;
+          z-index: -1;
+          color: #3ac47d;
+        }
+        .navbar_3_circle_4:hover{
+          background-color: rgb(189, 243, 164);
+        }
+
+        .navbar_3_manager{
+          width: 40%;
+          height: 40px;
+          border-right: 1px solid rgb(214, 212, 212);
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: saddlebrown; */
+        }
+        .navbar_3_manager_image{
+          width: 28%;
+          height: 40px;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          /* background-color: seagreen; */
+        }
+        .navbar_3_manager_image img{
+          border-radius: 50%;
+          width: 40px;
+        }
+        .navbar_3_manager_text{
+          width: 55%;
+          height: 40px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-around;
+          align-items: center;
+          /* background-color: seagreen; */
+        }
+        .navbar_3_manager_text p{
+          font-size: 1vw;
+          font-weight: bold;
+          color: black;
+        }
+        .navbar_3_manager_text span{
+          font-size: 0.8vw;
+          /* font-weight: bold;  */
+          color: rgb(158, 158, 158);
+        }
+        .navbar_3_manager_calendar{
+          color: white;
+          padding: 6px 8px;
+          border-radius: 5px;
+          background-color: #3f6ad8;
+        }
+        .navbar_3_manager_calendar i{
+          font-size: 14px;
+        }
+
+
+
+        .navbar_3_icon{
+          width: 6%;
+          height: 30px;
+          /* background-color: saddlebrown; */
+          display: flex;
+          flex-direction: column;
+          justify-content: space-evenly;
+          align-items: center;
+        }
+        .navbar_3_icon_hide{
+          width: 30%;
+          height: 761px;
+          position: absolute;
+          top: 0;
+          right: -400px;
+          transition: 0.3s ease-in;
+          background-color: white;
+          visibility: hidden;
+        } 
+        .navbar_3_icon_hide::after{
+          content: "";
+          width: 2000px;
+          height: 100%;
+          position: absolute;
+          right: 0;
+          top: 0;
+          /* transition: 1s; */
+          z-index: -1;
+          background-color: rgba(0, 0, 0, 0.555);
+        } 
+        .navbar_3_icon_hide span{
+          padding: 8px 15px;
+          border-radius: 50%;
+          background-color: rgb(179, 200, 245);
+          font-size: 30px;
+          right: 15px;
+          top: 10px;
+          position: absolute;
+        }
+
+        .navbar_3_icon_1{
+          width: 25px;
+          height: 2px;
+          border-radius: 20px;
+          background-color: #3f6ad8;
+        }
+        .navbar_3_icon_2{
+          width: 25px;
+          height: 1px;
+          border-radius: 20px;
+          background-color: #3f6ad8;
+        }
+        .navbar_3_icon_3{
+          width: 25px;
+          height: 2px;
+          border-radius: 20px;
+          background-color: #3f6ad8;
+        }
+
+        /* ------------------------------------ Manu -------------------------- */
+        
+
+        .main_manu{
+          width: 100%;
+          height: 275vh;
+          display: flex;
+          justify-content: space-evenly;
+          /* background-color: darkslategray; */
+        }
+        .manu{
+          width: 20%;
+          height: 700px;
+          transition: 0.5s;
+          overflow-y: scroll;
+          overflow-x: hidden;
+          /* background-color: darkorange; */
+          position: sticky;
+          top: 60px;
+        }
+        .manu_1{
+          width: 100%;
+          height: 180px;
+          padding: 1px;
+          /* top: 0px; */
+          /* background-color: darkmagenta; */
+        }
+        .manu_1 h3{
+          font-size: 14px;
+          color: #3f6ad8;
+          margin-left: 1vw;
+          margin-top: 1vh;
+        }
+        .manu_1_inner{
+          width: 80%;
+          height: max-content;
+          padding: 1px;
+          float: right;
+          margin-right: 20px;
+          /* background-color: darkolivegreen; */
+        }
+        .manu_1_inner p{
+          height: 40px;
+          font-size: 16px;
+          color: gray;
+          line-height: 40px;
+          border-radius: 5px;
+          transition: 0.3s;
+          cursor: pointer;
+          /* background-color: greenyellow; */
+        }
+        .manu_1_inner p:hover{
+          background-color: rgb(179, 200, 245);
+        }
+        .manu_1_inner p .fa-angle-down{
+          float: right;
+          margin-top: 10px;
+          margin-right: 20px;
+        }
+        .manu_1_inner p i{
+          color: rgb(214, 212, 212);
+        }
+        .manu_1_inner_show{
+          width: 220px;
+          height: 0px;
+          overflow: hidden;
+          /* visibility: hidden; */
+          margin-left: 5px;
+          border-left: 3px solid rgb(152, 183, 250);
+          /* background-color: saddlebrown; */
+        }
+        .manu_1_inner_show p{
+          line-height: 20px;
+          color: gray;
+          padding: 5px;
+          height: max-content;
+          margin-left: 10px;
+        } 
+
+
+        .manu_2{
+          width: 100%;
+          height: 200px;
+          padding: 1px;
+          position: relative;
+          /* background-color: magenta; */
+        }
+        .manu_2 h3{
+          color: #3f6ad8;
+          font-size: 14px;
+          margin-left: 1vw;
+          margin-top: 1vh;
+        }
+        .manu_3{
+          width: 100%;
+          padding: 1px;
+          height: 200px;
+          /* background-color: darkmagenta; */
+        }
+        .manu_3 h3{
+          font-size: 14px;
+          color: #3f6ad8;
+          margin-left: 1vw;
+          margin-top: 1vh;
+        }
+        .manu_4{
+          width: 100%;
+          padding: 1px;
+          height: 150px;
+          /* background-color: magenta; */
+        }
+        .manu_4 h3{
+          font-size: 14px;
+          color: #3f6ad8;
+          margin-left: 1vw;
+          margin-top: 1vh;
+        }
+        .manu_5{
+          width: 100%;
+          padding: 1px;
+          height: 200px;
+          /* background-color: darkmagenta; */
+        }
+        .manu_5 h3{
+          color: #3f6ad8;
+          font-size: 14px;
+          margin-left: 1vw;
+          margin-top: 1vh;
+        }
+        
+
+
+
+        .dashboard{
+          width: 80%;
+          height: 275vh;
+          transition: 0.5s;
+          background-color: #f1f4f6;
+        }
+        .dashboard-top{
+          width: 100%;
+          height: 100px;
+          display: flex;
+          align-items:center;
+          justify-content: space-around;
+          background-color: #f7f9fa;
+        }
+        .dashboard-top-text{
+          width: 75%;
+          height: 80px;
+          padding: 1px;
+          /* display: flex; */
+          /* background-color: darkorange; */
+        }
+        .dashboard-top-text h3{
+          margin-left: 100px;
+          margin-top: -50px;
+        }
+        .dashboard-top-text p{
+          margin-left: 100px;
+          font-size: 12px;
+          color: gray;
+          /* margin-top: -40px; */
+        }
+        .dashboard-top-text-icon{
+          width: max-content;
+          height: max-content;
+          padding: 15px 20px;
+          font-size: 22px;
+          border-radius: 5px;
+          color: #dd3b62;
+          margin-top: 10px;
+          margin-left: 30px;
+          box-shadow: 0 0 20px 0 rgb(214, 212, 212);
+          background-color: white;
+        }
+        .dashboard-top-btns{
+          width: 20%;
+          height: 40px;
+          padding: 1px;
+          /* display: flex; */
+          /* background-color: darkorange; */
+        }
+        .dashboard-top-btns #btn_1{
+          padding: 8px 12px;
+          border-radius: 5px;
+          border: none;
+          background-color: rgb(27, 27, 27);
+        }
+        .dashboard-top-btns #btn_1 i{
+          color: white;
+          font-size: 16px;
+        }
+        .dashboard-top-btns #btn_2{
+          padding: 8px 20px;
+          border-radius: 5px;
+          border: none;
+          font-size: 16px;
+          color: white;
+          margin-left: 20px;
+          background-color: #3f6ad8;
+        }
+        .dashboard-top-btns #btn_2:hover{
+          background-color: #2256da;
+          cursor: pointer;
+        }
+
+
+        /* ----------------------- Portfolio -------------------------------- */
+
+
+
+        #portfolio{
+          width: 90%;
+          height: 350px;
+          margin: auto;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          flex-direction: column;
+          /* background-color: hotpink; */
+        }
+        #portfolio-btns{
+          width: 100%;
+          height: 70px;
+          /* background-color: darkgreen; */
+        }
+        #portfolio-btns button{
+          padding: 10px 30px;
+          background-color: #3f6ad8;
+          color: white;
+          font-size: 14px;
+          border: none;
+          margin-top: 2vh;
+          border-radius: 5px;
+          position: relative; 
+        }
+        #portfolio-btns button:nth-child(2){
+          padding: 10px 30px;
+          background-color: transparent;
+          color: rgb(27, 27, 27);
+          font-size: 14px;
+          border: none;
+          margin-top: 2vh;
+          border-radius: 5px;
+          z-index: 11;
+        }
+        #portfolio-btns button:nth-child(2):hover{
+          color: white;
+        }
+        #portfolio-btns button:nth-child(2)::after{
+          content: "";
+          width: 0px;
+          height: 0px;
+          position: absolute;
+          background-color: #3f6ad8;
+          top: 50%;
+          left: 50%;
+          z-index: -1;
+          transition: 0.4s;
+        }
+        #portfolio-btns button:nth-child(2):hover:after{
+          content: "";
+          width: 100%;
+          height: 100%;
+          border-radius: 5px;
+          position: absolute;
+          background-color: #3f6ad8;
+          top: 0;
+          left: 0;
+        }
+        #portfolio-content{
+          width: 100%;
+          height: 250px;
+          border-radius: 5px;
+          box-shadow: 0 0 20px 0 rgb(214, 212, 212);
+          background-color: white;
+        }
+        #portfolio-content-top{
+          width: 100%;
+          height: 20%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          /* background-color: violet; */
+          border-bottom: 1px solid gray;
+        }
+        #portfolio-content-top p{
+          margin-left: 30px;
+          color: rgb(27, 27, 27);
+        }
+        #portfolio-content-top button{
+          padding: 8px 20px;
+          color: rgb(27, 27, 27);
+          background-color: transparent;
+          border: 2px solid black;
+          margin-right: 30px;
+          border-radius: 5px;
+        }
+        #portfolio-content-list{
+          width: 100%;
+          border-bottom: 1px solid gray;
+          height: 55%;
+          /* background-color: darkorange; */
+          display: flex;
+          justify-content: space-evenly;
+        }
+        #portfolio-content-btns{
+          width: 100%;
+          height: 25%;
+          /* background-color: darkred; */
+        }
+        #portfolio-content-btns button{
+          padding: 10px 30px;
+          border: none;
+          border-radius: 30px;
+          background-color: #3f6ad8;
+          color: white;
+          margin-top: 10px;
+          margin-left: 40%;
+          margin-right: 35%;
+          box-shadow: 0 0 10px 0 rgb(158, 158, 158);
+          font-size: 15px;
+          font-weight: bold;
+        }
+        #portfolio-content-list-1{
+          width: 30%;
+          height: 100%;
+          /* border: 1px solid; */
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: turquoise; */
+        }
+        #portfolio-content-list-1-icon{
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #f7b924;
+        }
+        #portfolio-content-list-1-icon i{
+          font-size: 20px;
+        }
+        #portfolio-content-list-1-text{
+          width: 200px;
+          height: 120px;
+          /* border-radius: 50%; */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          /* align-items: center; */
+          /* background-color: darkred; */
+        }
+        #portfolio-content-list-1-text p{
+          color: gray;
+          font-size: 15px;
+        }
+        #portfolio-content-list-1-text h2{
+          color: rgb(27, 27, 27);
+          font-size: 40px;
+        }
+        #portfolio-content-list-1-text h5 span{
+          color: #dd3b62;
+        }
+        #portfolio-content-list-1-text h5{
+          color: gray;
+        }
+
+        #portfolio-content-list-2{
+          width: 30%;
+          height: 100%;
+          /* border: 1px solid; */
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: turquoise; */
+        }
+        #portfolio-content-list-2-icon{
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #dd3b62;
+        }
+        #portfolio-content-list-2-icon i{
+          font-size: 20px;
+        }
+        #portfolio-content-list-2-text{
+          width: 200px;
+          height: 120px;
+          /* border-radius: 50%; */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          /* align-items: center; */
+          /* background-color: darkred; */
+        }
+        #portfolio-content-list-2-text p{
+          color: gray;
+          font-size: 15px;
+        }
+        #portfolio-content-list-2-text h2{
+          color: rgb(27, 27, 27);
+          font-size: 40px;
+        }
+        #portfolio-content-list-2-text h5 span{
+          color: #dd3b62;
+        }
+        #portfolio-content-list-2-text h5{
+          color: gray;
+        }
+
+        #portfolio-content-list-3{
+          width: 30%;
+          height: 100%;
+          /* border: 1px solid; */
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: turquoise; */
+        }
+        #portfolio-content-list-3-icon{
+          width: 60px;
+          height: 60px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          background-color: #3ac47d;
+        }
+        #portfolio-content-list-3-icon i{
+          font-size: 20px;
+        }
+        #portfolio-content-list-3-text{
+          width: 200px;
+          height: 120px;
+          /* border-radius: 50%; */
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          /* align-items: center; */
+          /* background-color: darkred; */
+        }
+        #portfolio-content-list-3-text p{
+          color: gray;
+          font-size: 15px;
+        }
+        #portfolio-content-list-3-text h2{
+          color: #3ac47d;
+          font-size: 40px;
+        }
+        #portfolio-content-list-3-text h5 span{
+          color: #dd3b62;
+        }
+        #portfolio-content-list-3-text h5{
+          color: gray;
+        }
+
+
+
+        /* --------------------------- Growth ------------------------------ */
+
+
+
+        .growth{
+          width: 95%;
+          height: 500px;
+          margin: 20px auto;
+          /* background-color: saddlebrown; */
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+        }
+      .support{
+        width: 530px;
+        height: 500px;
+        border-radius: 5px;
+        background-color: white;
+        box-shadow: 0 0 20px 0 rgb(214, 212, 212);
+      }
+      .support-top{
+        width: 100%;
+        height: 10%;
+        /* background-color: violet; */
+        border-bottom: 1px solid rgb(214, 212, 212);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .support-top-para{
+        width: 200px; 
+        height: 50px;
+        display: flex;
+        color: rgb(27, 27, 27);
+        justify-content: center;
+        align-items: center;
+        /* background-color: darkgoldenrod;  */
+      }
+      .support-top-para i{
+        color: #3ac47d;
+      }
+      .support-top-icon{
+        width: 50px; 
+        height: 50px;
+        display: flex;
+        align-items: center;
+        /* background-color: darkblue;  */
+      }
+      .support-top-icon i{
+        color: rgb(27, 27, 27);
+        font-size: 25px;
+      }
+      .support-growth{
+        width: 100%;
+        height: 70%;
+        position: relative;
+        background-color: darkorange;
+        border-bottom: 1px solid rgb(214, 212, 212);
+      }
+      .container{
+          width: 100%;
+          height: 100%;
+          background-color: white;
+          /* box-shadow: 0 3px 6px rgba(0,0,0,0.4), 0 3px 6px rgba(0,0,0,0.4); */
+          position: absolute;
+        }
+        .slide{
+          opacity: 0;
+          width: 100%;
+          height: 100%;
+          background-position: center center;
+          background-size: cover;
+          position: absolute;
+          transition: 0.4s;
+        }
+        .slide.active{
+          opacity: 1;
+        }
+        .btn{
+          padding: 10px 15px;
+          color: black;
+          font-size: 20px;
+          margin-top: 20%;
+          border: none;
+          box-shadow: 0 0 20px 0 rgb(214, 212, 212);
+          border-radius: 50%;
+          cursor: pointer;
+          position: relative;
+          transition: 0.4s;
+          background-color: white;
+        }
+        
+        .btnleft{
+            float: left;
+            margin-left: -5%;
+        }
+        .btnright{
+            float: right;
+            margin-right: -5%;
+        }
+
+
+      .support-bottom{
+        width: 100%;
+        height: 20%;
+        /* background-color: darkred; */
+        border-bottom: 1px solid rgb(214, 212, 212);
+      }
+      .support-bottom-content{
+        width: 90%;
+        height: 50%;
+        margin: auto;
+        /* background-color: violet; */
+        display: flex;
+        justify-content: space-between;
+      }
+      .support-bottom-bar{
+        width: 95%;
+        height: 20%;
+        margin: auto;
+        /* background-color: darkgoldenrod; */
+      }
+      .support-bottom-bar progress{
+        width: 100%;
+      }
+      .support-bottom-text{
+        width: 100%;
+        height: 30%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: gray;
+        font-size: 13px;
+        /* background-color: darkgreen; */
+      }
+      .support-bottom-text p:nth-child(1){
+        margin-left: 10px;
+      }
+      .support-bottom-text p:nth-child(2){
+        margin-right: 10px;
+      }
+      .support-bottom-content .para{
+        width: 40%;
+        height: 100%;
+        /* background-color: darkmagenta; */
+        display: flex;
+        justify-content: space-evenly;
+        /* align-items: center; */
+        flex-direction: column;
+      }
+      .support-bottom-content .para h5{
+        font-size: 13px;
+      }
+      .support-bottom-content .para p{
+        font-size: 12px;
+        color: gray;
+      }
+      .support-bottom-content .number{
+        width: 30%;
+        height: 100%;
+        color: #3ac47d;
+        font-size: 30px;
+        font-weight: bold;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* background-color: magenta; */
+      }
+
+
+
+      /* ----------------------------------- timeline ----------------------- */
+
+
+      .timeline{
+        width: 530px;
+        height: 500px;
+        border-radius: 5px;
+        box-shadow: 0 0 20px 0 rgb(214, 212, 212);
+        background-color: white;
+      }
+      .timeline-top{
+        width: 100%;
+        height: 10%;
+        /* background-color: violet; */
+        border-bottom: 1px solid rgb(214, 212, 212);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .timeline-top-para{
+        width: 200px; 
+        height: 50px;
+        display: flex;
+        color: rgb(27, 27, 27);
+        justify-content: center;
+        align-items: center;
+        /* background-color: darkgoldenrod;  */
+      }
+      .timeline-top-para i{
+        color: #3ac47d;
+      }
+      .timeline-top-icon{
+        width: 50px; 
+        height: 50px;
+        display: flex;
+        align-items: center;
+        /* background-color: darkblue;  */
+      }
+      .timeline-top-icon i{
+        color: rgb(27, 27, 27);
+        font-size: 25px;
+      }
+      .timeline-growth{
+        width: 93%;
+        height: 70%;
+        position: relative;
+        overflow-y: scroll;
+        /* background-color: darkorange; */
+        padding: 20px;
+        border-bottom: 1px solid rgb(214, 212, 212);
+      }
+
+      .timeline-bottom{
+        width: 100%;
+        height: 10%;
+        /* background-color: darkred; */
+        border-bottom: 1px solid rgb(214, 212, 212);
+        display: flex;
+        justify-content: center;
+        align-items: center ;
+      }
+      .timeline-growth-line{
+        width: 5px;
+        height: 600px;
+        /* margin-top: 20px; */
+        border-radius: 20px;
+        position: absolute;
+        margin-left: 10px;
+        background-color: rgb(214, 212, 212);
+      }
+      .timeline-growth-1{
+        width: 450px;
+        height: max-content;
+        position: relative;
+        /* margin-top: 20px; */
+        /* border-radius: 20px; */
+        /* margin-left: 10px; */
+        /* background-color: darkolivegreen; */
+      }
+      .timeline-growth-1-a{
+        width: 90%;
+        height: 30px;
+        /* border: 1px solid; */
+        /* background-color: darkseagreen; */
+        display: flex;
+        align-items: center;
+      }
+      .timeline-growth-1-a-circle{
+        width: 8px;
+        height: 8px;
+        background-color: rgb(214, 212, 212);
+        margin-left: 4px;
+        border-radius: 50%;
+        border: 4px solid #dd3b62;
+      }
+      .timeline-growth-1-a-text{
+        width: max-content;
+        height: max-content; 
+        font-size: 15px;
+        margin-left: 20px;
+        color: gray;
+        /* background-color: deeppink; */
+      }
+      .timeline-growth-1-a #circle{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid white;
+        background-color: darkviolet;
+      }
+      .timeline-growth-1-a .circle{
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 2px dotted blue;
+        background-color: rgb(152, 183, 250);
+      }
+      .timeline-growth-1-a #circle img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+      .timeline-growth-1-a #circle:hover{
+        z-index: 11;
+      }
+      .timeline-growth-1-a #circle:nth-child(1){
+        margin-left: 50px;
+      }
+      .timeline-growth-1-a #circle:nth-child(2){
+        margin-left: -10px;
+      }
+      .timeline-growth-1-a #circle:nth-child(3){
+        margin-left: -10px;
+      }
+      .timeline-growth-1-a #circle:nth-child(4){
+        margin-left: -10px;
+      }
+      .timeline-growth-1-a #circle:nth-child(5){
+        margin-left: -10px;
+      }
+      .timeline-growth-1-a #circle:nth-child(6){
+        margin-left: -10px;
+      }
+      .timeline-growth-1-a #circle:nth-child(7){
+        margin-left: -10px;
+      }
+      .timeline-growth-1-a #circle:nth-child(8){
+        margin-left: -10px;
+      }
+
+      .timeline-bottom button{
+        padding: 8px 20px;
+        background-color: rgb(49, 49, 49);
+        color: white;
+        border: none;
+        font-weight: bold;
+        border-radius: 30px;
+      }
+
+
+
+      /* ----------------------------- Sales ---------------------------- */
+
+
+
+
+      #sales{
+        width: 95%;
+        height: 250px;
+        margin: auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        /* background-color: deepskyblue; */
+      }
+      #sale-1{
+        width: 22%;
+        height: 220px;
+        /* margin: auto; */
+        border-radius: 5px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        background-color: white;
+        box-shadow: 0 0 20px 0 rgb(214, 212, 212);
+      }
+      #sale-1:hover{
+        box-shadow: 0 0 40px 0 rgb(214, 212, 212);
+      }
+      #sale-1:nth-child(1){
+        border-bottom: 4px solid #3f6ad8;
+      }
+      #sale-1:nth-child(1) #sale-1-image i{
+        color: #3f6ad8;
+        font-size: 100px;
+        margin-left: 60px;
+      }
+      #sale-1:nth-child(2){
+        border-bottom: 4px solid #dd3b62;
+      }
+      #sale-1:nth-child(2) #sale-1-image i{
+        color: #dd3b62;
+        font-size: 100px;
+        margin-left: 60px;
+      }
+      #sale-1:nth-child(3){
+        border-bottom: 4px solid #3ac47d;
+      }
+      #sale-1:nth-child(3) #sale-1-image i{
+        color: #3ac47d;
+        font-size: 100px;
+        margin-left: 60px;
+      }
+      #sale-1:nth-child(4){
+        border-bottom: 4px solid #f7b924;
+      }
+      #sale-1:nth-child(4) #sale-1-image i{
+        color: #f7b924;
+        font-size: 100px;
+        margin-left: 60px;
+      }
+     
+      #sale-1-text{
+        width: 200px;
+        height: 80px;
+        /* background-color: dimgray; */
+      }
+      #sale-1-text h4{
+        font-size: 30px;
+        color: rgb(49, 49, 49);
+      }
+      #sale-1-text p{
+        font-size: 14px;
+        color: gray;
+      }
+      #sale-1-image{
+        width: 250px;
+        height: 100px;
+        /* background-color: darkgreen; */
+      }
+      
+
+
+      /* --------------------------- information ---------------------- */
+
+
+      .info{
+          width: 95%;
+          height: 500px;
+          margin: 20px auto;
+          /* background-color: saddlebrown; */
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+        }
+        .task-list{
+        width: 530px;
+        height: 500px;
+        border-radius: 5px;
+        box-shadow: 0 0 20px 0 rgb(214, 212, 212);
+        background-color: white;
+      }
+      .task-list-top{
+        width: 100%;
+        height: 10%;
+        /* background-color: violet; */
+        border-bottom: 1px solid rgb(214, 212, 212);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .task-list-growth{
+        width: 93%;
+        height: 70%;
+        position: relative;
+        overflow-y: scroll;
+        /* background-color: darkorange; */
+        padding: 20px;
+        border-bottom: 1px solid rgb(214, 212, 212);
+      }
+      #task-list-growth-1{
+        width: 100%;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid rgb(214, 212, 212);
+      }
+      #task-list-growth-1-text{
+        width: 90%;
+        height: 50px;
+        /* border-radius: 5px; */
+        border-left: 4px solid #f7b924;
+      }
+      #task-list-growth-1-text h4{
+        margin-left: 2vw;
+      }
+      #task-list-growth-1-text p{
+        margin-left: 2vw;
+      }
+      #task-list-growth-1:nth-child(2) #task-list-growth-1-text{
+        border-left: 4px solid #dd3b62;
+      }
+      #task-list-growth-1:nth-child(3) #task-list-growth-1-text{
+        border-left: 4px solid #3f6ad8;
+      }
+      #task-list-growth-1:nth-child(4) #task-list-growth-1-text{
+        border-left: 4px solid #3ac47d;
+      }
+
+
+      .task-list-bottom{
+        width: 100%;
+        height: 10%;
+        /* background-color: darkred; */
+        /* border-bottom: 1px solid rgb(214, 212, 212); */
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+      }
+      .task-list-bottom button{
+        padding: 8px 10px;
+        background-color: #3f6ad8;
+        border-radius: 5px;
+        border: none;
+        margin-right: 20px;
+        color: white;
+        font-size: 15px;
+      }
+      
+
+      .chat{
+        width: 530px;
+        height: 500px;
+        border-radius: 5px;
+        box-shadow: 0 0 20px 0 rgb(214, 212, 212);
+        background-color: white;
+      }
+      .chat-top{
+        width: 100%;
+        height: 10%;
+        /* background-color: violet; */
+        border-bottom: 1px solid rgb(214, 212, 212);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .chat-growth{
+        width: 93%;
+        height: 70%;
+        position: relative;
+        overflow-y: scroll;
+        /* background-color: darkorange; */
+        padding: 20px;
+        border-bottom: 1px solid rgb(214, 212, 212);
+      }
+      .chat-bottom{
+        width: 100%;
+        height: 10%;
+        /* background-color: darkred; */
+        /* border-bottom: 1px solid rgb(214, 212, 212); */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .chat-bottom input{
+        width: 90%;
+        height: 30px;
+      }
+
+
+
+      /* .sidebar-inner-show{
+        height: max-content !important;
+      }
+      .sidebar-inner-hide{
+        height: 0px !important;
+      } */
+
+
+
+      /* --------------------------------- Chat Box ----------------------- */
+
+
+
+      .chat-growth-1{
+        width: 90%;
+        height: 120px;
+        margin: auto;
+        /* background-color: darkgreen; */
+      }
+      .chat-growth-1-a{
+        width: 100%;
+        height: 70px; 
+        display: flex;
+        justify-content: space-evenly;
+        /* background-color: darkmagenta; */
+      }
+      .chat-growth-1-a-image{
+        width: 50px;
+        height: 50px;
+      }
+      .chat-growth-1-a-text{
+        width: 350px;
+        margin-left: 10px;
+        padding: 10px 20px;
+        height: max-content;
+        background-color: #e0f3ff;
+        border-radius: 0px 30px 30px 30px;
+      }
+      .chat-growth-1-a-image img{
+        border-radius: 6px;
+        width: 100%;
+        height: 100%;
+      }
+      .chat-growth-1-b{
+        font-size: 12px;
+        color: gray;
+        margin-top: 25px;
+        margin-left: 80px;
+      }
+
+
+      .chat-growth-2{
+        width: 90%;
+        height: max-content;
+        margin: auto;
+        /* background-color: darkgreen; */
+      }
+      .chat-growth-2-a{
+        width: 100%;
+        height: 70px; 
+        display: flex;
+        justify-content: space-evenly;
+        /* background-color: darkmagenta; */
+      }
+      .chat-growth-2-a-image{
+        width: 50px;
+        height: 50px;
+      }
+      .chat-growth-2-a-text{
+        width: 300px;
+        /* margin-left: 10px; */
+        padding: 10px 20px;
+        height: max-content;
+        background-color: #e0f3ff;
+        border-radius: 30px 0px 30px 30px;
+      }
+      .chat-growth-2-a-image img{
+        border-radius: 6px;
+        width: 100%;
+        height: 100%;
+      }
+      .chat-growth-2-b{
+        font-size: 12px;
+        color: gray;
+        margin-top: 0px;
+        margin-left: 240px;
+      }
+
+
+      /* ------------------------------------- Footer ---------------------- */
+
+
+
+
+      .footer{
+        width: 90%;
+        height: 150px;
+        margin: 40px auto;
+        border-radius: 10px;
+        /* display: flex; */
+        overflow: hidden;
+        box-shadow: 0 0 20px 0 rgb(214, 212, 212);
+        /* flex-direction: column; */
+        /* background-color: darkorange; */
+      }
+      .footer-a{
+        width: 100%;
+        height: 50%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgb(214, 212, 212);
+        background-color: white;
+      }
+      .footer-a-1{
+        width: 30%;
+        height: 100%;
+        /* background-color: darkslateblue; */
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .footer-a-1-text{
+        width: max-content;
+        height: 100%;
+        padding: 20px;
+        display: flex;
+        color: rgb(49, 49, 49);
+        justify-content: center;
+        flex-direction: column;
+        /* background-color: darkturquoise; */
+      }
+      .footer-a-1-text p{
+        color: gray;
+      }
+      .footer-a-1-number{
+        width: max-content;
+        height: 100%;
+        font-size: 40px;
+        font-weight: bold;
+        color: rgb(49, 49, 49);
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        /* background-color: darkviolet; */
+      }
+
+
+
+      /* ------------------------------ Setting ----------------------- */
+
+
+
+
+      .setting-main{
+        width: max-content;
+        height: 100px;
+        /* background-color: forestgreen; */
+        position: fixed;
+        top: 600px;
+        z-index: 11;
+        right: 60px;
+        display: flex;
+      }
+      .setting{
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(49, 49, 49);
+        background-color: #f7b924;
+        border-radius: 50%;
+      }
+      .setting:hover{
+        box-shadow: 0 0 30px 0 rgb(214, 212, 212);
+      }
+      .setting i{
+        animation: setting 2s linear infinite;
+        font-size: 30px;
+      }
+      @keyframes setting {
+        0%{
+          transform: rotate(0deg);
+        }
+        100%{
+          transform: rotate(360deg);
+        }
+      }
+      .setting-hide{
+        width: 500px;
+        height: 100vh;
+        position: absolute;
+        left: 200%;
+        bottom: -60px;
+        box-shadow: 0 0 50 0 rgb(214, 212, 212);
+        background-color: rgb(214, 212, 212);
+      }
+
+      #setting-hide-color{
+        width: 80%;
+        height: 200px;
+        margin: 20px auto;
+        border-radius: 10px;
+        border: 1px solid white;
+        background-color: rgb(235, 235, 235);
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      #color{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        margin-left: 15px;
+        background-color: #dd3b62;
+      }
+      #header-option{
+        width: 100%;
+        height: 60px;
+        margin-top: 100px;
+        background-color: rgb(158, 158, 158);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      #header-option p{
+        width: max-content;
+        font-size: 20px;
+        color: white;
+        margin-left: 10px;
+      }
+      #header-option button{
+        width: max-content;
+        height: max-content;
+        padding: 8px 20px;
+        background-color: rgb(49, 49, 49);
+        color: white;
+        margin-right: 30px;
+        font-size: 14px;
+        border: none;
+        border-radius: 30px;
+        /* float: right; */
+      }
+
+      
+
+      .navbar_3_hide-inner-first{
+        width: 90%;
+        height: 200px;
+        /* background-color: darkgoldenrod; */
+        margin: 50px auto;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .hide_inner_first_1{
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 8px solid #dd3b62;
+        margin: 100px auto;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 25px;
+        font-weight: bold;
+      }
+
+      .timeline-2{
+        width: 440px;
+        height: 500px;
+        margin-top: -50px;
+        border-radius: 5px;
+        /* box-shadow: 0 0 20px 0 rgb(214, 212, 212); */
+        background-color: white;
+      }
+      .timeline-2-top{
+        width: 100%;
+        height: 10%;
+        /* background-color: violet; */
+        border-top: 1px solid rgb(214, 212, 212);
+        border-bottom: 1px solid rgb(214, 212, 212);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .timeline-2-top-para{
+        width: 200px; 
+        height: 50px;
+        display: flex;
+        color: rgb(27, 27, 27);
+        justify-content: center;
+        align-items: center;
+        /* background-color: darkgoldenrod;  */
+      }
+      .timeline-2-top-para i{
+        color: #3ac47d;
+      }
+      .timeline-2-top-icon{
+        width: 50px; 
+        height: 50px;
+        display: flex;
+        align-items: center;
+        /* background-color: darkblue;  */
+      }
+      .timeline-2-top-icon i{
+        color: rgb(27, 27, 27);
+        font-size: 25px;
+      }
+      .timeline-2-growth{
+        width: 93%;
+        height: 70%;
+        position: relative;
+        overflow-y: scroll;
+        /* background-color: darkorange; */
+        padding: 20px;
+        border-bottom: 1px solid rgb(214, 212, 212);
+      }
+
+      .timeline-2-bottom{
+        width: 100%;
+        height: 10%;
+        /* background-color: darkred; */
+        border-bottom: 1px solid rgb(214, 212, 212);
+        display: flex;
+        justify-content: center;
+        align-items: center ;
+      }
+      .timeline-2-growth-line{
+        width: 5px;
+        height: 600px;
+        /* margin-top: 20px; */
+        border-radius: 20px;
+        position: absolute;
+        margin-left: 10px;
+        background-color: rgb(214, 212, 212);
+      }
+      .timeline-2-growth-1{
+        width: 400px;
+        height: max-content;
+        position: relative;
+        /* margin-top: 20px; */
+        /* border-radius: 20px; */
+        /* margin-left: 10px; */
+        /* background-color: darkolivegreen; */
+      }
+      .timeline-2-growth-1-a{
+        width: 90%;
+        height: 30px;
+        /* border: 1px solid; */
+        /* background-color: darkseagreen; */
+        display: flex;
+        align-items: center;
+      }
+      .timeline-2-growth-1-a-circle{
+        width: 8px;
+        height: 8px;
+        background-color: rgb(214, 212, 212);
+        margin-left: 4px;
+        border-radius: 50%;
+        border: 4px solid #dd3b62;
+      }
+      .timeline-2-growth-1-a-text{
+        width: max-content;
+        height: max-content; 
+        font-size: 15px;
+        margin-left: 20px;
+        color: gray;
+        /* background-color: deeppink; */
+      }
+      .timeline-2-growth-1-a #circle{
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        border: 2px solid white;
+        background-color: darkviolet;
+      }
+      .timeline-2-growth-1-a .circle{
+        width: 30px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 50%;
+        border: 2px dotted blue;
+        background-color: rgb(152, 183, 250);
+      }
+      .timeline-2-growth-1-a #circle img{
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+      }
+      .timeline-2-growth-1-a #circle:hover{
+        z-index: 11;
+      }
+      .timeline-2-growth-1-a #circle:nth-child(1){
+        margin-left: 50px;
+      }
+      .timeline-2-growth-1-a #circle:nth-child(2){
+        margin-left: -10px;
+      }
+      .timeline-2-growth-1-a #circle:nth-child(3){
+        margin-left: -10px;
+      }
+      .timeline-2-growth-1-a #circle:nth-child(4){
+        margin-left: -10px;
+      }
+      .timeline-2-growth-1-a #circle:nth-child(5){
+        margin-left: -10px;
+      }
+      .timeline-2-growth-1-a #circle:nth-child(6){
+        margin-left: -10px;
+      }
+      .timeline-2-growth-1-a #circle:nth-child(7){
+        margin-left: -10px;
+      }
+      .timeline-2-growth-1-a #circle:nth-child(8){
+        margin-left: -10px;
+      }
+
+      .timeline-2-bottom button{
+        padding: 8px 20px;
+        background-color: rgb(49, 49, 49);
+        color: white;
+        border: none;
+        font-weight: bold;
+        border-radius: 30px;
+      }
+
+        
+
+
+    </style>
+
+</head>
+<body>
+
+  <div id="toasts"></div>
+
+  <div class="setting-main">
+        <div class="setting">
+            <i class="fas fa-cog"></i>
+          </div>
+          <div class="setting-hide">
+
+            <div id="header-option">
+                <p>Header Options</p>
+                <button>Restore Default</button>
+            </div>
+              <div id="setting-hide-color">
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+              </div>
+
+              <div id="header-option">
+                <p>Footer Options</p>
+                <button>Restore Default</button>
+            </div>
+              <div id="setting-hide-color">
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+                  <div id="color" style="background-color: #3f6ad8;"></div>
+                  <div id="color" style="background-color: #f7b924;"></div>
+                  <div id="color" style="background-color: #dd3b62;"></div>
+                  <div id="color" style="background-color: #3ac47d;"></div>
+              </div>
+          </div>
+</div>
+
+      <div class="navbar">
+          <div class="navbar_1">
+              <img src="./Dashboard-images/logo-inverse.png" alt="">
+              <div class="bars-main">
+                  <div class="bar_1 bar_a"></div>
+                  <div class="bar_2 bar_a"></div>
+                  <div class="bar_3 bar_a"></div>
+              </div>
+          </div>
+
+          <div class="navbar_2">
+              <div class="search"><i class="fas fa-search"></i></div>
+              <div class="nav">
+                  <ul>
+                    <li>
+                          <i class="fas fa-gift"></i>&nbsp; Mega Menu &nbsp;
+                          <i class="fas fa-angle-down"></i>
+                          <div class="hide_list_1"></div>
+                    </li>
+                    <li>
+                          <div id="number">4</div> &nbsp; Settings  &nbsp;<i class="fas fa-angle-down"></i>
+                          <div class="hide_list_2"></div>
+                    </li>
+                    <li>
+                          <i class="far fa-sun"></i> &nbsp; Projects &nbsp;
+                          <i class="fas fa-angle-down"></i>
+                          <div class="hide_list_3"></div>
+                    </li>
+                  </ul>
+              </div>
+          </div>
+
+          <div class="navbar_3">
+
+
+              <div class="navbar_3_circles">
+                  <div class="navbar_3_circle_1">
+                      <i class="fas fa-th"></i>
+                  </div>
+                  <div class="navbar_3_circle_2">
+                      <i class="fas fa-bell"></i>
+                  </div>
+                  <div class="navbar_3_circle_3">
+                      <img src="./Dashboard-images/DE.svg" alt="">
+                  </div>
+                  <div class="navbar_3_circle_4">
+                      <i class="fab fa-stumbleupon-circle"></i> 
+                  </div>
+              </div>
+
+              <div class="navbar_3_manager">
+                <div class="navbar_3_manager_image">
+                    <img src="./Dashboard-images/1.jpg" alt="">
+                    <i class="fas fa-angle-down"></i>
+                </div>
+                <div class="navbar_3_manager_text">
+                    <p>Alina Mclourd</p>
+                    <span>VP People Manager</span>
+                </div>
+                <div class="navbar_3_manager_calendar">
+                    <i class="fas fa-calendar-week"></i>
+                </div>
+              </div>
+
+              <div class="navbar_3_icon">
+                  <div class="navbar_3_icon_1"></div>
+                  <div class="navbar_3_icon_2"></div>
+                  <div class="navbar_3_icon_3"></div>
+              </div>
+                <div class="navbar_3_icon_hide">
+                    <span><i class="fas fa-times"></i></span>
+                      
+                    <div class="navbar_3_hide-inner-first">
+                        <div class="hide_inner_first_1">51%</div>
+                        <div class="hide_inner_first_1" style="border-color: #3ac47d;">64%</div>
+                        <div class="hide_inner_first_1" style="border-color: #3f6ad8;">14%</div>
+                    </div>
+                    <div class="timeline-2">
+                      <div class="timeline-2">
+                        <div class="timeline-2-top">
+                            <div class="timeline-2-top-para">
+                              <i class="fas fa-cloud-upload-alt"></i> &nbsp; Technical timeline-2
+                            </div>
+                            <div class="timeline-2-top-icon">
+                              <i class="fas fa-bars"></i>
+                            </div>
+                        </div>
+                        <div class="timeline-2-growth">
+                            <div class="timeline-2-growth-line"></div>
+                            
+                            <div class="timeline-2-growth-1">
+                                <div class="timeline-2-growth-1-a">
+                                    <div class="timeline-2-growth-1-a-circle"></div>
+                                    <div class="timeline-2-growth-1-a-text">
+                                        All Hands Meeting
+                                    </div>
+                                </div>
+                                <div class="timeline-2-growth-1-a">
+                                  <div class="timeline-2-growth-1-a-circle" style="border-color: #f7b924;"></div>
+                                    <div class="timeline-2-growth-1-a-text">
+                                      Yet another one, at <span style="color: #3ac47d;padding: 5px; border-radius: 10px;font-size: 15px;margin-right: 150px;margin-top: -10px;background-color: transparent;">15:00 PM</span>
+                                    </div>
+                                </div>
+                                <div class="timeline-2-growth-1-a">
+                                  <div class="timeline-2-growth-1-a-circle" style="border-color: #3f6ad8;"></div>
+                                  <div class="timeline-2-growth-1-a-text">
+                                    Build the production release 
+                                  </div>
+                                </div>
+                                <div class="timeline-2-growth-1-a">
+                                  <div class="timeline-2-growth-1-a-circle" style="border-color: #3ac47d;"></div>
+                                  <div class="timeline-2-growth-1-a-text">
+                                    Something not important
+                                  </div>
+                                </div>
+                                <div class="timeline-2-growth-1-a">
+                                    <div id="circle"><img src="./Dashboard-images/download (1).jfif" alt=""></div>
+                                    <div id="circle"><img src="./Dashboard-images/download (2).jfif" alt=""></div>
+                                    <div id="circle"><img src="./Dashboard-images/download (3).jfif" alt=""></div>
+                                    <div id="circle"><img src="./Dashboard-images/download (4).jfif" alt=""></div>
+                                    <div id="circle"><img src="./Dashboard-images/download (5).jfif" alt=""></div>
+                                    <div id="circle"><img src="./Dashboard-images/download (6).jfif" alt=""></div>
+                                    <div id="circle"><img src="./Dashboard-images/download (7).jfif" alt=""></div>
+                                    <div id="circle"><img src="./Dashboard-images/download.jfif" alt=""></div>
+                                    <div class="circle">+</div>
+                                </div>
+                            </div>
+    
+                            <div class="timeline-2-growth-1">
+                              <div class="timeline-2-growth-1-a">
+                                  <div class="timeline-2-growth-1-a-circle"></div>
+                                  <div class="timeline-2-growth-1-a-text">
+                                      All Hands Meeting
+                                  </div>
+                              </div>
+                              <div class="timeline-2-growth-1-a">
+                                <div class="timeline-2-growth-1-a-circle" style="border-color: #f7b924;"></div>
+                                  <div class="timeline-2-growth-1-a-text">
+                                    Yet another one, at <span style="color: #3ac47d;padding: 5px; border-radius: 10px;font-size: 15px;margin-right: 150px;margin-top: -10px;background-color: transparent;">15:00 PM</span>
+                                  </div>
+                              </div>
+                              
+                              <div class="timeline-2-growth-1-a">
+                                <div class="timeline-2-growth-1-a-circle" style="border-color: #3f6ad8;"></div>
+                                <div class="timeline-2-growth-1-a-text">
+                                  Build the production release 
+                                </div>
+                              </div>
+                              <div class="timeline-2-growth-1-a">
+                                <div class="timeline-2-growth-1-a-circle" style="border-color: #3ac47d;"></div>
+                                <div class="timeline-2-growth-1-a-text">
+                                  Something not important
+                                </div>
+                              </div>
+                              <div class="timeline-2-growth-1-a">
+                                <div class="timeline-2-growth-1-a-circle" style="border-color: #f7b924;"></div>
+                                  <div class="timeline-2-growth-1-a-text">
+                                    Yet another one, at <span style="color: white;padding: 5px; border-radius: 5px;font-size: 15px;margin-right: 50px;margin-top: 20px;background-color: #dd3b62;">NEW</span>
+                                  </div>
+                              </div>
+                              <div class="timeline-2-growth-1-a">
+                                  <div id="circle"><img src="./Dashboard-images/download (1).jfif" alt=""></div>
+                                  <div id="circle"><img src="./Dashboard-images/download (2).jfif" alt=""></div>
+                                  <div id="circle"><img src="./Dashboard-images/download (3).jfif" alt=""></div>
+                                  <div id="circle"><img src="./Dashboard-images/download (4).jfif" alt=""></div>
+                                  <div id="circle"><img src="./Dashboard-images/download (5).jfif" alt=""></div>
+                                  <div id="circle"><img src="./Dashboard-images/download (6).jfif" alt=""></div>
+                                  <div id="circle"><img src="./Dashboard-images/download (7).jfif" alt=""></div>
+                                  <div id="circle"><img src="./Dashboard-images/download.jfif" alt=""></div>
+                                  <div class="circle">+</div>
+                              </div>
+                          </div>
+    
+                          <div class="timeline-2-growth-1">
+                            <div class="timeline-2-growth-1-a">
+                                <div class="timeline-2-growth-1-a-circle"></div>
+                                <div class="timeline-2-growth-1-a-text">
+                                    All Hands Meeting
+                                </div>
+                            </div>
+                            <div class="timeline-2-growth-1-a">
+                              <div class="timeline-2-growth-1-a-circle" style="border-color: #f7b924;"></div>
+                                <div class="timeline-2-growth-1-a-text">
+                                  Yet another one, at <span style="color: #3ac47d;padding: 5px; border-radius: 10px;font-size: 15px;margin-right: 150px;margin-top: -10px;background-color: transparent;">15:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="timeline-2-growth-1-a">
+                              <div class="timeline-2-growth-1-a-circle" style="border-color: #3f6ad8;"></div>
+                              <div class="timeline-2-growth-1-a-text">
+                                Build the production release 
+                              </div>
+                            </div>
+                            <div class="timeline-2-growth-1-a">
+                              <div class="timeline-2-growth-1-a-circle"></div>
+                              <div class="timeline-2-growth-1-a-text">
+                                  All Hands Meeting
+                              </div>
+                          </div>
+                          
+                            <div class="timeline-2-growth-1-a">
+                              <div class="timeline-2-growth-1-a-circle" style="border-color: #3ac47d;"></div>
+                              <div class="timeline-2-growth-1-a-text">
+                                Something not important
+                              </div>
+                            </div>
+                            <div class="timeline-2-growth-1-a">
+                                <div id="circle"><img src="./Dashboard-images/download (1).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (2).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (3).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (4).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (5).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (6).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (7).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download.jfif" alt=""></div>
+                                <div class="circle">+</div>
+                            </div>
+                        </div>
+    
+                        <div class="timeline-2-growth-1">
+                          <div class="timeline-2-growth-1-a">
+                              <div class="timeline-2-growth-1-a-circle"></div>
+                              <div class="timeline-2-growth-1-a-text">
+                                  All Hands Meeting
+                              </div>
+                          </div>
+                          <div class="timeline-2-growth-1-a">
+                            <div class="timeline-2-growth-1-a-circle" style="border-color: #f7b924;"></div>
+                              <div class="timeline-2-growth-1-a-text">
+                                Yet another one, at <span style="color: #3ac47d;padding: 5px; border-radius: 10px;font-size: 15px;margin-right: 150px;margin-top: -10px;background-color: transparent;">15:00 PM</span>
+                              </div>
+                          </div>
+                          <div class="timeline-2-growth-1-a">
+                            <div class="timeline-2-growth-1-a-circle" style="border-color: #3f6ad8;"></div>
+                            <div class="timeline-2-growth-1-a-text">
+                              Build the production release 
+                            </div>
+                          </div>
+                          <div class="timeline-2-growth-1-a">
+                            <div class="timeline-2-growth-1-a-circle" style="border-color: #3ac47d;"></div>
+                            <div class="timeline-2-growth-1-a-text">
+                              Something not important
+                            </div>
+                          </div>
+                          <div class="timeline-2-growth-1-a">
+                              <div id="circle"><img src="./Dashboard-images/download (1).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (2).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (3).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (4).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (5).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (6).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (7).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download.jfif" alt=""></div>
+                              <div class="circle">+</div>
+                          </div>
+                      </div>
+                        </div>
+                        <div class="timeline-2-bottom">
+                            <button>View All Messages</button>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+
+          </div>
+      </div>
+
+      <div class="main_manu">
+
+        <div class="manu">
+          <div class="manu_1">
+              <h3>MENU</h3>
+                <div class="manu_1_inner">
+                     <p>
+                       <i class="fas fa-rocket"></i> &nbsp;
+                        Dashboards  <i class="fas fa-angle-down"></i>
+                      </p>
+                      <div class="manu_1_inner_show">
+                          <p>Analytics</p>
+                          <p>Commerce</p>
+                          <p>Sales</p>
+                          <p>Minimal</p>
+                          <p>CRM</p>
+                      </div>
+                      <p>
+                        <i class="far fa-calendar"></i> &nbsp;
+                         Pages  <i class="fas fa-angle-down"></i>
+                        </p>
+                        <div class="manu_1_inner_show">
+                          <p>Analytics</p>
+                          <p>Commerce</p>
+                          <p>Sales</p>
+                          <p>Minimal</p>
+                          <p>CRM</p>
+                      </div>
+                       <p>
+                        <i class="fab fa-megaport"></i> &nbsp;
+                         Applications  <i class="fas fa-angle-down"></i>
+                        </p>
+                        <div class="manu_1_inner_show">
+                          <p>Analytics</p>
+                          <p>Commerce</p>
+                          <p>Sales</p>
+                          <p>Minimal</p>
+                          <p>CRM</p>
+                      </div>
+                </div>
+          </div>
+          <div class="manu_2">
+            <h3>COMPONENTS</h3>
+            <div class="manu_1_inner">
+                 <p>
+                   <i class="fas fa-rocket"></i> &nbsp;
+                    Elements <i class="fas fa-angle-down"></i>
+                  </p>
+                  <div class="manu_1_inner_show">
+                    <p>Analytics</p>
+                    <p>Commerce</p>
+                    <p>Sales</p>
+                    <p>Minimal</p>
+                    <p>CRM</p>
+                    <p>Elements</p>
+                    <p>Buttons</p>
+                    <p>Budgets</p>
+                    <p>Icons</p>
+                    <p>Cards</p>
+                    <p>Minimal</p>
+                    <p>List Group</p>
+                </div>
+                  <p>
+                    <i class="far fa-calendar"></i> &nbsp;
+                     Components  <i class="fas fa-angle-down"></i>
+                   </p>
+                   <div class="manu_1_inner_show">
+                    <p>Analytics</p>
+                    <p>Commerce</p>
+                    <p>Sales</p>
+                    <p>Minimal</p>
+                    <p>CRM</p>
+                </div>
+                   <p>
+                    <i class="fab fa-megaport"></i> &nbsp;
+                     Tabels  <i class="fas fa-angle-down"></i>
+                   </p>
+                   <div class="manu_1_inner_show">
+                    <p>Analytics</p>
+                    <p>Commerce</p>
+                    <p>Sales</p>
+                    <p>Minimal</p>
+                    <p>CRM</p>
+                   </div>
+            </div>
+          </div>
+          <div class="manu_3">
+            <h3>DASHBOARD WIDGETS</h3>
+                <div class="manu_1_inner">
+                     <p>
+                       <i class="fas fa-rocket"></i> &nbsp;
+                        Chart Boxes 1  <i class="fas fa-angle-down"></i>
+                      </p>
+                      <div class="manu_1_inner_show">
+                        <p>Analytics</p>
+                        <p>Commerce</p>
+                        <p>Sales</p>
+                        <p>Minimal</p>
+                        <p>CRM</p>
+                      </div>
+                      <p>
+                        <i class="far fa-calendar"></i> &nbsp;
+                        Chart Boxes 2  <i class="fas fa-angle-down"></i>
+                       </p>
+                      <div class="manu_1_inner_show">
+                        <p>Analytics</p>
+                        <p>Commerce</p>
+                        <p>Sales</p>
+                        <p>Minimal</p>
+                        <p>CRM</p>
+                      </div>
+                      <p>
+                        <i class="fab fa-megaport"></i> &nbsp;
+                        Chart Boxes 3  <i class="fas fa-angle-down"></i>
+                       </p>
+                      <div class="manu_1_inner_show">
+                        <p>Analytics</p>
+                        <p>Commerce</p>
+                        <p>Sales</p>
+                        <p>Minimal</p>
+                        <p>CRM</p>
+                      </div>
+                      <p>
+                        <i class="fab fa-megaport"></i> &nbsp;
+                        Boxes Profile  <i class="fas fa-angle-down"></i>
+                       </p>
+                      <div class="manu_1_inner_show">
+                        <p>Analytics</p>
+                        <p>Commerce</p>
+                        <p>Sales</p>
+                        <p>Minimal</p>
+                        <p>CRM</p>
+                      </div>
+                </div>
+          </div>
+          <div class="manu_4">
+            <h3>FORMS</h3>
+                <div class="manu_1_inner">
+                     <p>
+                       <i class="fas fa-rocket"></i> &nbsp;
+                        Elements  <i class="fas fa-angle-down"></i>
+                      </p>
+                      <div class="manu_1_inner_show">
+                        <p>Analytics</p>
+                        <p>Commerce</p>
+                        <p>Sales</p>
+                        <p>Minimal</p>
+                        <p>CRM</p>
+                      </div>
+                      <p>
+                        <i class="far fa-calendar"></i> &nbsp;
+                         Widgets  <i class="fas fa-angle-down"></i>
+                       </p>
+                      <div class="manu_1_inner_show">
+                        <p>Analytics</p>
+                        <p>Commerce</p>
+                        <p>Sales</p>
+                        <p>Minimal</p>
+                        <p>CRM</p>
+                      </div>
+                </div>
+          </div>
+          <div class="manu_5">
+            <h3>CHARTS</h3>
+                <div class="manu_1_inner">
+                     <p>
+                       <i class="fas fa-rocket"></i> &nbsp;
+                        ChartJS  <i class="fas fa-angle-down"></i>
+                      </p>
+                      <div class="manu_1_inner_show">
+                        <p>Analytics</p>
+                        <p>Commerce</p>
+                        <p>Sales</p>
+                        <p>Minimal</p>
+                        <p>CRM</p>
+                      </div>
+                      <p>
+                        <i class="far fa-calendar"></i> &nbsp;
+                         Apex Charts  <i class="fas fa-angle-down"></i>
+                       </p>
+                      <div class="manu_1_inner_show">
+                        <p>Analytics</p>
+                        <p>Commerce</p>
+                        <p>Sales</p>
+                        <p>Minimal</p>
+                        <p>CRM</p>
+                      </div>
+                      <p>
+                        <i class="fab fa-megaport"></i> &nbsp;
+                         Chart Sparkline  <i class="fas fa-angle-down"></i>
+                       </p>
+                      <div class="manu_1_inner_show">
+                        <p>Analytics</p>
+                        <p>Commerce</p>
+                        <p>Sales</p>
+                      </div>
+                </div>
+          </div>
+        </div>
+
+        <div class="dashboard">
+
+            <div class="dashboard-top">
+              <div class="dashboard-top-text">
+                  <div class="dashboard-top-text-icon">
+                    <i class="fas fa-car"></i>
+                  </div>
+                  <h3>Analytics Dashboard</h3>
+                  <p>
+                    This is an example dashboard created using build-in elements and components.
+                  </p>
+              </div>
+              <div class="dashboard-top-btns">
+                  <button id="btn_1"><i class="fas fa-star"></i></button>
+                  <button id="btn_2">
+                    <i class="fas fa-briefcase"></i> &nbsp;
+                     Buttons &nbsp;
+                     <i class="fas fa-angle-down"></i>
+                   </button>
+              </div>
+            </div>
+
+            <div id="portfolio">
+                <div id="portfolio-btns">
+                    <button>Variation 1</button>
+                    <button>Variation 2</button>
+                </div>
+                <div id="portfolio-content">
+                    <div id="portfolio-content-top">
+                        <p>Portfolio Performance</p>
+                        <button>View All</button>
+                    </div>
+                    <div id="portfolio-content-list">
+                          <div id="portfolio-content-list-1">
+                              <div id="portfolio-content-list-1-icon">
+                                <i class="fas fa-laptop"></i>
+                              </div>
+                              <div id="portfolio-content-list-1-text">
+                                  <p>Cash Deposits</p>
+                                  <h2>1,7M</h2>
+                                  <h5>
+                                    <span>
+                                      <i class="fas fa-angle-down"></i> 54.1% </span>
+                                      less earnings
+                                    </h5>
+
+                              </div>
+                          </div>
+                          <div id="portfolio-content-list-2">
+                            <div id="portfolio-content-list-2-icon">
+                              <i class="fas fa-graduation-cap"></i>
+                            </div>
+                            <div id="portfolio-content-list-2-text">
+                                <p>Cash Deposits</p>
+                                <h2>9M</h2>
+                                <h5>
+                                  <span>
+                                    <i class="fas fa-angle-down"></i> 54.1% </span>
+                                    less earnings
+                                  </h5>
+
+                            </div>
+                          </div>
+                          <div id="portfolio-content-list-3">
+                            <div id="portfolio-content-list-3-icon">
+                              <i class="far fa-building"></i>
+                            </div>
+                            <div id="portfolio-content-list-3-text">
+                                <p>Cash Deposits</p>
+                                <h2>$563</h2>
+                                <h5>
+                                  <span>
+                                    <i class="fas fa-angle-down"></i> 54.1% </span>
+                                    less earnings
+                                  </h5>
+
+                            </div>
+                          </div>
+                    </div>
+                    <div id="portfolio-content-btns">
+                      <button>View Complete Report</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="growth">
+                <div class="support">
+                    <div class="support-top">
+                        <div class="support-top-para">
+                          <i class="fas fa-cloud-upload-alt"></i> &nbsp; Technical Support
+                        </div>
+                        <div class="support-top-icon">
+                          <i class="fas fa-bars"></i>
+                        </div>
+                    </div>
+                    <div class="support-growth">
+                      <div class="container">
+                        <div class="slide active" style="background-image: url(./Dashboard-images/growth.png)">
+                        </div>
+                        <div class="slide" style="background-image: url(./Dashboard-images/growth_2.png);">
+                        </div>
+                        <div class="slide" style="background-image: url(./Dashboard-images/growth_3.png);"></div>
+                        
+                    
+                        <button class="btn btnleft" id="left"><</button>
+                        <button class="btn btnright" id="right">></button>
+                      
+                      </div>
+                    </div>
+                    <div class="support-bottom">
+                        <div class="support-bottom-content">
+                            <div class="para">
+                                <h5>Total Orders</h5>
+                                <p>Last year expenses</p>
+                            </div>
+                            <div class="number">
+                                $1834
+                            </div>
+                        </div>
+                        <div class="support-bottom-bar">
+                          <progress id="file" value="32" max="100"> 32% </progress>
+                        </div>
+                        <div class="support-bottom-text">
+                            <p>YoY Growth</p>
+                            <p>100%</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline">
+                  <div class="timeline">
+                    <div class="timeline-top">
+                        <div class="timeline-top-para">
+                          <i class="fas fa-cloud-upload-alt"></i> &nbsp; Technical timeline
+                        </div>
+                        <div class="timeline-top-icon">
+                          <i class="fas fa-bars"></i>
+                        </div>
+                    </div>
+                    <div class="timeline-growth">
+                        <div class="timeline-growth-line"></div>
+                        
+                        <div class="timeline-growth-1">
+                            <div class="timeline-growth-1-a">
+                                <div class="timeline-growth-1-a-circle"></div>
+                                <div class="timeline-growth-1-a-text">
+                                    All Hands Meeting
+                                </div>
+                            </div>
+                            <div class="timeline-growth-1-a">
+                              <div class="timeline-growth-1-a-circle" style="border-color: #f7b924;"></div>
+                                <div class="timeline-growth-1-a-text">
+                                  Yet another one, at <span style="color: #3ac47d;">15:00 PM</span>
+                                </div>
+                            </div>
+                            <div class="timeline-growth-1-a">
+                              <div class="timeline-growth-1-a-circle" style="border-color: #3f6ad8;"></div>
+                              <div class="timeline-growth-1-a-text">
+                                Build the production release 
+                              </div>
+                            </div>
+                            <div class="timeline-growth-1-a">
+                              <div class="timeline-growth-1-a-circle" style="border-color: #3ac47d;"></div>
+                              <div class="timeline-growth-1-a-text">
+                                Something not important
+                              </div>
+                            </div>
+                            <div class="timeline-growth-1-a">
+                                <div id="circle"><img src="./Dashboard-images/download (1).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (2).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (3).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (4).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (5).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (6).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download (7).jfif" alt=""></div>
+                                <div id="circle"><img src="./Dashboard-images/download.jfif" alt=""></div>
+                                <div class="circle">+</div>
+                            </div>
+                        </div>
+
+                        <div class="timeline-growth-1">
+                          <div class="timeline-growth-1-a">
+                              <div class="timeline-growth-1-a-circle"></div>
+                              <div class="timeline-growth-1-a-text">
+                                  All Hands Meeting
+                              </div>
+                          </div>
+                          <div class="timeline-growth-1-a">
+                            <div class="timeline-growth-1-a-circle" style="border-color: #f7b924;"></div>
+                              <div class="timeline-growth-1-a-text">
+                                Yet another one, at <span style="color: #3ac47d;">15:00 PM</span>
+                              </div>
+                          </div>
+                          
+                          <div class="timeline-growth-1-a">
+                            <div class="timeline-growth-1-a-circle" style="border-color: #3f6ad8;"></div>
+                            <div class="timeline-growth-1-a-text">
+                              Build the production release 
+                            </div>
+                          </div>
+                          <div class="timeline-growth-1-a">
+                            <div class="timeline-growth-1-a-circle" style="border-color: #3ac47d;"></div>
+                            <div class="timeline-growth-1-a-text">
+                              Something not important
+                            </div>
+                          </div>
+                          <div class="timeline-growth-1-a">
+                            <div class="timeline-growth-1-a-circle" style="border-color: #f7b924;"></div>
+                              <div class="timeline-growth-1-a-text">
+                                Yet another one, at <span style="color: white;padding: 2px;border-radius: 3px; background-color: #dd3b62;">NEW</span>
+                              </div>
+                          </div>
+                          <div class="timeline-growth-1-a">
+                              <div id="circle"><img src="./Dashboard-images/download (1).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (2).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (3).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (4).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (5).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (6).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download (7).jfif" alt=""></div>
+                              <div id="circle"><img src="./Dashboard-images/download.jfif" alt=""></div>
+                              <div class="circle">+</div>
+                          </div>
+                      </div>
+
+                      <div class="timeline-growth-1">
+                        <div class="timeline-growth-1-a">
+                            <div class="timeline-growth-1-a-circle"></div>
+                            <div class="timeline-growth-1-a-text">
+                                All Hands Meeting
+                            </div>
+                        </div>
+                        <div class="timeline-growth-1-a">
+                          <div class="timeline-growth-1-a-circle" style="border-color: #f7b924;"></div>
+                            <div class="timeline-growth-1-a-text">
+                              Yet another one, at <span style="color: #3ac47d;">15:00 PM</span>
+                            </div>
+                        </div>
+                        <div class="timeline-growth-1-a">
+                          <div class="timeline-growth-1-a-circle" style="border-color: #3f6ad8;"></div>
+                          <div class="timeline-growth-1-a-text">
+                            Build the production release 
+                          </div>
+                        </div>
+                        <div class="timeline-growth-1-a">
+                          <div class="timeline-growth-1-a-circle"></div>
+                          <div class="timeline-growth-1-a-text">
+                              All Hands Meeting
+                          </div>
+                      </div>
+                      
+                        <div class="timeline-growth-1-a">
+                          <div class="timeline-growth-1-a-circle" style="border-color: #3ac47d;"></div>
+                          <div class="timeline-growth-1-a-text">
+                            Something not important
+                          </div>
+                        </div>
+                        <div class="timeline-growth-1-a">
+                            <div id="circle"><img src="./Dashboard-images/download (1).jfif" alt=""></div>
+                            <div id="circle"><img src="./Dashboard-images/download (2).jfif" alt=""></div>
+                            <div id="circle"><img src="./Dashboard-images/download (3).jfif" alt=""></div>
+                            <div id="circle"><img src="./Dashboard-images/download (4).jfif" alt=""></div>
+                            <div id="circle"><img src="./Dashboard-images/download (5).jfif" alt=""></div>
+                            <div id="circle"><img src="./Dashboard-images/download (6).jfif" alt=""></div>
+                            <div id="circle"><img src="./Dashboard-images/download (7).jfif" alt=""></div>
+                            <div id="circle"><img src="./Dashboard-images/download.jfif" alt=""></div>
+                            <div class="circle">+</div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-growth-1">
+                      <div class="timeline-growth-1-a">
+                          <div class="timeline-growth-1-a-circle"></div>
+                          <div class="timeline-growth-1-a-text">
+                              All Hands Meeting
+                          </div>
+                      </div>
+                      <div class="timeline-growth-1-a">
+                        <div class="timeline-growth-1-a-circle" style="border-color: #f7b924;"></div>
+                          <div class="timeline-growth-1-a-text">
+                            Yet another one, at <span style="color: #3ac47d;">15:00 PM</span>
+                          </div>
+                      </div>
+                      <div class="timeline-growth-1-a">
+                        <div class="timeline-growth-1-a-circle" style="border-color: #3f6ad8;"></div>
+                        <div class="timeline-growth-1-a-text">
+                          Build the production release 
+                        </div>
+                      </div>
+                      <div class="timeline-growth-1-a">
+                        <div class="timeline-growth-1-a-circle" style="border-color: #3ac47d;"></div>
+                        <div class="timeline-growth-1-a-text">
+                          Something not important
+                        </div>
+                      </div>
+                      <div class="timeline-growth-1-a">
+                          <div id="circle"><img src="./Dashboard-images/download (1).jfif" alt=""></div>
+                          <div id="circle"><img src="./Dashboard-images/download (2).jfif" alt=""></div>
+                          <div id="circle"><img src="./Dashboard-images/download (3).jfif" alt=""></div>
+                          <div id="circle"><img src="./Dashboard-images/download (4).jfif" alt=""></div>
+                          <div id="circle"><img src="./Dashboard-images/download (5).jfif" alt=""></div>
+                          <div id="circle"><img src="./Dashboard-images/download (6).jfif" alt=""></div>
+                          <div id="circle"><img src="./Dashboard-images/download (7).jfif" alt=""></div>
+                          <div id="circle"><img src="./Dashboard-images/download.jfif" alt=""></div>
+                          <div class="circle">+</div>
+                      </div>
+                  </div>
+                    </div>
+                    <div class="timeline-bottom">
+                        <button>View All Messages</button>
+                    </div>
+                </div>
+                </div>
+            
+              </div>
+
+              <div id="sales">
+                  <div id="sale-1">
+                      <div id="sale-1-text">
+                          <h4>$1834</h4>
+                          <p>sales last month</p>
+                      </div>
+                      <div id="sale-1-image">
+                        <i class="far fa-chart-bar"></i>
+                      </div>
+                  </div>
+                  <div id="sale-1">
+                    <div id="sale-1-text">
+                        <h4>$1834</h4>
+                        <p>sales last month</p>
+                    </div>
+                    <div id="sale-1-image">
+                      <i class="far fa-chart-bar"></i>
+                    </div>
+                </div>
+                <div id="sale-1">
+                  <div id="sale-1-text">
+                      <h4>$1834</h4>
+                      <p>sales last month</p>
+                  </div>
+                  <div id="sale-1-image">
+                    <i class="far fa-chart-bar"></i>
+                  </div>
+              </div>
+              <div id="sale-1">
+                <div id="sale-1-text">
+                    <h4>$1834</h4>
+                    <p>sales last month</p>
+                </div>
+                <div id="sale-1-image">
+                  <i class="far fa-chart-bar"></i>
+                </div>
+            </div>
+              </div>
+
+              <div class="info">
+
+                <div class="task-list">
+                    <div class="task-list-top">
+                      <div class="timeline-top-para">
+                        <i class="fas fa-cloud-upload-alt"></i> &nbsp; Tasks list
+                      </div>
+                      <div class="timeline-top-icon">
+                        <i class="fas fa-bars"></i>
+                      </div>
+                    </div>
+                    <div class="task-list-growth">
+                        <div id="task-list-growth-1">
+                            <div id="task-list-growth-1-text">
+                              <h4>Wash the car <span style="background-color: #dd3b62;color: white;padding: 2px;border-radius: 3px;">Rejected</span></h4>
+                                <p>Written by Bob</p>
+                            </div>
+                        </div>
+                        <div id="task-list-growth-1">
+                          <div id="task-list-growth-1-text">
+                            <h4>Wash the car</h4>
+                              <p>Written by Bob</p>
+                          </div>
+                      </div>
+                      <div id="task-list-growth-1">
+                        <div id="task-list-growth-1-text">
+                          <h4>Wash the car<span style="background-color: #3ac47d;float: right; color: white;padding: 2px;border-radius: 3px;">NEW</span></h4>
+                            <p>Written by Bob</p>
+                        </div>
+                    </div>
+                    <div id="task-list-growth-1">
+                      <div id="task-list-growth-1-text">
+                        <img src="./Dashboard-images/6.jpg" alt="" style="width: 50px;height: 50px;border-radius: 50%;position: absolute;">
+                        <h4 style="margin-left: 60px;">Wash the car <span style="background-color: #dd3b62;color: white;padding: 2px;border-radius: 3px;">Rejected</span></h4>
+                          <p style="margin-left: 60px;">Written by Bob</p>
+                      </div>
+                  </div>
+                  <div id="task-list-growth-1">
+                    <div id="task-list-growth-1-text">
+                      <h4>Wash the car <span style="background-color: #dd3b62;color: white;padding: 2px;border-radius: 3px;">Rejected</span></h4>
+                        <p>Written by Bob</p>
+                    </div>
+                </div>
+                <div id="task-list-growth-1">
+                  <div id="task-list-growth-1-text">
+                    <h4>Wash the car</h4>
+                      <p>Written by Bob</p>
+                  </div>
+              </div>
+              <div id="task-list-growth-1">
+                <div id="task-list-growth-1-text">
+                  <h4>Wash the car<span style="background-color: #3ac47d;float: right; color: white;padding: 2px;border-radius: 3px;">NEW</span></h4>
+                    <p>Written by Bob</p>
+                </div>
+            </div>
+            <div id="task-list-growth-1">
+              <div id="task-list-growth-1-text">
+                <img src="./Dashboard-images/6.jpg" alt="" style="width: 50px;height: 50px;border-radius: 50%;position: absolute;">
+                <h4 style="margin-left: 60px;">Wash the car <span style="background-color: #dd3b62;color: white;padding: 2px;border-radius: 3px;">Rejected</span></h4>
+                  <p style="margin-left: 60px;">Written by Bob</p>
+              </div>
+          </div>
+          <div id="task-list-growth-1">
+            <div id="task-list-growth-1-text">
+              <h4>Wash the car <span style="background-color: #dd3b62;color: white;padding: 2px;border-radius: 3px;">Rejected</span></h4>
+                <p>Written by Bob</p>
+            </div>
+        </div>
+        <div id="task-list-growth-1">
+          <div id="task-list-growth-1-text">
+            <h4>Wash the car</h4>
+              <p>Written by Bob</p>
+          </div>
+      </div>
+      <div id="task-list-growth-1">
+        <div id="task-list-growth-1-text">
+          <h4>Wash the car<span style="background-color: #3ac47d;float: right; color: white;padding: 2px;border-radius: 3px;">NEW</span></h4>
+            <p>Written by Bob</p>
+        </div>
+    </div>
+    <div id="task-list-growth-1">
+      <div id="task-list-growth-1-text">
+        <img src="./Dashboard-images/6.jpg" alt="" style="width: 50px;height: 50px;border-radius: 50%;position: absolute;">
+        <h4 style="margin-left: 60px;">Wash the car <span style="background-color: #dd3b62;color: white;padding: 2px;border-radius: 3px;">Rejected</span></h4>
+          <p style="margin-left: 60px;">Written by Bob</p>
+      </div>
+  </div>
+                    </div>
+                    
+                    <div class="task-list-bottom">
+                        <button>Add Task</button>
+                    </div>
+                </div>
+                
+                  <div class="chat">
+
+                    <div class="chat-top">
+                      <div class="timeline-top-para">
+                        <i class="fas fa-cloud-upload-alt"></i> &nbsp; Technical timeline
+                      </div>
+                      <div class="timeline-top-icon">
+                        <i class="fas fa-bars"></i>
+                      </div>
+                    </div>
+                    
+                    <div class="chat-growth">
+                        <div class="chat-growth-1">
+                            <div class="chat-growth-1-a">
+                                <div class="chat-growth-1-a-image">
+                                    <img src="./Dashboard-images/2.jpg" alt="">
+                                </div>
+                                <div class="chat-growth-1-a-text">
+                                    <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system.</p>
+                                </div>
+                            </div>
+                            <div class="chat-growth-1-b">
+                              <i class="fas fa-calendar"></i> &nbsp; 11:01 AM | Yesterday
+                            </div>
+                        </div>
+                        <div class="chat-growth-2">
+                          <div class="chat-growth-2-a">
+                            <div class="chat-growth-2-a-text">
+                              <p>But I must explain to you how all this mistaken idea of denouncing pleasure.</p>
+                            </div>
+                            <div class="chat-growth-2-a-image">
+                                <img src="./Dashboard-images/3.jpg" alt="">
+                            </div>
+                          </div>
+                          <div class="chat-growth-2-b">
+                            <i class="fas fa-calendar"></i> &nbsp; 11:01 AM | Yesterday
+                          </div>
+                      </div>
+                      <div class="chat-growth-1">
+                        <div class="chat-growth-1-a">
+                            <div class="chat-growth-1-a-image">
+                                <img src="./Dashboard-images/2.jpg" alt="">
+                            </div>
+                            <div class="chat-growth-1-a-text">
+                                <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system.</p>
+                            </div>
+                        </div>
+                        <div class="chat-growth-1-b">
+                          <i class="fas fa-calendar"></i> &nbsp; 11:01 AM | Yesterday
+                        </div>
+                    </div>
+                    <div class="chat-growth-2">
+                      <div class="chat-growth-2-a">
+                        <div class="chat-growth-2-a-text">
+                          <p>But I must explain to you how all this mistaken idea of denouncing pleasure.</p>
+                        </div>
+                        <div class="chat-growth-2-a-image">
+                            <img src="./Dashboard-images/3.jpg" alt="">
+                        </div>
+                      </div>
+                      <div class="chat-growth-2-b">
+                        <i class="fas fa-calendar"></i> &nbsp; 11:01 AM | Yesterday
+                      </div>
+                  </div>
+                  <div class="chat-growth-1">
+                    <div class="chat-growth-1-a">
+                        <div class="chat-growth-1-a-image">
+                            <img src="./Dashboard-images/2.jpg" alt="">
+                        </div>
+                        <div class="chat-growth-1-a-text">
+                            <p>But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give you a complete account of the system.</p>
+                        </div>
+                    </div>
+                    <div class="chat-growth-1-b">
+                      <i class="fas fa-calendar"></i> &nbsp; 11:01 AM | Yesterday
+                    </div>
+                </div>
+                <div class="chat-growth-2">
+                  <div class="chat-growth-2-a">
+                    <div class="chat-growth-2-a-text">
+                      <p>But I must explain to you how all this mistaken idea of denouncing pleasure.</p>
+                    </div>
+                    <div class="chat-growth-2-a-image">
+                        <img src="./Dashboard-images/3.jpg" alt="">
+                    </div>
+                  </div>
+                  <div class="chat-growth-2-b">
+                    <i class="fas fa-calendar"></i> &nbsp; 11:01 AM | Yesterday
+                  </div>
+              </div>
+                    </div>
+
+                    <div class="chat-bottom">
+                        <input type="text" placeholder="  Write here and hit enter to send">
+                    </div>
+                </div>
+                </div>
+            
+
+                <div class="footer">
+                    <div class="footer-a">
+                        <div class="footer-a-1">
+                            <div class="footer-a-1-text">
+                                <h4>Total Orders</h4>
+                                <p>Last year expenses</p>
+                            </div>
+                            <div class="footer-a-1-number"  style="color: #3f6ad8;">
+                              1896
+                            </div>
+                        </div>
+                        <div class="footer-a-1">
+                          <div class="footer-a-1-text">
+                              <h4>Total Orders</h4>
+                              <p>Last year expenses</p>
+                          </div>
+                          <div class="footer-a-1-number" style="color: #dd3b62;">
+                            45,9%
+                          </div>
+                      </div>
+                      <div class="footer-a-1">
+                        <div class="footer-a-1-text">
+                            <h4>Total Orders</h4>
+                            <p>Last year expenses</p>
+                        </div>
+                        <div class="footer-a-1-number" style="color: #3ac47d;">
+                          1896
+                        </div>
+                    </div>
+                    </div>
+                    <div class="footer-a">
+                      <div class="footer-a-1">
+                          <div class="footer-a-1-text">
+                              <h4>Total Orders</h4>
+                              <p>Last year expenses</p>
+                          </div>
+                          <div class="footer-a-1-number"  style="color: #3f6ad8;">
+                            $1294
+                          </div>
+                      </div>
+                      <div class="footer-a-1">
+                        <div class="footer-a-1-text">
+                            <h4>Total Orders</h4>
+                            <p>Last year expenses</p>
+                        </div>
+                        <div class="footer-a-1-number" style="color: #f7b924;">
+                          $3M
+                        </div>
+                    </div>
+                    <div class="footer-a-1">
+                      <div class="footer-a-1-text">
+                          <h4>Total Orders</h4>
+                          <p>Last year expenses</p>
+                      </div>
+                      <div class="footer-a-1-number" style="color: #3f6ad8;">
+                        $18.6k
+                      </div>
+                  </div>
+                  </div>
+                </div>
+
+
+              </div>
+
+
+        </div>
+    <!-- </div> -->
+
+
+
+    
+
+    <script>
+      
+// --------------------------------------- right Sidebar setting -----------------------------
+
+
+
+        var settingMain = document.getElementsByClassName("setting-main")[0]
+        var setting = document.getElementsByClassName("setting")[0]
+        var settingHide = document.getElementsByClassName("setting-hide")[0]
+
+        setting.addEventListener("click", function(){
+          if(settingMain.style.right === "60px"){
+            settingMain.style.right = "550px"
+          }
+          else{
+            settingMain.style.right = "60px"
+          }
+        })
+
+
+
+
+
+
+// -------------------------------- Left Sidebar --------------------------------
+ 
+
+
+      var navbar_1 = document.getElementsByClassName("navbar_1")[0];
+      var navbar_1_img = document.querySelector("img");
+      var icon_1 = document.getElementsByClassName("bars-main")[0];
+      var icon_1_a = document.querySelectorAll(".bar_a");
+      var manu = document.getElementsByClassName("manu")[0];
+      var dashboard = document.getElementsByClassName("dashboard")[0];
+      var manu_1_heading = document.querySelector(".manu_1 h3");
+      var manu_2_heading = document.querySelector(".manu_2 h3");
+      var manu_3_heading = document.querySelector(".manu_3 h3");
+      var manu_4_heading = document.querySelector(".manu_4 h3");
+      var manu_5_heading = document.querySelector(".manu_5 h3");
+      var manu_1_inner_para = document.querySelectorAll(".manu_1_inner p");
+      
+      icon_1.addEventListener("click", function(){
+          var random = true
+        if(random === true){
+            icon_1_a[0].style.transform = "rotate(45deg)" 
+          icon_1_a[1].style.opacity = "0" 
+          icon_1_a[2].style.transform = "rotate(-45deg)" 
+          icon_1_a[2].style.marginTop = "13px" 
+          manu.style.width = "6%"
+          dashboard.style.width = "94%"
+          navbar_1.style.width = "100px" 
+          navbar_1_img.style.opacity = "0"
+          manu_1_heading.innerHTML = ""
+          manu_2_heading.innerHTML = ""
+          manu_3_heading.innerHTML = ""
+          manu_4_heading.innerHTML = ""
+          manu_5_heading.innerHTML = ""
+
+
+          var arr = ["fas fa-rocket","fas fa-calendar","fab fa-megaport","fas fa-rocket","fas fa-calendar","fab fa-megaport","fas fa-rocket","fas fa-calendar","fab fa-megaport","fas fa-rocket","fas fa-calendar","fab fa-megaport","fas fa-rocket","fas fa-calendar","fab fa-megaport"]
+          for(var i=0; i<manu_1_inner_para.length; i++){
+            manu_1_inner_para[i].innerHTML = `<i class = "${arr[i]}"></i>`
+            manu_1_inner_para[i].style.marginLeft = "30px "
+          }
+          random = false
+
+          // manu.addEventListener("mouseenter", function(){
+          //       manu.style.width = "20%"
+          //       dashboard.style.width = "80%"
+          // })
+          // manu.addEventListener("mouseleave", function(){
+          //       manu.style.width = "6%"
+          //       dashboard.style.width = "94%"
+          // })
+        }
+        icon_1.addEventListener("click", function(){
+  
+          if(random === false){
+                icon_1_a[0].style.transform = "rotate(0deg)" 
+                icon_1_a[1].style.opacity = "1" 
+                icon_1_a[2].style.transform = "rotate(0deg)" 
+                icon_1_a[2].style.marginTop = "0px" 
+
+                manu.style.width = "20%"
+                dashboard.style.width = "80%"
+                navbar_1.style.width = "20%" 
+                navbar_1_img.style.opacity = "1"
+                setTimeout(() => {
+                    location.reload()
+                }, 250);
+
+                // random = true     
+          }
+  
+        })
+        })
+   
+        
+
+
+// -------------------------------------- Navbar Search  --------------------------
+
+        var search = document.getElementsByClassName("search")[0]
+        var navbar_2 = document.getElementsByClassName("navbar_2")[0];
+        var nav = document.getElementsByClassName("nav")[0]
+
+        search.addEventListener("click", function(){
+            nav.style.display = "none"
+            search.style.marginLeft = "250px"
+
+            var s_input = document.createElement("input");
+            s_input.classList.add("search_input")
+            navbar_2.appendChild(s_input)
+            s_input.setAttribute("placeholder", "  Search")
+            // s_input.setAttribute("type", "text");
+
+            var cross = document.createElement("i");
+            cross.classList.add("fas")
+            cross.classList.add("fa-times")
+            // console.log(cross);
+            navbar_2.appendChild(cross)
+            setTimeout(() => {
+              CROSS();
+            }, 300);
+            function CROSS(){
+              cross.style.left = "300px"
+            }
+            var get_cross = document.getElementsByClassName("fa-times")[0];
+            get_cross.addEventListener("click", function(){
+              console.log("Hello");
+              // nav.style.display = "block"
+              // search.style.marginLeft = "0px"
+            })
+            
+        })
+
+
+
+
+
+// ------------------------------------- Navbar DropDown ----------------------
+
+
+        var list = document.querySelectorAll(".nav ul li");
+        var hide_list_1 = document.querySelector(".hide_list_1");
+        var hide_list_2 = document.querySelector(".hide_list_2");
+        var hide_list_3 = document.querySelector(".hide_list_3");
+
+        list[0].addEventListener("click", function(){
+          if(hide_list_1.style.visibility === "hidden"){
+            hide_list_1.style.visibility = "visible";
+            hide_list_1.style.top = "50px";
+
+          }
+          else{
+            hide_list_1.style.top = "20px";
+            hide_list_1.style.visibility = "hidden";
+          }
+          hide_list_2.style.visibility = "hidden"
+          hide_list_3.style.visibility = "hidden"  
+        })
+        list[1].addEventListener("click", function(){
+          if(hide_list_2.style.visibility === "hidden"){
+            hide_list_2.style.visibility = "visible";
+            hide_list_2.style.top = "50px";
+          }
+          else{
+            hide_list_2.style.top = "20px";
+            hide_list_2.style.visibility = "hidden";
+          }
+          hide_list_1.style.visibility = "hidden"
+          hide_list_3.style.visibility = "hidden"  
+        })
+        list[2].addEventListener("click", function(){
+          if(hide_list_3.style.visibility === "hidden"){
+            hide_list_3.style.visibility = "visible";
+            hide_list_3.style.top = "50px";
+          }
+          else{
+            hide_list_3.style.visibility = "hidden";
+            hide_list_3.style.top = "20px";
+          }
+          hide_list_2.style.visibility = "hidden"
+          hide_list_1.style.visibility = "hidden"  
+        })
+
+
+
+
+// ------------------------------- Left Sidebar inner ----------------------
+
+        var manu_1_inner_para = document.querySelectorAll(".manu_1_inner p")
+        var manu_1_inner_show = document.getElementsByClassName("manu_1_inner_show")
+        
+
+        console.log(manu_1_inner_show);
+        manu_1_inner_para.forEach(function(e){
+          showDiv(e);
+        })
+
+        function showDiv(e) {
+          e.addEventListener("click", function(){
+            if(e.nextElementSibling.style.height === "0px"){
+              // manu_1_inner_show.style.height = "0"
+              manu_1_inner_show.className += "sidebar-inner-hide"
+              // console.log(manu_1_inner_show + "After");
+              // manu_1_inner_show.classList.remove("manu_1_inner_show")
+              divShow(e)
+            }
+
+            else{
+              e.nextElementSibling.style.height = "0px"
+              e.style.fontWeight = "lighter"
+              e.style.color = "gray"
+            }
+          })
+        }
+
+        function divShow(e) {
+              e.nextElementSibling.style.height = "max-content"
+              e.style.fontWeight = "bold"
+              e.style.color = "black"
+        }
+
+
+// ---------------------------------- Slider ------------------------------
+
+
+
+
+        const slides = document.querySelectorAll(".slide")
+      const leftbtn = document.getElementById("left")
+      const rightbtn = document.getElementById("right")
+
+      let s_active = 0
+
+      rightbtn.addEventListener("click", function(){
+        s_active++
+        if(s_active > slides.length - 1){
+          s_active = 0
+        }
+        setactiveslide()
+      })
+
+      leftbtn.addEventListener("click", function(){
+        s_active--
+        if(s_active < 0){
+          s_active = slides.length - 1
+        }
+        setactiveslide()
+      })
+
+      function setactiveslide(){
+        slides.forEach(function(slide){
+          slide.classList.remove("active")
+          slides[s_active].classList.add("active")
+        })
+      }
+
+
+
+// -------------------------------------- Toast Message --------------------------
+
+
+
+
+      const button = document.querySelector('.navbar_3_manager_calendar')
+      const toasts = document.getElementById('toasts')
+
+const messages = [
+    "<i style='color: white;font-size: 25px;' class='fas fa-comment'></i> Example Toaster : <br /> You do not have any new items in your calendar today"
+]
+
+button.addEventListener('click', () => createNotification())
+
+    
+function createNotification(message = null) {
+
+    const notif = document.createElement('div');
+    notif.classList.add('toast')
+
+
+    notif.innerHTML = message ? message : getRandomMessage()
+
+    toasts.appendChild(notif)
+
+    setTimeout(() => {
+        notif.remove()  
+    }, 3000)
+
+    const bar = document.createElement('div');
+    bar.classList.add("toast-bar");
+    notif.appendChild(bar)
+}
+
+
+
+function getRandomMessage() {
+    return messages[Math.floor(Math.random() * messages.length)]
+}
+
+
+
+  // ------------------------------------ Right sidebar -----------------------
+
+
+    var navbar_3_icon = document.getElementsByClassName("navbar_3_icon")[0];
+    var navbar_3_icon_hide = document.getElementsByClassName("navbar_3_icon_hide")[0];
+    var close = document.querySelector(".navbar_3_icon_hide span");
+
+        navbar_3_icon.addEventListener("click", function(){
+        navbar_3_icon_hide.style.visibility = "visible"
+        navbar_3_icon_hide.style.right = "0px"
+
+
+        close.addEventListener("click", function(){
+          navbar_3_icon_hide.style.visibility = "hidden"
+          navbar_3_icon_hide.style.right = "-400px"
+        })
+
+    })
+
+
+
+
+    </script>
+  
+</body>
+</html>

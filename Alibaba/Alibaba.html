@@ -1,0 +1,2452 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <title>Alibaba</title>
+
+  <style>
+
+        *{
+          padding: 0;
+          margin: 0;
+        }
+        body{
+          font-family: Arial, Helvetica, sans-serif;
+          overflow-x: hidden;
+        }
+        #top-main{
+          width: 100%;
+          height: 60px;
+          padding: 1px;
+          background-position-x: -200px;
+          background-size: cover;
+          background-image: url(./Alibaba-images/O1CN01thKt6d1ju3NJBWlas_!!6000000004607-2-tps-1920-60.png);
+        }
+        #top{
+          width: 65%;
+          height: 55px;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          margin: 2px 350px;
+          /* background-color: aqua; */
+        }
+        #top-1{
+          width: 130px;
+          height: 45px;
+          display: flex;
+          align-items: center;
+          border-radius: 30px;
+          background-color: white;
+        }
+        #top-1-image{
+          width: 50px;
+          height: 40px;
+          margin: 5px 10px;
+          /* background-size: cover; */
+          /* background-color: violet; */
+          /* background-image: url(./Alibaba-images/He5e2016160f9446aaa4e8959d643c8a2W.jpg_220x220.jpg); */
+        }
+        #top-1-image img{
+          width: 100%;
+          height: 100%;
+          border-radius: 50%;
+        }
+        #top-1 p{
+          font-size: 14px;
+        }
+
+        #navbar{
+          width: 100%;
+          height: 12vh;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: turquoise; */
+        }
+        #navbar-1{
+          width: 12%;
+          height: 5vh;
+          /* background-color: darkgoldenrod; */
+        }
+        #navbar-1 img{
+          width: 100%;
+        }
+        #navbar-2{
+          width: 50%;
+          height: 5vh;
+          display: flex;
+          /* align-items: center; */
+          justify-content: space-evenly;
+          border-radius: 30px;
+          border: 2px solid rgb(255,106,0);
+          /* margin-left: 10vw; */
+          /* background-color: darkmagenta; */
+        }
+        #product{
+          width: 7vw;
+          height: 25px;
+          text-align: center;
+          font-size: 19px;
+          color: gray;
+          margin-top: 8px;
+          position: relative;
+          margin-left: 8px;
+          border-right: 1px solid gray;
+          border-bottom-left-radius: 30px;
+          border-top-left-radius: 30px;
+          /* background-color: orchid; */
+          cursor: pointer;
+        }
+        #product-hide{
+          width: 7vw;
+          height: 10vh;
+          border-radius: 5px;
+          /* opacity: 0; */
+          display: none;
+          top: 28px;
+          box-shadow: 2px 2px 5px 0 gray;
+          background-color: white;
+          position: absolute;
+        }
+        #product-hide p{
+          color: gray;
+          font-size: 19px;
+          text-align: center;
+          height: 5vh;
+        }
+        #product-hide p:hover{
+          background-color: rgb(216, 215, 215);
+          color: rgb(255,106,0);
+        }
+        #product:hover #product-hide{
+          /* opacity: 1; */
+          display: block;
+          cursor: pointer;
+        }
+        #navbar-2 input{
+          width:32vw;
+          height: 35px;
+          border: none;
+          outline: none;
+          margin-left: 5px;
+          /* background-color: hotpink; */
+        }
+        #items{
+          width: 10vw;
+          height: 5.2vh;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          /* margin-left: 0vw; */
+          border-bottom-right-radius: 30px;
+          border-top-right-radius: 30px;
+          background-color: rgb(255,106,0);
+        }
+        #items:hover{
+          cursor: pointer;
+          background-color: rgb(185, 80, 4);
+        }
+        #items i{
+          color: white;
+          font-size: 25px;
+        }
+        #items p{
+          color: white;
+          font-size: 25px;
+        }
+
+
+        #navbar-3{
+          width: 22%;
+          height: 10vh;
+          display: flex;
+          justify-content: space-evenly;
+          /* background-color: lightcoral; */
+        }
+        #navbar-3-a{
+          width: 12vw;
+          height: 10vh;
+          position: relative;
+          /* background-color: yellowgreen; */
+        }
+        #navbar-3-a:hover #navbar-3-a-hide{
+          /* opacity: 1; */
+          display: block;
+        }
+        #navbar-3-a-hide{
+          width: 18vw;
+          height: 75vh;
+          border-radius: 5px;
+          left: -130%;
+          top: 55px;
+          z-index: 11;
+          display: none;
+          /* opacity: 0; */
+          position: absolute;
+          background-color: white;
+          box-shadow: 0px 0px 20px 0 gray; 
+        }
+        #navbar-3-a-hide::before{
+          content: "";
+          position: absolute;
+          right: 20px;
+          top: -10px;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-bottom: 10px solid white;
+        }
+        #navbar-3-b{
+          width: 6.5vw;
+          height: 10vh;
+          /* background-color: yellowgreen; */
+        }
+        #navbar-3-c{
+          width: 6.5vw;
+          height: 10vh;
+          /* background-color: yellowgreen; */
+        }
+        #navbar-3-d{
+          width: 6.5vw;
+          height: 10vh;
+          /* background-color: yellowgreen; */
+        }
+        #navbar-3-a #icon{
+          font-size: 28px;
+          color: gray;
+          margin-top: 2vh;
+        }
+        #navbar-3-a #link{
+          margin-top: -5vh;
+          text-decoration: none ;
+          color: gray;
+          margin-left:  2.4vw;
+        }
+        #navbar-3-a #link a{
+          color: gray;
+          text-decoration: none;
+        }
+        #navbar-3-a #link a:hover{
+          color: rgb(255,106,0);
+        }
+        /* #navbar-3-a #link-b{  
+          margin-left: 2vw;
+          text-decoration: none ;
+          color: black;
+        } */
+
+        #navbar-3-b #icon-a{
+          font-size: 28px;
+          color: gray;
+          margin-left: 2vw;
+        }
+        #navbar-3-b a{
+          color: gray;
+          margin-left: 1.5vw;
+          text-decoration: none;
+        }
+        #navbar-3-b a:hover{
+          color: rgb(255,106,0);
+        }
+        #navbar-3-c #icon-a{
+          font-size: 28px;
+          color: gray;
+          margin-left: 2vw;
+        }
+        #navbar-3-c a{
+          color: gray;
+          margin-left: 1.8vw;
+          text-decoration: none;
+        }
+        #navbar-3-c a:hover{
+          color: rgb(255,106,0);
+        }
+        #navbar-3-d #icon-a{
+          font-size: 28px;
+          color: gray;
+          margin-left: 2vw;
+        }
+        #navbar-3-d a{
+          color: gray;
+          margin-left: 2.5vw;
+          text-decoration: none;
+        }
+        #navbar-3-d a:hover{
+          color: rgb(255,106,0);
+        }
+
+        #second-nav{
+          border-top: 1px solid gray;
+          /* background-color: royalblue; */
+          width: 100%;
+          height: 7vh;
+          display: flex;
+
+        }
+        #categories{
+          width: 12vw;
+          height: 4vh;
+          color: gray;
+          margin-top: 1vh;
+          margin-left: 2vw;
+          font-size: 25px;
+          position: relative;
+          border-right: 1px solid gray;
+        }
+        #categories:hover{
+          cursor: pointer;
+          color: rgb(255,106,0);
+        }
+        .fa-angle-up{
+          transition: 0.5s;
+          transform: rotate(-180deg);
+        }
+        #categories:hover .fa-angle-up{
+          transform: rotate(0deg);
+        }
+        #categories:hover #categories-hide{
+          display: block;
+        }
+        #categories-hide p{ 
+          font-size: 15px;
+          height: max-content;
+          padding: 6px;
+          position: relative;
+          margin-top: 6px;
+          /* background-color: rgb(255,106,0); */
+          color: rgb(90, 90, 90);
+        }
+        #categories-hide p:hover{
+          box-shadow: 0 0 2px 0 gray;
+        }
+        #categories-hide span:hover{
+            color: rgb(255,106,0);
+        } 
+        #categories-para-hide{
+          width: 40vw;
+          z-index: -1;
+          height: 100vh;
+          position: absolute;
+          left: 25vw;
+          top: 0;
+          display: none;
+          box-shadow: 0 0 2px 0 gray;
+          background-color: white;
+        }
+        #categories-hide #categories-end-para{
+          color: rgb(53,105,247);
+          font-size: 20px;
+        }
+        #categories-hide #categories-end-para:hover{
+          color: rgb(255,106,0);
+          cursor: pointer;
+        }
+        #categories-hide p:hover ~ #categories-para-hide{
+          display: block;
+          cursor: pointer;
+        }
+        #categories-para-hide:hover{
+          display: block;
+        }
+
+
+
+
+
+        #categories-hide{
+          width: 25vw;
+          height: 100vh;
+          position: absolute;
+          left: -25px;
+          top: 30px;
+          z-index: 11;
+          display: none;
+          box-shadow: 0 0 20px 0 gray;
+          background-color: white;
+        }
+        #categories-hide::before{
+          content: "";
+          position: absolute;
+          left: 70px;
+          top: -10px;
+          border-left: 10px solid transparent;
+          border-right: 10px solid transparent;
+          border-bottom: 10px solid white;
+        }
+        #categories i{
+          margin-top: 0.4vh;
+        }
+        #second-nav #nav{
+          width: 55vw;
+          height: 5vh;
+          /* background-color: indianred; */
+        }
+        #nav ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #nav ul li{
+          /* background-color: red; */
+          height: 5vh;
+          display: flex;
+          align-items: center;
+        }
+        #nav ul li a{
+          color: black;
+          text-decoration: none;
+        }
+
+        #navbar-end{
+          width: 20vw;
+          margin-left: 10vw;
+          /* background-color: seagreen; */
+        }
+        #navbar-end ul{
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          list-style: none;
+        }
+        #navbar-end ul li{
+          /* background-color: red; */
+          height: 5vh;
+          display: flex;
+          align-items: center;
+        }
+        #nav-image{
+          width: 100%;
+          height: 15vh;
+          background-color: rgb(53,105,247);
+        }
+        #nav-image img{
+          width: 70%;
+          height: 14vh;
+          margin-left: 10vw;
+        }
+        #home-main{
+          width: 100%;
+          height: 110vh;
+          background-position-x: -450px;
+          background-size: cover;
+          background-image: url(./Alibaba-images/O1CN01qBOGda1hGXykyRBZC_!!6000000004250-2-tps-3200-848.png);
+        }
+        #home{
+          width: 90%;
+          height: 60vh;
+          margin: auto;
+          display: flex;
+          align-items: center;
+          position: relative;
+          background-color: white;
+        }
+        #home-a{
+          width:22%;
+          height: 90%;
+          /* background-color: salmon; */
+          /* position: absolute; */
+        }
+        #home-a-top{
+          width: 90%;
+          height: 10%;
+          margin: auto;
+          display: flex;
+          border-bottom: 2px solid rgb(255,106,0);
+        }
+        #home-a-top-left{
+          width: 50%;
+          font-size: 16px;
+          /* background-color: rgb(53,105,247); */
+          height: 100%;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+        }
+        #home-a-top-right{
+          font-size: 16px;
+          width: 50%;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+          color: white;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          background-color: rgb(255,106,0);
+          height: 100%;
+        }
+        #home-a-top-bottom{
+          width: 90%;
+          height: 88%;
+          margin: auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          flex-wrap: wrap;
+          /* background-color: violet; */
+        }
+        #home-a-top-bottom-a:nth-child(2){
+          border-right: none;
+        }
+        #home-a-top-bottom-a:nth-child(4){
+          border-right: none;
+        }
+        #home-a-top-bottom-a:nth-child(6){
+          border-right: none;
+        }
+        #home-a-top-bottom-a:nth-child(8){
+          border-right: none;
+        }
+        #home-a-top-bottom-a:nth-child(9){
+          border-bottom: none;
+        }
+        #home-a-top-bottom-a:nth-child(10){
+          border-right: none;
+          border-bottom: none;
+        }
+        #home-a-top-bottom-a{
+          width: 48%;
+          height: 19%;
+          border-right: 1px solid rgb(207, 206, 206);
+          border-bottom: 1px solid rgb(207, 206, 206);
+          text-align: center;
+          position: relative;
+          /* background-color: yellowgreen; */
+        }
+        #home-a-top-bottom-a:hover{
+          background-color: rgb(255,106,0);
+        }
+        #home-a-top-bottom-a:hover p{
+          color: white;
+        }
+        #home-a-top-bottom-a:hover i{
+          color: white;
+        }
+        #home-a-top-bottom-a p{
+          font-size: 12px;
+          bottom: 0;
+          right: 8%;
+          left: 8%;
+          position: absolute;
+          text-align: center;
+          /* background-color: royalblue; */
+          color: rgb(255,106,0);
+        }
+        #home-a-top-bottom-a i{
+          font-size: 17px;
+          margin-top: 10px;
+          color: rgb(255,106,0);
+        }
+
+
+        #home-b{
+          width: 56%;
+          height: 90%;
+          overflow: hidden;
+          position: relative;
+          cursor: pointer;
+          background-color: darkgreen;
+        }
+
+        .container{
+          width: 100%;
+          height: 100%;
+          background-color: blueviolet;
+          box-shadow: 0 3px 6px rgba(0,0,0,0.4), 0 3px 6px rgba(0,0,0,0.4);
+          position: absolute;
+        }
+        .slide{
+          opacity: 0;
+          width: 100%;
+          height: 100%;
+          background-position: center center;
+          background-size: cover;
+          position: absolute;
+          transition: 0.4s;
+        }
+        .slide.active{
+          opacity: 1;
+        }
+        .btn{
+          padding: 15px 12px;
+          color: white;
+          font-size: 20px;
+          margin-top: 20%;
+          border: none;
+          cursor: pointer;
+          position: relative;
+          transition: 0.4s;
+          background-color: rgba(0,0,0,0.4);
+        }
+        .container:hover .btnleft{
+          margin-left: 0%;
+        }
+        .container:hover .btnright{
+          margin-right: 0%;
+          }
+        .btnleft{
+            float: left;
+            margin-left: -5%;
+        }
+        .btnright{
+            float: right;
+            margin-right: -5%;
+        }
+        
+
+        #home-c{
+          width:22%;
+          height: 90%;
+          position: relative;
+          /* background-color: darkmagenta; */
+        }
+        #home-c-top{
+          width: 18vw;
+          height: 4vh;
+          margin: 1vh 0.8vw;
+          text-align: center;
+          background-color: rgb(255,106,0);
+          color: white;
+          font-size: 20px;
+          cursor: pointer;
+          text-decoration: none;
+        }
+        #home-c-top-content{
+          width: 90%;
+          margin: auto;
+          height: 28%;
+          /* background-color: rosybrown; */
+          /* position: absolute; */
+          border-bottom: 1px solid rgb(255,106,0);
+        }
+        #home-c-top-content p{
+          height: 60px;
+          /* background-color: rgb(53,105,247); */
+          color: black;
+          font-size: 20px;
+        }
+        #home-c-top-content button{
+          color: white;
+          width: 6vw;
+          height: 3.5vh;
+          cursor: pointer;
+          background-color: rgb(255,106,0);
+          font-size: 10px;
+          border-radius: 30px;
+        }
+        #home-c-top-content img{
+          height: 70px;
+          width: 80px;
+          margin-right: 10px;
+          margin-top: -30px;
+          float: right;
+        }
+        #home-c-top-content:hover img{
+          transform: scale(110%);
+        }
+
+
+
+
+        /* -----------------------------------------------------Services---------------------------- */
+
+    
+
+
+
+        #services{
+          width: 90%;
+          height: 35vh;
+          border-radius: 10px;
+          margin: 5vh auto;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          background-size: cover;
+          background-image: url(./Alibaba-images/O1CN01SJ4orW1mY1AQiJqc4_!!6000000004965-0-tps-3000-492.jpg);
+        }
+        #services-a{
+          width: 22%;
+          height: 30vh;
+          background-color: white;
+          border-radius: 10px;
+        }
+        #services-a img{
+          width: 10vw;
+          margin-top: 3vh;
+        }
+        #services-a h3{
+          color: white;
+          font-size: 26px;
+          margin-top: 1vh;
+        }
+        #services-a p{
+          color: white;
+          font-size: 20px;
+          margin-top: 1vh;
+        }
+        #services-a button{
+          padding: 10px 25px;
+          border: none;
+          font-size: 18px;
+          margin: 2vh 0vw;
+          cursor: pointer;
+          background-color: white;
+          color: rgb(255,106,0);
+          border-radius: 30px;
+        }
+        #services-a:nth-child(1){
+          width: 25%;
+          background-color: transparent;
+        }
+        #services-a-1{
+          width: 100%;
+          height: 70%;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          margin-top: 2vh;
+          /* background-color: seagreen; */
+        }
+        #services-a-1-a{
+          width: 46%;
+          height: 80%;    
+          overflow: hidden;
+          background-color: gray;
+          position: relative;
+        }
+        #services-a-1-a img{
+          width: 100%;
+          height: 100%;
+          transition: 0.5s;      
+          filter: blur(0.6px);
+          margin-top: -0vh;
+        }
+        #services-a-1-a img:hover{
+          filter: blur(0px);
+          transform: scale(1.1);
+        }
+        #services-a-1-a-like{
+          width: 2vw;
+          /* background-color: greenyellow; */
+          height: 70px;
+          position: absolute;
+          margin-top: 0vh;
+          margin-left: -3vw;
+          z-index: 11;
+        }
+        #services-a-1-a-like img{
+          width: 100%;
+          height: 100%;
+        }
+        #services-a-1-a-like-2{
+          width: 2vw;
+          /* background-color: greenyellow; */
+          height: 70px;
+          position: absolute;
+          margin-top: 0vh;
+          margin-left: 16vw;
+          z-index: 11;
+        }
+        #services-a-1-a-like-2 img{
+          width: 100%;
+          height: 100%;
+        }
+
+        #services-a h4{
+          font-size: 14px;
+          margin-top: 2vh;
+          margin-left: 1vw;
+        }
+        #services-a span{
+          font-size: 12px;
+          margin-left: 1vw;
+        }
+
+
+
+        /* ---------------------------- Product ----------------------------. */
+
+
+
+        #things-main{
+          width: 100%;
+          height: 110vh;
+          padding: 1px;
+          background-color: rgb(242,243,247);
+        }
+
+        #things{
+          width: 90%;
+          height: 50vh;
+          margin: auto;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          flex-wrap: wrap;
+          margin-top: 10vh;
+          /* background-color: white; */
+        }
+        #things-1{
+          width: 32%;
+          height: 45%;
+          border-radius: 10px;
+          background-color: white;
+          /* box-shadow: 0 0 10px 0 gray; */
+        }
+        #things-1 p{
+          display: flex;
+          align-items: center;
+          font-size: 20px;
+          margin-left: 20px;
+          margin-top: 10px;
+        }
+        #things-1 p img{
+          width: 20px;
+        }
+        #things-1-list{
+          width: 90%;
+          height: 80%;
+          margin: auto; 
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: brown; */
+        }
+        #things-1-list-a{
+          width: 28%;
+          height: 90%;
+          /* background-color: rgb(242,243,247); */
+        }
+        #things-1-list-a img{
+          width: 100%;
+          height: 70%;
+        }
+        #things-1-list-a h5{
+          font-size: 12px;
+          /* background-color: chocolate; */
+          text-align: center;
+        }
+        #things-1-list-a p{
+          /* background-color: chocolate; */
+          font-size: 12px;
+          margin-top: 0;
+          /* margin-left: 0; */
+          width: 75%;
+        }
+
+
+        /* ---------------------------proccess---------------------- */
+
+
+
+        #proccess{
+          width: 95%;
+          height: 50vh;
+          margin: auto;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          /* background-color: royalblue; */
+        }
+        #proccess-a{
+          width: 48%;
+          height: 90%;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          flex-wrap: wrap;
+          border-radius: 10px;
+          background-color: white;
+        }
+        #proccess-a-content{
+          width: 60%;
+          height: 40%;
+          /* background-color: seagreen; */
+        }
+        #proccess-a-image{
+          width: 35%;
+          height: 40%;
+          /* background-color: green; */
+        }
+        #proccess-a-content h2{
+          color: black;
+          font-size: 30px;
+        }
+        #proccess-a-content p{
+          color: rgb(90, 90, 90);
+          font-size: 16px;
+        }
+        #proccess-a-image img{
+          width: 100%;
+          height: 100%;
+        }
+        #proccess-a-list{
+          width: 100%;
+          height: 55%;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          /* background-color: salmon; */
+        }
+        #proccess-a-list-1{
+          border-radius: 10px;
+          width: 45%;
+          height: 90%;
+          background-color: rgb(242,243,247);
+        }
+        #proccess-a-list-1 p{
+          font-size: 16px;
+          color: black;
+          margin-top: 2vh;
+          text-align: center;
+        }
+        #proccess-a-sub-list{
+          width: 100%;
+          height: 70%;
+          margin-top: 1vh;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          /* background-color: blueviolet; */
+        }
+        #proccess-a-sub-list-a{
+          width: 30%;
+          height: 80%;
+          overflow: hidden;
+          /* background-color: cadetblue; */
+        }
+        #proccess-a-sub-list-a img{
+          width: 100%;
+          height: 100%;
+          transition: 0.6s;
+        }
+        #proccess-a-sub-list-a img:hover{
+          filter: blur(0.4px);
+          transform: scale(1.1);
+        }
+
+
+
+
+
+        /* --------------------------Electronics ----------------------------- */
+
+
+
+
+
+        #electronic-main{
+          width: 100%;
+          height: 250vh;
+          background-color: rgb(242,243,247);
+        }
+        #electronic{
+          margin: auto;
+          width: 95%;
+          height: 55vh;
+          /* background-color: darkred; */
+        }
+        #electronic-content{
+          width: 100%;
+          height: 10vh;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          /* background-color: darkgoldenrod; */
+        }
+        #electronic-content-heading{
+          font-size: 26px;
+          font-weight: bold;
+          width: 25%;
+          height: 50%;
+          color: black;
+          /* background-color: darkseagreen; */
+        }
+        #electronic-content-line{
+          width: 65%;
+          height: 0.6px;
+          border-radius: 30px;
+          background-color: rgb(242,243,247);
+          border: 2px solid gray;
+        }
+
+
+        #electronic-product{
+          width: 100%;
+          height: 45vh;
+          display: flex;
+          background-color: white;
+        }
+        #electronic-product-1{
+          width: 30%;
+          height: 100%;
+          background-position-y: -100px;
+          background-size: cover;
+          background-image: url(./Alibaba-images/TB1J5jev7voK1RjSZPfXXXPKFXa-300-320.png);
+        }
+        #electronic-product-1 h2{
+          color: white;
+          width: 300px;
+          margin-top: 4vh;
+          margin-left: 2vw;
+          font-size: 25px;
+        }
+        #electronic-product-1 button{
+          padding: 10px 25px;
+          background-color: white;
+          border: none;
+          font-size: 15px;
+          margin-top: 20vh;
+          margin-left: 2vw;
+          border-radius: 50px;
+          color: lightskyblue;
+        }
+
+        #electronic-product-4{
+          width: 30%;
+          height: 100%;
+          background-position-y: -100px;
+          background-size: cover;
+          background-image: url(./Alibaba-images/TB1ZXXNIgHqK1RjSZFkXXX.WFXa-300-320.jpg);
+        }
+        #electronic-product-4 h2{
+          color: white;
+          width: 300px;
+          margin-top: 4vh;
+          margin-left: 2vw;
+          font-size: 25px;
+        }
+        #electronic-product-4 button{
+          padding: 10px 25px;
+          background-color: white;
+          border: none;
+          font-size: 15px;
+          margin-top: 20vh;
+          margin-left: 2vw;
+          border-radius: 50px;
+          color: lightskyblue;
+        }
+
+        #electronic-product-5{
+          width: 30%;
+          height: 100%;
+          background-position-y: -100px;
+          background-size: cover;
+          background-image: url(./Alibaba-images/TB1uW2kv3HqK1RjSZFkXXX.WFXa-300-320.png);
+        }
+        #electronic-product-5 h2{
+          color: white;
+          width: 300px;
+          margin-top: 4vh;
+          margin-left: 2vw;
+          font-size: 25px;
+        }
+        #electronic-product-5 button{
+          padding: 10px 25px;
+          background-color: white;
+          border: none;
+          font-size: 15px;
+          margin-top: 20vh;
+          margin-left: 2vw;
+          border-radius: 50px;
+          color: lightskyblue;
+        }
+
+        #electronic-product-2{
+          width: 70%;
+          height: 100%;
+          /* background-color: violet; */
+          display: grid;
+          grid-template-columns: repeat(auto-fill, minmax(25%, 1fr));
+          grid-auto-rows: 50%;
+        }
+        #electronic-product-2-a{
+          width: 100%;
+          height: 100%;
+          border: 1px solid rgb(207, 206, 206);
+        }
+        #electronic-product-2-a h2{
+          font-size: 16px;
+          margin-top: 3vh;
+          margin-left: 1vw;
+        }
+        #electronic-product-2-a p{
+          margin-left: 1vw;
+          font-size: 14px;
+        }
+        #electronic-logo-image1{
+          width: 55px;
+          height: 35px;
+        }
+        #electronic-logo-image2{
+          width: 30px;
+          height: 30px;
+        }
+        #electronic-product-image{
+          width: 90px;
+          margin-right: 10px;
+          float: right;
+          transition: 0.5s;
+          margin-top: 10px;
+          height: 90px;
+        }
+        #electronic-product-image:hover{
+          transform: scale(105%);
+        }
+
+
+
+        /* --------------------------- Quotation ------------------------------------- */
+
+
+
+
+        #Quotation{
+          margin: auto;
+          width: 95%;
+          height: 55vh;
+          /* background-color: darkred; */
+        }
+        #Quotation-content{
+          width: 100%;
+          height: 10vh;
+          display: flex;
+          align-items: center;
+          justify-content: space-evenly;
+          /* background-color: darkgoldenrod; */
+        }
+        #Quotation-content-heading{
+          font-size: 25px;
+          font-weight: bold;
+          width: 35%;
+          height: 50%;
+          color: black;
+          /* background-color: darkseagreen; */
+        }
+        #Quotation-content-heading span{
+          font-size: 15px;
+          color: gray;
+        }
+        #Quotation-content-line{
+          width: 55%;
+          height: 0.6px;
+          border-radius: 30px;
+          background-color: rgb(242,243,247);
+          border: 2px solid gray;
+        }
+        #Quotation-product{
+          width: 100%;
+          height: 60vh;
+          margin: auto;
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          /* background-color: indianred; */
+        }
+        #Quotation-product-image{
+          width: 45%;
+          height: 90%;
+          background-size: cover;
+          background-image: url(./Alibaba-images/TB1RrnvyuT2gK0jSZFvXXXnFXXa-800-375.png);
+          background-color: rgb(53,105,247);
+        }
+        #Quotation-product-contect{
+          width: 45%;
+          height: 90%;
+          border: 5px solid gray;
+          background-color: white;
+        }
+        #Quotation-product-contect h2{
+          font-size: 30px;
+          margin-top: 5vh;
+          margin-left: 2vw;
+        }
+        #Quotation-product-contect p{
+          font-size: 15px;
+          margin-top: 3vh;
+          margin-left: 2vw;
+        }
+        #Quotation-product-form{
+          width: 60%;
+          height: 30vh;
+          margin-left: 2vw;
+          margin-top: 4vh;
+          /* background-color: violet; */
+        }
+        #Quotation-product-form #text{
+            width: 90%;
+            height: 40px;
+            border-radius: 5px;
+            border: 1px solid rgb(216, 215, 215);
+        }
+        #Quotation-product-form #number{
+            width: 45%;
+            height: 40px;
+            margin-top: 2vh;
+            border-radius: 5px;
+            border: 1px solid rgb(216, 215, 215);
+        }
+        #Quotation-product-form select{
+            width: 44%;
+            height: 40px;
+            margin-top: 2vh;
+            border-radius: 5px;
+            border: 1px solid rgb(216, 215, 215);
+        }
+        #Quotation-product-form button{
+          padding: 10px 20px;
+          border: none;
+          border-radius: 30px;
+          color: white;
+          font-size: 15px;
+          margin-top: 4vh;
+          background-color: rgb(255,106,0);
+        }
+        #Quotation-product-image-heading{
+          color: white;
+          width: 400px;
+          margin-top: 5vh;
+          margin-left: 2vw;
+          font-size: 40px;
+        }
+
+
+
+
+        /* --------------------------- For You ---------------------------------- */
+        
+
+
+
+        .just{
+         width: 100vw;
+         height: 100vh;
+         display: flex;
+         justify-content: center;
+         /* background-color: darkgoldenrod; */
+         background-color: rgb(242,243,247);
+      }
+      .just-1{
+         width:83vw;
+         height: 90%;
+         /* background-color: red; */
+         display: grid;
+         grid-template-columns: repeat(auto-fill, minmax(180px , 1fr));
+         grid-auto-rows: 48%;
+         gap: 20px;
+      }
+      .just-2{
+         background-color: white;
+         border-radius: 5px;
+         display: flex;
+         flex-direction: column;
+         justify-content: space-around;
+         align-items: center;
+      }
+      .just-2:hover{
+         box-shadow: 0 0 10px 0 gray;
+      }
+      .just-2 div{
+         line-height: 3vh;
+         /* margin-top: 10vh; */
+         padding: 10px;
+         font-size: 14px;
+      }
+      .just-2 img{
+         width: 70%;
+         height: 50%;
+      }
+
+
+
+
+      /* ---------------------------------- Footer ---------------------- */
+
+
+
+
+      .footer{
+         width: 100vw;
+         height: 90vh;
+         display: flex;
+         justify-content: center;
+         background-color: #445268;
+      }
+      .footer-1{
+         width: 83vw;
+         height: 100%;
+         /* background-color: pink; */
+      }
+      .footer-2{
+         width: 100%;
+         height: 28%;
+         /* background-color: blue; */
+         display: flex;
+         flex-direction: column;
+         justify-content: center;
+         align-items: center;
+      }
+      .footer-2-a{
+         color: white;
+         font-weight: bold;
+         margin-bottom: 3vh;
+      }
+      .footer-2-b{
+         /* background-color: red; */
+         width: 30vw;
+         display: flex;
+      }
+      .footer-2-b input{
+         width: 100%;
+         height: 4.5vh;
+         border-radius: 3px;
+         color: #eee;
+         font-size: 20px;
+         background: rgba(0,0,0,0.4);
+         border: 1px solid white;
+      }
+      .footer-2-b button{
+         padding: 1vh 30px;
+         font-size: 20px;
+         margin-left: 5px;
+         border-radius: 3px;
+         cursor: pointer;
+         background: transparent;
+         border: 1px solid white;
+         color: white;
+      }
+      .footer-2-c{
+         color: rgb(185, 183, 183);
+         margin-top: 8px;
+      }
+      .footer-3{
+         width: 100%;
+         height: 28%;
+         /* background-color: red; */
+         display: grid;
+         border-bottom: 1px solid #222;
+         grid-template-columns:20% 20% 20% 20% 20%;
+      }
+      .footer-3-box1{
+         width: 100%;
+         height: 15%;
+         color: white;
+         font-size: 20px;
+         display: flex;
+         align-items: center;
+         /* background-color: pink; */
+      }
+      ul.footer-3-box2{
+         width: 100%;
+         height:85%;
+         /* background-color: black; */
+      }
+      ul.footer-3-box2 li{
+         list-style: none;
+      }
+      ul.footer-3-box2 li a{
+         text-decoration: none;
+         color: white;
+         line-height: 3vh;
+         font-size: 15px;
+      }
+      .footer-4{
+         width: 100%;
+         height:30%;
+         margin-top: 3vh;
+         text-align: center;
+         line-height: 5vh;
+         padding: 30px;
+         color: white;
+         font-size: 15px;
+         /* background-color: green; */
+      }
+
+
+
+    
+  </style>
+
+</head>
+<body>
+
+
+  <div id="top-main">
+    <div id="top">
+      <div id="top-1">
+        <div id="top-1-image">
+        <img src="./Alibaba-images/He5e2016160f9446aaa4e8959d643c8a2W.jpg_220x220.jpg" alt="">
+        </div>
+        <p>Home Appliances</p>
+      </div>
+      <div id="top-1">
+        <div id="top-1-image">
+          <img src="./Alibaba-images/H26581a836ed5444f8ba756c815770db9e.jpg_220x220.jpg" alt="">
+          </div>
+          <p>Consumer quotations</p>
+      </div>
+      <div id="top-1">
+        <div id="top-1-image">
+          <img src="./Alibaba-images/H773250d5304e4c98a225d3e347871557C.jpg_220x220.jpg" alt="">
+          </div>
+          <p>2021 Sports</p>
+      </div>
+      <div id="top-1">
+        <div id="top-1-image">
+          <img src="./Alibaba-images/H864588498a90436589d8157e0dc4e46e2.jpg_220x220.jpg" alt="">
+          </div>
+          <p>2021 Machinery</p>
+      </div>
+      <div id="top-1">
+        <div id="top-1-image">
+          <img src="./Alibaba-images/H49924d88746a41de9b0c12b286f312a0Y.jpg_220x220.jpg" alt="">
+          </div>
+          <p>Furniture</p>
+      </div>
+      <div id="top-1">
+        <div id="top-1-image">
+          <img src="./Alibaba-images/Hf38f9061eff248a19d25f0797b6b7f20C.jpg_220x220.jpg" alt="">
+          </div>
+          <p>Apparel new</p>
+      </div>
+      <div id="top-1">
+        <div id="top-1-image">
+          <img src="./Alibaba-images/Hd0b962b162f74c7b85d2254f33a14b83m.jpg_220x220.jpg" alt="">
+          </div>
+          <p>Trending beauty</p>
+      </div>
+    </div>
+  </div>
+
+
+
+  <div id="navbar">
+    <div id="navbar-1">
+      <img src="./Alibaba-images/TB1pDDmmF67gK0jSZPfXXahhFXa-2814-380.png" alt="">
+    </div>
+    <div id="navbar-2">
+      <div id="product">Products
+        <div id="product-hide">
+          <p>Products</p> 
+          <p>Suppliers</p>
+        </div>
+      </div>
+      <input type="text" placeholder="What are you looking for...">
+      <div id="items">
+        <i class="fas fa-search"></i>
+        <p>search</p>
+      </div>
+    </div>
+    <div id="navbar-3">
+      <div id="navbar-3-a">
+        <i class="far fa-user" id="icon"></i>
+        <div id="link">
+        <a href="#">Sign in </a> <br>
+       <a href="#">Join Free</a></div>
+
+       <div id="navbar-3-a-hide">
+
+       </div>
+      </div>
+      <div id="navbar-3-b">
+        <i class="far fa-envelope" id="icon-a"></i>
+        <a  href="#">Message</a>
+      </div>
+      <div id="navbar-3-c">
+        <i class="fas fa-comment-dollar" id="icon-a"></i>
+        <a  href="#">Order</a>
+      </div>
+      <div id="navbar-3-d">
+        <i class="fas fa-cart-plus" id="icon-a"></i>
+        <a  href="#">Cart</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="second-nav">
+    
+    <div id="categories"><i class="fas fa-bars"></i> categories <i class="fas fa-angle-up"></i>
+
+      <div id="categories-hide">
+          <p><span>Machinery</span> / <span>Vehicles & Accessories</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Consumer quotations</span> / <span>Home Appliances</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Apparel</span> / <span>Fashion Accessories</span> / <span>Timepieces,Jewelry,Eyewear</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Lights & Lighting</span> / <span>Construction & Real Estate</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Home & Garden</span> / <span>Furniture</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Fabric & Textiles Raw Material</span> / <span>Home Textiles</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+
+          <p><span>Beauty & Personal Care</span> / <span>Health & Medical</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Packaging & Printing</span> / <span>Office & School Supplies</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+
+          <p><span>Electrical Equipment & Supplies</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Tools & Hardware</span> / <span>Security & Protection</span> / 
+          <span>Fabrication Service</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Electrical Equipment & Supplies</span> / <span>quotation Components,Accessories & Telecommunications</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Sports & Entertainment</span> / <span>Toys & Hobbies</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Luggage, Bags & Cases</span> / <span>Shoes & Accessories</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Machinery</span> / <span>Vehicles & Accessories</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Minerals & Metallurgy</span> / <span>Chemicals</span> / 
+            <span>Rubber & Plastics</span>
+          </p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Agriculture</span> / <span>Food & Beverage</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Service Equipment</span> / <span>Business Services</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+
+          <p><span>Energy</span> / <span>Environment</span></p>
+          <div id="categories-para-hide">
+                <div id="categories-para-hide-left"></div>
+                <div id="categories-para-hide-right"></div>
+          </div>
+          <p id="categories-end-para">All Categories</p>
+          
+       </div>
+    </div>
+
+    <div id="nav">
+      <ul>
+        <li><a href="">Ready to Ship</a></li>
+        <li><a href="">Trade Shows</a></li>
+        <li><a href="">Personal Protective E...</a></li>
+        <li><a href="">Buyer Central</a></li>
+        <li><a href="">Sell on Alibaba</a></li>
+        <li><a href="">Help</a></li>
+      </ul>
+    </div>
+    
+    <div id="navbar-end">
+      <ul>
+        <li>Get the App</li>
+        <li>English - PKR</li>
+        <li>Ship to : <img src="./Alibaba-images/ng.gif" alt=""></li>
+      </ul>
+    </div>
+  </div>
+
+  <div id="nav-image">
+    <img src="./Alibaba-images/O1CN01nKzydK1gXCm6Ou2yt_!!6000000004151-2-tps-1110-98.png" alt="">
+  </div>
+                         
+  <div id="home-main">
+
+
+    <div id="home">
+      <div id="home-a">
+          <div id="home-a-top">
+            <div id="home-a-top-left">MY MARKETS</div>
+            <div id="home-a-top-right">SUPER SEPT.</div>
+          </div>
+
+          
+          <div id="home-a-top-bottom">
+              <div id="home-a-top-bottom-a">
+                <i class="far fa-smile"></i>
+                <p>Apparel new arrivals</p>
+              </div>
+              <div id="home-a-top-bottom-a">
+                <i class="fab fa-phoenix-squadron"></i>
+                <p>Consumer Electronics</p>
+              </div>
+              <div id="home-a-top-bottom-a">
+                <i class="fas fa-shoe-prints"></i>
+                <p>2021 Sports & Entertainment and...</p>
+              </div>
+              <div id="home-a-top-bottom-a">
+                <i class="fas fa-headphones"></i>
+                <p>2021 Machinery</p>
+              </div>
+              <div id="home-a-top-bottom-a">
+                <i class="fas fa-home"></i>
+                <p>Home Appliances</p>
+              </div>
+              <div id="home-a-top-bottom-a">
+                <i class="fas fa-truck-loading"></i>
+                <p>Furniture</p>
+              </div>
+              <div id="home-a-top-bottom-a">
+                <i class="fab fa-themeisle"></i>
+                <p>Trending beauty items</p>
+              </div>
+              <div id="home-a-top-bottom-a">
+                <i class="fas fa-tools"></i>
+                <p>Construction & Real Estate</p>
+              </div>
+              <div id="home-a-top-bottom-a">
+                <i class="fab fa-pushed"></i>
+                <p>Shoes & Accessories new arrivals</p> 
+              </div>
+              <div id="home-a-top-bottom-a">
+                <i class="fas fa-dolly"></i>
+                <p>Trendy picks of Luggage & Bags</p>
+              </div>
+            </div>
+          </div>
+
+      <div id="home-b">
+        <div class="container">
+          <div class="slide active" style="background-image: url(./Alibaba-images/O1CN01rMNXo01mY1AWVpBzz_!!6000000004965-0-tps-990-400.jpg);">
+          </div>
+          <div class="slide" style="background-image: url(./Alibaba-images/O1CN01Tqei6L1u7T8bOSEPj_!!6000000005990-0-tps-990-400.jpg);">
+          </div>
+          <div class="slide" style="background-image: url(./Alibaba-images/O1CN011ePQQf1Em2MCfMvJR_!!6000000000393-0-tps-990-400.jpg);"></div>
+          <div class="slide" style="background-image: url(./Alibaba-images/O1CN012SqPNB1zQJVmnWFFM_!!6000000006708-2-tps-990-400.png);"></div>
+          <div class="slide" style="background-image: url(./Alibaba-images/O1CN01NdXSPb1OG6tp9s3sN_!!6000000001677-0-tps-990-400.jpg);"></div>
+      
+          <button class="btn btnleft" id="left"><</button>
+          <button class="btn btnright" id="right">></button>
+        
+        </div>
+      </div>
+
+        <div id="home-c">
+            <div id="home-c-top">Steel Price Index</div>
+            <div id="home-c-top-content">
+              <p>Competitively priced steel items!</p>
+              <button>Source now</button>
+              <img src="./Alibaba-images/O1CN01h9WgZK1RfFUXQSCbZ_!!6000000002138-0-tps-350-350.jpg_100x100.jpg" alt="">
+            </div>
+            <div id="home-c-top-content">
+              <p>Competitively priced steel items!</p>
+              <button>Source now</button>
+              <img src="./Alibaba-images/O1CN01izU9eB1NyhqzXaq6m_!!6000000001639-0-tps-350-350.jpg_100x100.jpg" alt="">
+            </div>
+            <div id="home-c-top-content">
+              <p>Competitively priced steel items!</p>
+              <button>Source now</button>
+              <img src="./Alibaba-images/O1CN01edHyHB1nbVo5fB8Zk_!!6000000005108-0-tps-350-350.jpg_100x100.jpg" alt="">
+            </div>
+        </div>
+    </div>
+
+          <div id="services">
+            <div id="services-a">
+              <img src="./Alibaba-images/O1CN01xC07ni29K2EmZsFt8_!!6000000008048-2-tps-140-27.png" alt="">
+              <h3>On-time delivery service</h3>
+              <p>Products and shipping savings</p>
+              <button>View More</button>
+            </div>
+            <div id="services-a">
+              <h4>Shipping discounts</h4>
+              <span>On-time delivery service</span>
+              <div id="services-a-1">
+                <div id="services-a-1-a">
+                  <img src="./Alibaba-images/Hb8d7b8d51b754fafa6415aba5aff31f6k.jpg_220x220.jpg" alt="">
+                </div>
+                <div id="services-a-1-a">
+                  <img src="./Alibaba-images/H69ade03ed53d413aba3e8b79fcaa9737m.jpg_220x220.jpg" alt="">
+                </div>
+              </div>
+            </div>
+            <div id="services-a">
+              <h4>LIVE</h4>
+              <span>Discover great savings and benefits</span>
+              <div id="services-a-1">
+                <div id="services-a-1-a">
+                  <img src="./Alibaba-images/H570a7166e11743e3b895986edbfe0cb2m.jpg_220x220.jpg" alt="">
+                </div>
+                      <div id="services-a-1-a-like">
+                          <img src="./Alibaba-images/TB1DSumJRr0gK0jSZFnXXbRRXXa-120-249.gif" alt="">
+                      </div>
+                <div id="services-a-1-a">
+                  <img src="./Alibaba-images/Ha572d40a8e2d447da4a53c57485823a7r.jpg_220x220.jpg" alt="">
+                </div>
+                <div id="services-a-1-a-like-2">
+                  <img src="./Alibaba-images/TB1DSumJRr0gK0jSZFnXXbRRXXa-120-249.gif" alt="">
+              </div>
+              </div>
+            </div>
+            <div id="services-a">
+              <h4>DropShipping</h4>
+              <span>No MOQ and super discounts</span>
+              <div id="services-a-1">
+                <div id="services-a-1-a">
+                  <img src="./Alibaba-images/H244f5bacff7c4587be5d353187e74a11I.jpg_120x120xz.jpg" alt="">
+                </div>
+                <div id="services-a-1-a">
+                  <img src="./Alibaba-images/H184046da9cda47cbb3315ca70006e1e1M.jpg_220x220.jpg" alt="">
+                </div>
+              </div>
+            </div>
+          </div>          
+  </div>
+
+
+  <div id="things-main">
+      <div id="things">
+          <div id="things-1">
+            <p>
+              <img src="./Alibaba-images/TB1jyqhzy_1gK0jSZFqXXcpaXXa-44-44.png" alt="">
+               &nbsp; New Arrivals</p>
+               <div id="things-1-list">
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/Hca02c1c9839544dcb63de254a72b2dd8Z.jpg_120x120xz.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/H3f7d2adba912426b9c814128384246095.png_220x220.png" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/H4a74078f9f6c4377b365b98929cc6ce3G.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+               </div>
+          </div>
+          <div id="things-1">
+            <p>
+              <img src="./Alibaba-images/TB1VsukzuH2gK0jSZJnXXaT1FXa-38-34.png" alt="">
+               &nbsp;  Top-ranked Products</p>
+               <div id="things-1-list">
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/Hd0b962b162f74c7b85d2254f33a14b83m.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/Hd1bd3aa0233e46a598d4a2a30ad5371cz.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/Hd2c42a902d004a79bc596b6cda71ce73N.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+               </div>
+          </div>
+          <div id="things-1">
+            <p>
+              <img src="./Alibaba-images/O1CN01m3E6Kp1nx2NbudQJI_!!6000000005155-2-tps-60-60.png" alt="">
+               &nbsp; Personal Protective Equipment</p>
+               <div id="things-1-list">
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/Hd44a952d976b4505b4576e9a51ca4995e.jpg_120x120xz.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/He5e2016160f9446aaa4e8959d643c8a2W.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/He7ab6c49fab443f983fb0a6c965e7139j.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+               </div>
+          </div>
+          <div id="things-1">
+            <p>
+              <img src="./Alibaba-images/O1CN01NRSdOO1N2zv6KFoVV_!!6000000001513-0-tps-42-48.jpg" alt="">
+               &nbsp;  Dropshipping</p>
+               <div id="things-1-list">
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/He30bf447082446a0b37c87052b27f34eK.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/He174241479ed46b48c8f61ee492acea4l.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/Hee73d31e17b94bba8bfdf8c53f504514L.jpg_100x100xz.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+               </div>
+          </div>
+          <div id="things-1">
+            <p>
+              <img src="./Alibaba-images/TB1XEafzAL0gK0jSZFAXXcA9pXa-40-40.png" alt="">
+               &nbsp; Global Original Sources</p>
+               <div id="things-1-list">
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/HTB1aGMfayfrK1RjSspbq6A4pFXaQ.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/HTB1fmoLc56guuRkSnb4q6zu4XXaN.jpg_120x120xz.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/Hf38f9061eff248a19d25f0797b6b7f20C.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+               </div>
+          </div>
+          <div id="things-1">
+            <p>
+              <img src="./Alibaba-images/O1CN01caWYqW1cVasvCBKJ2_!!6000000003606-0-tps-46-32.jpg" alt="">
+               &nbsp;  True View</p>
+               <div id="things-1-list">
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/H9b2c7f1ff01b43f0a677dbd51796b6d8D.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/H44d8b18b83464b12b8f6f6fa0eeef058E.jpg_120x120xz.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+                  <div id="things-1-list-a">
+                    <img src="./Alibaba-images/H2d8a5253875b448c931478927406c4dfq.jpg_220x220.jpg" alt="">
+                    <h5>Rs 2,085.73</h5>
+                    <p>Trending Now</p>
+                  </div>
+               </div>
+          </div>
+      </div>
+
+      <div id="proccess">
+          <div id="proccess-a">
+              <div id="proccess-a-content">
+                <h2>Customized products</h2>
+                <p>Partner with one of 60,000 experienced manufacturers with design & production capabilities and on-time delivery.</p>
+              </div>
+              <div id="proccess-a-image">
+                <img src="./Alibaba-images/TB1SkTnbcKfxu4jSZPfXXb3dXXa-242-148.jpg" alt="">
+              </div>
+              <div id="proccess-a-list">
+                  <div id="proccess-a-list-1">
+                    <p>Premium OEM Factories</p>
+                    <div id="proccess-a-sub-list">
+                      <div id="proccess-a-sub-list-a">
+                        <img src="./Alibaba-images/H6f1e90bd30914b2da3b11426b6bcc69as.jpg_220x220.jpg" alt="">
+                      </div>
+                      <div id="proccess-a-sub-list-a">
+                        <img src="./Alibaba-images/Hc5cb94bf38024eb9830b373ba5056feeP.jpg_120x120xz.jpg" alt="">
+                      </div>
+                      <div id="proccess-a-sub-list-a">
+                        <img src="./Alibaba-images/H38744bf48e95464fb74b9587410f56580.jpg_120x120.jpg" alt="">
+                      </div>
+                    </div>
+                  </div>
+                  <div id="proccess-a-list-1">
+                    <p>Top-ranking suppliers</p>
+                    <div id="proccess-a-sub-list">
+                      <div id="proccess-a-sub-list-a">
+                        <img src="./Alibaba-images/H57ce99cf551d4d49bae0e2b99db7b88c0.jpg_220x220.jpg" alt="">
+                      </div>
+                      <div id="proccess-a-sub-list-a">
+                        <img src="./Alibaba-images/H62fe05ec7035456baa5a4f5ef1e00072O.jpg_220x220.jpg" alt="">
+                      </div>
+                      <div id="proccess-a-sub-list-a">
+                        <img src="./Alibaba-images/H69ade03ed53d413aba3e8b79fcaa9737m.jpg_220x220.jpg" alt="">
+                      </div>
+                    </div>
+                  </div>
+              </div>
+          </div>
+          <div id="proccess-a">
+            <div id="proccess-a-content">
+              <h2>Ready-to-ship products</h2>
+              <p>Source from 15 million products that are ready to ship, and leave the facility within 15 days.</p>
+            </div>
+            <div id="proccess-a-image">
+              <img src="./Alibaba-images/TB1F99dzrY1gK0jSZTEXXXDQVXa-221-131.jpg" alt="">
+            </div>
+            <div id="proccess-a-list">
+                <div id="proccess-a-list-1">
+                  <p>Fast Dispatch</p>
+                  <div id="proccess-a-sub-list">
+                    <div id="proccess-a-sub-list-a">
+                      <img src="./Alibaba-images/HTB17KnPemWD3KVjSZSgq6ACxVXad.jpg_220x220.jpg" alt="">
+                    </div>
+                    <div id="proccess-a-sub-list-a">
+                      <img src="./Alibaba-images/HTB1nvbPd.uF3KVjSZK9q6zVtXXaX.jpg_120x120xz.jpg" alt="">
+                    </div>
+                    <div id="proccess-a-sub-list-a">
+                      <img src="./Alibaba-images/Hed5c8d76c0db4089a6b5c1e66d8148cd1.png_100x100xz.png" alt="">
+                    </div>
+                  </div>
+                </div>
+                <div id="proccess-a-list-1">
+                  <p>Weekly Deals</p>
+                  <div id="proccess-a-sub-list">
+                    <div id="proccess-a-sub-list-a">
+                      <img src="./Alibaba-images/He30bf447082446a0b37c87052b27f34eK.jpg_220x220.jpg" alt="">
+                    </div>
+                    <div id="proccess-a-sub-list-a">
+                      <img src="./Alibaba-images/H855263537fcf4391b36a0f50899b7833q.jpg_120x120xz.jpg" alt="">
+                    </div>
+                    <div id="proccess-a-sub-list-a">
+                      <img src="./Alibaba-images/H662ffc4f5cdd434eb787e45e1fc56be77.png_220x220.png" alt="">
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+      </div>
+  </div>
+
+
+  <div id="electronic-main">
+      
+      <div id="electronic">
+        <div id="electronic-content">
+          <div id="electronic-content-heading">CONSUMER ELECTRONICS</div>
+          <div id="electronic-content-line"></div>
+        </div>
+        <div id="electronic-product">
+            <div id="electronic-product-1">
+              <h2>Selected Novelty Products</h2>
+              <button>Source Now</button>
+            </div>
+            <div id="electronic-product-2">
+
+                <div id="electronic-product-2-a">
+                  <h2>Premium OEM Factories</h2>
+                  <p>Customization service available</p>
+                  <img id="electronic-logo-image1" src="./Alibaba-images/TB1d7y4p4jaK1RjSZKzXXXVwXXa-42-10.svg" alt="">
+                  <img id="electronic-logo-image2" src="./Alibaba-images/TB1lb17zyrpK1RjSZFhXXXSdXXa-72-72.png" alt="">
+                  <img id="electronic-product-image" src="./Alibaba-images/He5e2016160f9446aaa4e8959d643c8a2W.jpg_220x220.jpg" alt="">
+                </div>
+                
+
+                
+                <div id="electronic-product-2-a">
+                  <h2>Top sales</h2>
+                  <p>TV Receivers & Accessories</p>                 
+                  <img id="electronic-product-image" src="./Alibaba-images/Ha988bba3f20a42f5b59e5c86564bd80eD.png_100x100xz.png" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Home Audio, Video & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/Ha572d40a8e2d447da4a53c57485823a7r.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Camera, Photo & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/H774a6c1c127845a987cbbdc0044e108dc.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Premium OEM Factories</h2>
+                  <p>Customization service available</p>
+                  <img id="electronic-product-image" src="./Alibaba-images/Hd2c42a902d004a79bc596b6cda71ce73N.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Commonly used Accessories & Parts</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/He7ab6c49fab443f983fb0a6c965e7139j.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Portable Audio, Video & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/Hca02c1c9839544dcb63de254a72b2dd8Z.jpg_120x120xz.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Mobile Phone & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/H864588498a90436589d8157e0dc4e46e2.jpg_220x220.jpg" alt="">
+                </div>
+
+
+            </div>
+        </div>
+      </div>
+
+      <div id="electronic">
+        <div id="electronic-content">
+          <div id="electronic-content-heading">APPAREL</div>
+          <div id="electronic-content-line"></div>
+        </div>
+        <div id="electronic-product">
+            <div id="electronic-product-4">
+              <h2>Shopping Guide for Trending Styles</h2>
+              <button>Source Now</button>
+            </div>
+            <div id="electronic-product-2">
+
+                <div id="electronic-product-2-a">
+                  <h2>Premium OEM Factories</h2>
+                  <p>Customization service available</p>
+                  <img id="electronic-logo-image1" src="./Alibaba-images/TB1d7y4p4jaK1RjSZKzXXXVwXXa-42-10.svg" alt="">
+                  <img id="electronic-logo-image2" src="./Alibaba-images/TB1lb17zyrpK1RjSZFhXXXSdXXa-72-72.png" alt="">
+                  <img id="electronic-product-image" src="./Alibaba-images/He5e2016160f9446aaa4e8959d643c8a2W.jpg_220x220.jpg" alt="">
+                </div>
+                
+
+                
+                <div id="electronic-product-2-a">
+                  <h2>Top sales</h2>
+                  <p>TV Receivers & Accessories</p>                 
+                  <img id="electronic-product-image" src="./Alibaba-images/Ha988bba3f20a42f5b59e5c86564bd80eD.png_100x100xz.png" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Home Audio, Video & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/Ha572d40a8e2d447da4a53c57485823a7r.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Camera, Photo & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/H774a6c1c127845a987cbbdc0044e108dc.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Premium OEM Factories</h2>
+                  <p>Customization service available</p>
+                  <img id="electronic-product-image" src="./Alibaba-images/Hd2c42a902d004a79bc596b6cda71ce73N.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Commonly used Accessories & Parts</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/He7ab6c49fab443f983fb0a6c965e7139j.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Portable Audio, Video & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/Hca02c1c9839544dcb63de254a72b2dd8Z.jpg_120x120xz.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Mobile Phone & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/H864588498a90436589d8157e0dc4e46e2.jpg_220x220.jpg" alt="">
+                </div>
+
+
+            </div>
+        </div>
+      </div>
+
+      <div id="electronic">
+        <div id="electronic-content">
+          <div id="electronic-content-heading">CONSUMER ELECTRONICS</div>
+          <div id="electronic-content-line"></div>
+        </div>
+        <div id="electronic-product">
+            <div id="electronic-product-5">
+              <h2>Selected Novelty Products</h2>
+              <button>Source Now</button>
+            </div>
+            <div id="electronic-product-2">
+
+                <div id="electronic-product-2-a">
+                  <h2>Premium OEM Factories</h2>
+                  <p>Customization service available</p>
+                  <img id="electronic-logo-image1" src="./Alibaba-images/TB1d7y4p4jaK1RjSZKzXXXVwXXa-42-10.svg" alt="">
+                  <img id="electronic-logo-image2" src="./Alibaba-images/TB1lb17zyrpK1RjSZFhXXXSdXXa-72-72.png" alt="">
+                  <img id="electronic-product-image" src="./Alibaba-images/He5e2016160f9446aaa4e8959d643c8a2W.jpg_220x220.jpg" alt="">
+                </div>
+                
+
+                
+                <div id="electronic-product-2-a">
+                  <h2>Top sales</h2>
+                  <p>TV Receivers & Accessories</p>                 
+                  <img id="electronic-product-image" src="./Alibaba-images/Ha988bba3f20a42f5b59e5c86564bd80eD.png_100x100xz.png" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Home Audio, Video & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/Ha572d40a8e2d447da4a53c57485823a7r.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Camera, Photo & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/H774a6c1c127845a987cbbdc0044e108dc.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Premium OEM Factories</h2>
+                  <p>Customization service available</p>
+                  <img id="electronic-product-image" src="./Alibaba-images/Hd2c42a902d004a79bc596b6cda71ce73N.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Commonly used Accessories & Parts</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/He7ab6c49fab443f983fb0a6c965e7139j.jpg_220x220.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Portable Audio, Video & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/Hca02c1c9839544dcb63de254a72b2dd8Z.jpg_120x120xz.jpg" alt="">
+                </div>
+
+                <div id="electronic-product-2-a">
+                  <h2>Mobile Phone & Accessories</h2>
+                  <img id="electronic-product-image" src="./Alibaba-images/H864588498a90436589d8157e0dc4e46e2.jpg_220x220.jpg" alt="">
+                </div>
+
+
+            </div>
+        </div>
+      </div>
+
+      <div id="Quotation">
+        <div id="Quotation-content">
+          <div id="Quotation-content-heading">REQUEST FOR QUOTATION 
+            <span>Customization Service</span></div>
+          <div id="Quotation-content-line"></div>
+        </div>
+        <div id="Quotation-product">
+              <div id="Quotation-product-image">
+                <div id="Quotation-product-image-heading">Global Sourcing Marketplace</div>
+              </div>
+              <div id="Quotation-product-contect">
+                <h2>One Request, Multiple Quotes</h2>
+                <p>"painting jigsaw paper puzzle games for kids" from  M***** received 3 quotation(s)
+                </p>
+                <div id="Quotation-product-form">
+                  <input type="text" id="text" placeholder="  What are you looking for">
+                  <input type="number" id="number" placeholder="  Quantity">
+                  <select name="" id="">
+                    <option value="Piece/Piece">Piece/Piece</option>
+                    <option value="Piece/Piece">Bag/Bags</option>
+                    <option value="Piece/Piece">Gram/Grams</option>
+                    <option value="Piece/Piece">Dozen/Dozens</option>
+                    <option value="Piece/Piece">Piece/Piece</option>
+                    <option value="Piece/Piece">Kilogram/Kilograms</option>
+                    <option value="Piece/Piece">Long ton/Long tons</option>
+                  </select>
+                  <button>Request For Quotation</button>
+                </div>
+              </div>
+        </div>
+      </div>
+
+  </div>
+
+
+  <div class="just">
+    <div class="just-1">
+       <div class="just-2">
+          <img src="./Alibaba-images/HTB1aGMfayfrK1RjSspbq6A4pFXaQ.jpg_220x220.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/HTB1fmoLc56guuRkSnb4q6zu4XXaN.jpg_120x120xz.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/HTB1fr2bk0fJ8KJjy0Feq6xKEXXab.jpg_100x100xz.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/HTB13FR.vY3nBKNjSZFMq6yUSFXa5.jpg_220x220.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/HTB1q93xXPvuK1Rjy0Faq6x2aVXa5.jpg_220x220.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/HTB1nvbPd.uF3KVjSZK9q6zVtXXaX.jpg_120x120xz.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/HTB17KnPemWD3KVjSZSgq6ACxVXad.jpg_220x220.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/HLB15J7NRwDqK1RjSZSyq6yxEVXas.jpg_220x220.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/Hf38f9061eff248a19d25f0797b6b7f20C.jpg_220x220.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/H49924d88746a41de9b0c12b286f312a0Y.jpg_220x220.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/HTB1aGMfayfrK1RjSspbq6A4pFXaQ.jpg_220x220.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+       <div class="just-2">
+          <img src="./Alibaba-images/He7ab6c49fab443f983fb0a6c965e7139j.jpg_220x220.jpg" alt="">
+          <div>Fashion Comfort Summer Sports Shoes High Quality Low Sneakers <br> 
+             <strong>Rs 1,983.15 - Rs 2,506.29</strong> <br>
+             1 Piece (Min. Order)</div>
+       </div>
+    </div>
+ </div>
+
+
+ <div class="footer">
+  <div class="footer-1">
+     <div class="footer-2">
+        <div class="footer-2-a">Trade Alert - Delivering the latest product trends and industry news straight to your inbox.</div>
+        <div class="footer-2-a-1">
+           <div class="footer-2-b">
+              <input type="Email" name="Email" id="" placeholder="   Your Email">
+              <button>Subscribe</button>
+           </div>        
+           <div class="footer-2-c">We’ll never share your email address with a third-party.
+           </div>
+        </div>
+     </div>
+     <div class="footer-3">
+        <div class="footer-3-box">
+           <div class="footer-3-box1">
+              Customer Services
+           </div>
+           
+              <ul class="footer-3-box2">
+                 <li><a href="">Help Center</a></li>
+                    <li><a href="">Report Abuse</a></li>
+                    <li><a href="">Contact Us</a></li>
+                    <li><a href="">Submit a Dispute</a></li>
+                    <li><a href="">Policies & Rules</a></li>
+                    <li><a href="">Get Paid for Your Feedback</a></li>
+              </ul>
+           
+        </div>
+        <div class="footer-3-box">
+           <div class="footer-3-box1">
+              About Us
+           </div>
+           
+              <ul class="footer-3-box2">
+               
+                    <li><a href=""> About Alibaba.com</a></li>
+                    <li><a href="">About Alibaba Group</a></li>
+                    <li><a href="">Sitemap</a></li>
+                   
+              </ul>
+        </div>
+        <div class="footer-3-box">
+           <div class="footer-3-box1">
+              Source on Alibaba.com
+           </div>
+           
+           
+           
+           
+           
+           
+             <ul class="footer-3-box2">
+                
+              <li><a href="">Resources</a></li>
+                    <li><a href="">All Categories</a></li>
+                    <li><a href="">Request for Quotation</a></li>
+                    <li><a href="">Ready to Ship</a></li>
+                    <li><a href="">Buyer Partners </a></li>
+                   
+              </ul>
+        </div>
+        <div class="footer-3-box">
+           <div class="footer-3-box1">
+              Sell on Alibaba.com
+           </div>
+           
+
+              <ul class="footer-3-box2">
+                 
+                 <li><a href="">Supplier Memberships</a></li>
+                    <li><a href="">Learning Center</a></li>
+                    <li><a href="">Partner Program</a></li>
+                    
+                 </ul>
+        </div>
+        <div class="footer-3-box">
+           <div class="footer-3-box1">
+              Trade Services
+           </div>
+           
+           
+              <ul class="footer-3-box2">
+                 
+                 <li><a href="">Trade Assurance</a></li>
+                    <li><a href="">Business Identity</a></li>
+                    <li><a href="">Logistics Service</a></li>
+                    <li><a href="">Production Monitoring & Inspection Services</a></li>
+                    <li><a href="">Letter of Credit</a></li>
+                    
+              </ul>
+        </div>
+     </div>
+     <div class="footer-4">
+        Alibaba.com Site: International - Español - Português - Deutsch - Français - Italiano - हिंदी - Pусский - 한국어 - 日本語 - اللغة العربية - ภาษาไทย - Türk - Nederlands - tiếng Việt - Indonesian - עברית
+        <br>
+        Alibaba Group | Taobao Marketplace | Tmall.com | Juhuasuan | AliExpress | Alibaba.com | 1688.com | Alimama | Fliggy | Tmall Taobao World
+        Alibaba Cloud | AliOS | AliTelecom | Autonavi | UCWeb | Umeng | Xiami | DingTalk | Alipay | Lazada | Alibaba Security
+        <br>
+        Browse Alphabetically: Onetouch | Showroom | Country Search | Suppliers | Affiliate
+        <br>
+        Product Listing Policy - Intellectual Property Protection - Privacy Policy - Terms of Use - User Information Legal Enquiry Guide
+        <br>
+        © 1999-2021 Alibaba.com. All rights reserved. 浙公网安备 33010002000092号 浙B2-20120091
+        
+        
+     </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+  
+  
+  
+
+
+
+
+
+  <script>
+
+
+      const slides = document.querySelectorAll(".slide")
+      const leftbtn = document.getElementById("left")
+      const rightbtn = document.getElementById("right")
+
+      let s_active = 0
+
+      rightbtn.addEventListener("click", function(){
+        s_active++
+        if(s_active > slides.length - 1){
+          s_active = 0
+        }
+        setactiveslide()
+      })
+
+      leftbtn.addEventListener("click", function(){
+        s_active--
+        if(s_active < 0){
+          s_active = slides.length - 1
+        }
+        setactiveslide()
+      })
+
+      function setactiveslide(){
+        slides.forEach(function(slide){
+          slide.classList.remove("active")
+          slides[s_active].classList.add("active")
+        })
+      }
+
+
+      
+
+  </script>
+
+  
+
+
+  
+</body>
+</html>

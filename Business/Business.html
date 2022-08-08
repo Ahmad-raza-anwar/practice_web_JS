@@ -1,0 +1,2221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <title>Business</title>
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+
+      <style>
+
+            *{
+              padding: 0;
+              margin: 0;
+              font-family: Arial, Helvetica, sans-serif;
+            }
+
+            #loader{
+              position: fixed;
+              width: 100%;
+              top: 0;
+              left: 0;
+              height: 100vh;
+              background: white;
+              z-index: 999;
+              display: flex; 
+              flex-wrap: wrap;
+              justify-content: center;
+              align-items: center;
+            }
+            #loader img{
+                width: 700px;
+                height: 500px;
+                border-radius: 50%;
+            }
+            #loader-top{
+              width: 100%;
+              height: 48%;
+              top: 0;
+              position: absolute;
+              background-color: #27669e;
+              animation: loader-top 1s linear forwards;
+            }
+            @keyframes loader-top {
+              0%{
+                height: 48%;
+              }
+              100%{
+                height: 0%;
+              }
+            }
+
+            #loader-bottom{
+              width: 100%;
+              height: 48%;
+              bottom: 0;
+              position: absolute;
+              background-color: #27669e;
+              animation: loader-bottom 1s linear forwards;
+            }
+            @keyframes loader-bottom {
+              0%{
+                height: 48%;
+              }
+              100%{
+                height: 0%;
+              }
+            }
+
+
+            .container{
+              width: 100%;
+              height: 100vh;
+              /* background-color: violet; */
+            }
+            .navbar_main{
+              width: 100%;
+              height: 60px;
+              background-color: #27669e;
+              display: flex;
+              justify-content: space-around;
+              align-items: center;
+              position: sticky;
+              top: 0;
+              z-index: 991;
+            }
+            .navbar{
+              width: 800px;
+              height: max-content;
+              /* background-color: aquamarine; */
+            }
+            .navbar ul{
+              list-style: none;
+              font-size: 16px;
+              color: white;
+              display: flex;
+              justify-content: space-evenly;
+              align-items: center;
+            }
+            .navbar ul li{
+              position: relative;
+              height: 60px;
+              padding: 0 20px;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              overflow: hidden;
+              cursor: pointer;
+            }
+            .navbar ul li:nth-child(1)::after{
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: 0%;
+              width: 100%;
+              height: 3px;
+              background-color: rgb(255, 238, 0);
+              transition: 0.6s ease-in;
+            } 
+            .navbar ul li::after{
+              content: "";
+              position: absolute;
+              bottom: 0;
+              left: -100%;
+              width: 100%;
+              height: 3px;
+              background-color: rgb(255, 238, 0);
+              transition: 0.6s ease-in;
+            }
+            .navbar ul li:hover:after{
+              left: 0;
+            }
+            .navbar_hide{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 10%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide p{
+              width: 200px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+
+            .navbar_hide-2{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 16%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide-2 p{
+              width: 200px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide-2 p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+            
+            .navbar_hide-3{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 24%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide-3 p{
+              width: 200px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide-3 p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+            .navbar_hide-4{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 31%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide-4 p{
+              width: 150px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide-4 p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+
+            .navbar_hide-5{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 38%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide-5 p{
+              width: 200px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide-5 p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+
+            .navbar_hide-6{
+              width: max-content;
+              height: max-content;
+              background-color: #183a58;
+              color: white;
+              position: absolute; 
+              top: 60px;
+              left: 45%;
+              z-index: 111;
+              display: none;
+            }
+            .navbar_hide-6 p{
+              width: 200px;
+              height: 40px;
+              display: flex;
+              align-items: center;
+              border-bottom: 1px dashed gainsboro;
+            }
+            .navbar_hide-6 p:hover{
+              color: rgb(255, 238, 0);
+              cursor: pointer;
+            }
+
+          
+
+
+            .navbar_logo{
+              width: max-content;
+              height: 60px;
+              background-color: #183a58;
+              display: flex;
+              color: white;
+              justify-content: center;
+              align-items: center;
+              font-size: 14px;
+              padding-left: 20px;
+              padding-right: 20px;
+            }
+            .navbar_logo:hover{
+              cursor: pointer;
+              color: rgb(255, 238, 0);
+            }
+
+
+
+            /* -------------------------------------- Slider ------------------------------------ */
+
+
+
+
+      .slider-container {
+        /* box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23); */
+        height: 92vh;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        /* background: blueviolet; */
+      }
+      
+      .slide {
+        opacity: 0;
+        height: 100vh;
+        width: 100vw;
+        background-position: center center;
+        background-size: cover;
+        position: absolute;
+        /* top: -15vh; */
+        /* left: -15vw; */
+        transition: 0.4s ease;
+        z-index: 1;
+      }
+      
+      .slide.active {
+        opacity: 1;
+      }
+      
+      .arrow {
+        position: absolute;
+        background-color: rgba(0, 0, 0, 0.219);
+        color: #fff;
+        padding: 25px 40px;
+        font-size: 50px;
+        /* border: 2px solid orange; */
+        top: 50%;
+        border: none;
+        transform: translateY(-50%);
+        cursor: pointer;
+        z-index: 11;
+        transition: 0.5s;
+      }
+      
+      .arrow:focus {
+        outline: 0;
+      }
+      
+      .left-arrow {
+        left: 0;
+      }
+      
+      .right-arrow {
+        right: 0;
+      }
+      .arrow:hover{
+        background-color: white;
+        color: rgba(0, 0, 0, 0.16);
+      }
+
+      .slide_content{
+        width: 80vmin;
+        height: 300px;
+        position: absolute;
+        top: 25%;
+        left: 15%;
+        /* background-color: darkgoldenrod; */
+      }
+      .slide_content h1{
+        font-size: 55px;
+        font-weight: bold;
+      }
+      .slide_content p{
+        font-size: 23px;
+        margin-top: 4vh;
+      }
+      .slide_content_btn1{
+        padding: 15px 30px;
+        font-size: 15px;
+        color: white;
+        background-color: #183a58;
+        border: none;
+        border-radius: 5px;
+        font-weight: bold;
+        margin-top: 4vh;
+        transition: 0.6s;
+      }
+      .slide_content_btn2{
+        padding: 15px 30px;
+        font-size: 15px;
+        color: black;
+        background-color: rgb(255, 238, 0);
+        border: none; 
+        font-weight: bold;
+        border-radius: 5px;
+        margin-left: 1vw;
+        transition: 0.6s;
+      }
+      .image-show-left{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        right: -100%;
+        top: 0;
+        z-index: 111;
+        transition: 0.5s;
+        /* transform: rotateY(100deg); */
+        transform-origin: left;
+        /* background-color: darkmagenta; */
+        animation: rotate 0.2s linear;
+      }
+      @keyframes rotate {
+          0%{
+            transform: rotateY(90deg);
+          }
+          100%{
+            transform: rotateY(0deg);
+          }
+      }
+      
+      .image-show-left-leave{
+        animation: revers 0.2s linear forwards;
+      }
+      @keyframes revers {
+        0%{
+          transform: rotateY(0deg);
+        }
+          100%{
+            transform: rotateY(90deg);
+          }
+      }
+      .image-show-left img{
+        width: 100%;
+        height: 100%;
+      }
+      .image-show-right{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        left: -100%;
+        top: 0;
+        background-color: darkmagenta;
+        animation: rightrotate 0.2s linear;
+        transform-origin: right;
+      }
+      @keyframes rightrotate {
+          0%{
+            transform: rotateY(-90deg);
+          }
+          100%{
+            transform: rotateY(0deg);
+          }
+      }
+      .image-show-right-leave{
+        animation: revers 0.2s linear forwards;
+      }
+      @keyframes revers {
+        0%{
+          transform: rotateY(0deg);
+        }
+          100%{
+            transform: rotateY(-90deg);
+          }
+      }
+      
+      
+      .slide_animate{
+        animation: animate 1s ease-in;
+      }
+      @keyframes animate {
+        0%{
+          margin-top: -50px;
+        }
+        100%{
+          margin-top: 0px;
+        }
+      }
+      
+
+
+      /* ------------------------------------------ Projects -------------------------------------- */
+
+
+
+        .projects{
+          transition: 1s;
+          width: 80%;
+          height: max-content;
+          margin: 5vh auto;
+          /* background-color: goldenrod; */
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+        .projects_1{
+          width: 350px;
+          height: 270px;
+          background-color: green;
+          position: relative;
+          overflow: hidden;
+        }
+        .projects_1 img{
+          width: 100%;
+          height: 100%;
+          transition: 0.6s;
+        }
+        .projects_1:hover img{
+          transform: scale(1.2);
+        }
+        .projects_1_text{
+          width: 100%;
+          height: 50px;
+          color: white;
+          background-color: #2b6ca5d3;
+          position: absolute;
+          bottom: 0;
+          font-size: 20px;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+        }
+
+
+
+        /* ----------------------------------------- Services --------------------------------------- */
+
+
+
+
+        .services-main{
+          width: 80%;
+          /* height: max-content; */
+          /* background-color: violet; */
+          margin: auto;
+          transition: 1s;
+        }
+        .services_text{
+          width: 250px;
+          height: 80px;
+          font-size: 40px;
+          color: rgb(49, 49, 49);
+          font-weight: bold;
+          /* background-color: turquoise; */
+        }
+        .services_text hr{
+          width: 50px;
+          height: 5px;
+          margin: 1vw 2vh;
+          border-radius: 20px;
+          border: none;
+          background-color: rgb(255, 238, 0);
+        }
+        .services{
+          width: 100%;
+          height: 420px;
+          margin: auto;
+          /* background-color: darkgoldenrod; */
+          display: flex;
+          justify-content: space-evenly;
+          align-items: center;
+          flex-wrap: wrap;
+        }
+
+        .services_1{
+          width: 350px;
+          height: max-content;  
+          /* background-color: royalblue; */
+          display: flex;
+        }
+        .services_1_icon{
+          width: 20%;
+          height: 80px;
+          /* background-color: darkgreen; */
+        }
+        .services_1_icon i{
+          font-size: 50px;
+          color: #27669e;
+          transition: 0.4s;
+        }
+        .services_1:hover i{
+          transform: rotateY(180deg);
+        }
+        .services_1_text{
+          width: 80%;
+          height: 100%;
+          /* background-color: green; */
+        }
+        .services_1_text span{
+          font-size: 22px;
+          color: rgb(49, 49, 49);
+          /* font-weight: bold; */
+        }
+        .services_1_text p{
+          font-size: 17px;
+          color: gray;
+          margin-top: 2vh;
+        }
+
+
+
+        @media screen and (max-width: 1300px) {
+          .services-main{
+            height: 70vh;
+          }
+        }
+        @media screen and (max-width: 875px) {
+          .services-main{
+            height: 120vh;
+          }
+        }
+
+
+
+
+
+        /* ---------------------------------------- Experts --------------------------------  */
+ 
+
+
+
+        .experts{
+          width: 100%;
+          height: 600px;
+          /* background-color: greenyellow; */
+          display: flex;
+        }
+        .experts_image{
+          width: 50%;
+          height: 100%;
+          background-position: center center;
+          background-size: cover;
+          background-image: url(./Business-images/img_about.jpg);
+        }
+        .experts_text{
+          width: 50%;
+          height: 100%;
+          background-color: rgb(247, 247, 247);
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+        .experts_content{
+          width: 80%;
+          height: 350px;
+          /* background-color: darkmagenta; */
+        }
+        .experts_content h1{
+          font-size: 50px;
+          color: rgb(49, 49, 49);
+        }
+        .experts_content span{
+          font-size: 18px;
+          color: #27669e;
+          margin-top: 4vh;
+        }
+        .experts_content p{
+          font-size: 16px;
+          margin-top: 4vh;
+          color: gray;
+          line-height: 30px;
+        }
+        .experts_content button{
+          font-size: 18px;
+          font-weight: bold;
+          padding: 10px 30px;
+          border: none;
+          border-radius: 5px;
+          color: white;
+          margin-top: 8vh;
+          background-color: #27669e;
+        }
+
+
+        @media screen and (max-width: 1100px) {
+          .experts{
+            width: 100%;
+            height: 900px;
+            flex-direction: column;
+            align-items: center;
+          }
+          .experts_image{
+            width: 80%;
+            height: 50%;
+          }
+          .experts_text{
+            width: 80%;
+            height: 50%;
+          }
+          .experts_content button{
+            margin-top: 2vh;
+          }
+        }
+        @media screen and (max-width: 650px) {
+          .experts{
+            width: 100%;
+            height: 900px;
+            flex-direction: column;
+            align-items: center;
+          }
+          .experts_image{
+            width: 80%;
+            height: 50%;
+          }
+          .experts_text{
+            width: 80%;
+            height: 50%;
+          }
+          .experts_content button{
+            margin-top: 2vh;
+          }
+        }
+
+
+
+
+        /* ---------------------------------------- Team ------------------------------------ */
+
+
+      .team-main{
+        width: 100%;
+        height: 800px;
+        /* background-color: aquamarine; */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .team-text{
+        width: 300px;
+        height: 100px;
+        /* background-color: blueviolet; */
+        /* margin: auto; */
+        font-size: 50px;
+        font-weight: bold;
+        color: rgb(49, 49, 49);
+        text-align: center;
+      }
+      .team-text hr{
+        width: 50px;
+        height: 4px;
+        margin: auto;
+        background-color: rgb(255, 238, 0);
+        border: none;
+        margin-top: 1vh;
+        border-radius: 10px;
+      }
+      .team{
+        width: 80%;
+        height: 650px;
+        /* background-color: violet; */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+        /* margin: auto; */
+      }
+      .team_card{
+        width: 250px;
+        height: 300px;
+        /* background-color: brown; */
+        position: relative;
+        overflow: hidden;
+        border: 1px solid rgb(202, 202, 202);
+      }
+      .front_side{
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        backface-visibility: hidden;
+        /* background-color: darkorchid; */
+        position: absolute;
+        transition: 0.5s;
+        transform: perspective(600px) rotateY(0deg);
+      }
+      .back_side{ 
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        position: absolute;
+        backface-visibility: hidden;
+        background-color: #27669e;
+        transition: 0.5s;
+        color: white;
+        transform: perspective(600px) rotateY(180deg);
+      }
+      .back_side h3{
+        font-size: 20px;
+        margin-top: 2vh;
+        margin-left: 1vw;
+      }
+      .back_side p{
+        font-size: 18px;
+        margin-top: 1vh;
+        margin-left: 1vw;
+      }
+      .back_side_icons{
+        width: 100px;
+        height: 30px;
+        margin-top: 1vh;
+        margin-left: 1vw;
+        /* background-color: saddlebrown; */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+      }
+      .back_side_icons i{
+        color: white;
+        font-size: 12px;
+      }
+      .back_side_icons i:hover{
+        color: rgb(255, 238, 0);
+      }
+      .back_side span{
+        font-size: 18px;
+        margin-top: 2vh;
+        margin-left: 1vw;
+        transition: 0.4s;
+      }
+      .back_side span:hover{
+        color: rgb(255, 238, 0);
+        cursor: pointer;
+      }
+
+      .team_card:hover .front_side{
+        transform: perspective(600px) rotateY(-180deg);
+      }
+      .team_card:hover .back_side{
+        transform: perspective(600px) rotateY(0deg);
+      }
+
+      .front_side_image{
+        width: 100%;
+        height: 70%;
+      }
+      .front_side_image img{
+        width: 100%;
+        height: 100%;
+      }
+      .front_side_text{
+        width: 100%;
+        height: 30%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: white;
+      }
+      .front_side_text span{
+        color: #27669e;
+      }
+      .front_side_text p{
+        color: gray;
+        margin-top: 1vh;
+      }
+
+
+
+      /* ------------------------------------- Video ------------------------------------ */
+
+
+
+      .video_main{
+        width: 100%;
+        height: 600px;
+        background-size: cover;
+        background-image: url(./Business-images/maxresdefault.webp);
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .video_main::after{
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.521);
+      }
+      .video_text{
+        width: 500px;
+        height: 300px;
+        /* background-color: darksalmon; */
+        z-index: 111;
+        
+      }
+      .video_text h1{
+        color: white;
+        font-size: 50px;
+        text-align: center;
+      }
+      .video_text hr{
+        background-color: rgb(255, 238, 0);
+        margin: auto;
+        width: 70px;
+        height: 5px;
+        border: none;
+        border-radius: 10px;
+        margin-top: 2vh;
+      }
+      .video_text p{
+        color: white;
+        font-size: 25px;
+        margin-top: 2vh;
+        text-align: center;
+      }
+      .video_btn1{
+        padding: 10px 30px;
+        border: none;
+        border-radius: 5px;
+        background-color: #27669e;
+        color: white;
+        margin-top: 5vh;
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 15%;
+      }
+      .video_btn2{
+        padding: 10px 30px;
+        border: none;
+        border-radius: 5px;
+        background-color: rgb(255, 238, 0);
+        color: white;
+        margin-top: 5vh;
+        font-size: 18px;
+        font-weight: bold;
+        margin-left: 1vw;
+      }
+
+
+
+
+      /* --------------------------------------------------------- Happy Clients --------------------------------------------- */
+
+
+
+      .client_main{
+        width: 100%;
+        height: 550px;
+        /* background-color: turquoise; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .client_text{
+        width: 400px;
+        height: 90px;
+        /* background-color: tomato; */
+      }
+      .client_text h2{
+        font-size: 40px;
+        color: rgb(49, 49, 49);
+        text-align: center;
+      }
+      .client_text hr{
+        background-color: rgb(255, 238, 0);
+        width: 50px;
+        height: 5px;
+        border: none;
+        border-radius: 10px;
+        margin: 2vh auto;
+      }
+      .client{
+        width: 75%;
+        height: 250px;
+        /* background-color: deepskyblue; */
+        overflow: hidden;
+        position: relative;
+      }
+      .client_slide{
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background-color: white;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        animation: client_slide_2 1s linear;
+      }
+      @keyframes client_slide_2 {
+        0%{
+          left: 0%;
+        }
+        100%{
+          left: -100%;
+        }
+      }
+
+      .client_active{
+        z-index: 11;
+        animation: client_slide 1s linear;
+      }
+      @keyframes client_slide {
+        0%{
+          left: 100%;
+        }
+        100%{
+          left: 0%;
+        }
+      }
+      .client_slide_1{
+        width: 48%;
+        height: 90%;
+        display: flex;
+        /* background-color: rosybrown; */
+      }
+      .client_slide_image{
+        width: 30%;
+        height: 150px;
+        /* background-color: seagreen; */
+      }
+      .client_slide_image img{
+        width: 100%;
+        height: 100%;
+      }
+      .client_slide_text{
+        width: 70%;
+        height: 250px;
+        /* background-color: green; */
+      }
+      .client_slide_text p{
+        color: rgb(185, 185, 185);
+        font-size: 18px;
+        margin-left: 1vw;
+      }
+      .client_slide_text span{
+        color: #27669e;
+        font-weight: bold;
+        font-size: 17px;
+        margin-left: 1vw;
+      }
+
+
+
+
+      .client_circle{
+        width: 100px;
+        height: 30px;
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        /* background-color: tomato; */
+      }
+      .client_circle .circle1{
+        width: 12px;
+        height: 12px;
+        border: 2px solid gray;
+        border-radius: 50%;
+      }
+      .client_circle_active{
+        border: 3px solid black !important;
+      }
+
+
+
+
+      /* ----------------------------------------------------- Contect Form ---------------------------------------- */
+
+
+
+
+      .contect{
+        width: 100%;
+        height: 500px;
+        background-color: rgb(34,34,34);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .contect_text{
+        width:450px;
+        height: 350px;
+        /* background-color: salmon; */
+      }
+      .contect_text h1{
+        color: white;
+        font-size: 40px;
+      }
+      .contect_text hr{
+        width: 60px;
+        height: 5px;
+        background-color: rgb(255, 238, 0);
+        border: none;
+        border-radius: 10px;
+        margin-top: 3vh;
+      }
+      .contect_text p{
+        height: 5px;
+        color: rgb(185, 185, 185);
+        margin-top: 3vh;
+      }
+      .contect_form{
+        width: 700px;
+        height: 350px;
+        /* background-color: darkviolet; */
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+        flex-wrap: wrap;
+      }
+      .contect_form_1{
+        width: 300px;
+        height: 100px;
+        /* background-color: royalblue; */
+        color: rgb(185, 185, 185);
+        font-size: 15px;
+      } 
+      .contect_form_1 select{
+        width: 300px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: rgb(49, 49, 49);
+        border: none;
+        font-size: 15px;
+        color: rgb(185, 185, 185);
+      }
+      .contect_form_1 input{
+        width: 300px;
+        height: 40px;
+        border-radius: 5px;
+        background-color: rgb(49, 49, 49);
+        border: none;
+        font-size: 15px;
+        color: rgb(185, 185, 185);
+      }
+
+
+      .contect_form_2{
+        width: 450px;
+        height: 100px;
+        margin-left: -150px;
+        position: relative;
+        /* background-color: royalblue; */
+      }
+      .contect_form_2 button{
+        padding: 15px 25px;
+        background-color: #27669e;
+        color: white;
+        font-size: 16px;
+        font-weight: bold;
+        border-radius: 5px;
+        border: none;
+      }
+      
+
+
+        /* --------------------------------------------------------- Happy updates --------------------------------------------- */
+
+
+
+        .update_main{
+        width: 100%;
+        height: 550px;
+        /* background-color: turquoise; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .update_text{
+        width: 400px;
+        height: 90px;
+        /* background-color: tomato; */
+      }
+      .update_text h2{
+        font-size: 40px;
+        color: rgb(49, 49, 49);
+        text-align: center;
+      }
+      .update_text hr{
+        background-color: rgb(255, 238, 0);
+        width: 50px;
+        height: 5px;
+        border: none;
+        border-radius: 10px;
+        margin: 2vh auto;
+      }
+      .update{
+        width: 75%;
+        height: 250px;
+        /* background-color: deepskyblue; */
+        overflow: hidden;
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+      
+      .update_1{
+        width: 48%;
+        height: 90%;
+        display: flex;
+        /* background-color: rosybrown; */
+      }
+      .update_image{
+        width: 45%;
+        height: 200px;
+        /* background-color: seagreen; */
+        position: relative;
+      }
+      .update_image img{
+        width: 100%;
+        height: 100%;
+        position: relative;
+      }
+      .update_image::after{
+        color: white;
+        font-size: 22px;
+        text-align: center;
+        content: '27 AUG';
+        position: absolute;
+        width: 60px;
+        height: 60px;
+        top: 0;
+        left: 0;
+        z-index: 11;
+        background-color: #27669e;
+      } 
+      .update_1_text{
+        width: 50%;
+        height: 250px;
+        /* background-color: green; */
+      }
+      .update_1_text h1{
+        color: rgb(34,34,34);
+        font-size: 20px;
+        margin-left: 1vw;
+        margin-top: 1vh;
+      }
+      .update_1_text p{
+        color: rgb(185, 185, 185);
+        font-size: 18px;
+        margin-top: 3vh;
+        margin-left: 1vw;
+      }
+      .update_1_text span{
+        color: #27669e;
+        font-weight: bold;
+        font-size: 17px;
+        margin-left: 1vw;
+      }
+
+
+
+      /* -------------------------------------------- Footer ----------------------------------------------- */
+      
+
+      .footer_main{
+        width: 100%;
+        height: 650px;
+        background-color: blueviolet;
+      }
+      .footer_information{
+        width: 100%;
+        height: 170px;
+        background-color: rgb(46,87,151);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer_information_text{
+        width: 700px;
+        height: 100px;
+        /* background-color: firebrick; */
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+      }
+      .footer_information_text h1{
+        color: white;
+        font-size: 40px;
+      }
+      .footer_information_text p{
+        color: rgb(185, 185, 185);
+        font-size: 18px;
+      }
+      .footer_information_subscribe{
+        width: 500px;
+        height: 100px;
+        /* background-color: darkturquoise; */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer_information_subscribe input{
+        width: 380px;
+        height: 50px;
+        border-radius: 5px 0 0 5px;
+        background-color: white;
+        border: none;
+        color: rgb(49, 49, 49);
+        outline: none;
+      }
+      .footer_information_subscribe button{
+        width: 100px;
+        height: 50px;
+        font-size: 14px;
+        font-weight: bold;
+        border-radius: 0 5px 5px 0;
+        background-color: rgb(255, 238, 0);
+        border: none;
+        margin-left: -5px;
+        color: rgb(49, 49, 49);
+      }
+
+
+
+      .footer{
+        width: 100%;
+        height: 400px;
+        background-color: rgb(34,34,34);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .footer_1{
+        width: 400px;
+        height: 350px;
+        /* background-color: saddlebrown; */
+      }
+      .footer_1 h1{
+        color: rgb(185, 185, 185);
+        font-size: 30px;
+        margin-top: 4vh;
+      }
+      .footer_1 p{
+        width: 350px;
+        color: rgb(185, 185, 185);
+        font-size: 16px;
+        margin-top: 4vh;
+      }
+      .footer_1 span{
+        color: #27669e;
+        font-size: 20px;
+      }
+
+
+      .footer_2{
+        width: 220px;
+        height: 350px;
+        /* background-color: seagreen; */
+      }
+      .footer_2 h1{
+        color: white;
+        font-size: 30px;
+        margin-top: 4vh;
+      }
+      .footer_2 hr{
+        width: 50px;
+        height: 5px;
+        background-color: rgb(255, 238, 0);
+        border-radius: 10px;
+        margin-top: 2vh;
+        border: none;
+      }
+      .footer_2 p{
+        color: rgb(185, 185, 185);
+        font-size: 15px;
+        margin-top: 2.5vh;
+        transition: 0.4s;
+      }
+      .footer_2 p:hover{
+        color: white;
+        cursor: pointer;
+      }
+
+
+      .footer_3{
+        width: 220px;
+        height: 350px;
+        /* background-color: slateblue; */
+      }
+      .footer_3 h1{
+        color: white;
+        font-size: 30px;
+        margin-top: 4vh;
+      }
+      .footer_3 hr{
+        width: 50px;
+        height: 5px;
+        background-color: rgb(255, 238, 0);
+        border-radius: 10px;
+        margin-top: 2vh;
+        border: none;
+      }
+      .footer_3 p{
+        color: rgb(185, 185, 185);
+        font-size: 15px;
+        margin-top: 2.5vh;
+        transition: 0.4s;
+      }
+      .footer_3 p:hover{
+        color: white;
+        cursor: pointer;
+      }
+
+
+      .footer_4{
+        width: 400px;
+        height: 350px;
+        /* background-color: deeppink; */
+      }
+      .footer_4 h1{
+        color: white;
+        font-size: 30px;
+        margin-top: 4vh;
+      }
+      .footer_4 hr{
+        width: 50px;
+        height: 5px;
+        background-color: rgb(255, 238, 0);
+        border-radius: 10px;
+        margin-top: 2vh;
+        border: none;
+      }
+      .footer_4 p{
+        color: rgb(185, 185, 185);
+        font-size: 15px;
+        margin-top: 3vh;
+        transition: 0.4s;
+      }
+
+
+      .footer_copyright{
+        width: 100%;
+        height: 80px;
+        background-color: rgb(24,24,24);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: rgb(185, 185, 185);
+      }
+
+
+      
+      
+      
+      </style>
+
+</head>
+<body>
+  
+
+
+
+
+<div id="loader">
+    <div id="loader-top"></div>
+    <img src="./Business-images/Curve-Loading.gif" alt="">
+    <div id="loader-bottom"></div>
+</div>
+
+
+<div class="navbar_main">
+    <div class="navbar">
+        <ul>
+          <li><a href="./Business.html" style="text-decoration: none; color: white;">Home</a></li>
+          <div class="navbar_hide">
+            <p> &nbsp; Home 02</p>
+            <p> &nbsp; Home 03</p>
+            <p> &nbsp; Home 04</p>
+          </div>
+          <li>Services</li>
+          <div class="navbar_hide-2">
+            <p> &nbsp;  Accumulation</p>
+            <p> &nbsp;  Business Planning</p>
+            <p> &nbsp;  Estate Planning</p>
+            <p> &nbsp;  Retirement Planning</p>
+            <p> &nbsp;  Risk Management</p>
+            <p> &nbsp;  Stock</p>
+            <a href="./Taxation.html" style="text-decoration: none; color: white;"><p> &nbsp;  Taxation</p></a>
+            <p> &nbsp;  Trades</p>
+          </div>
+          <li>Project</li>
+          <div class="navbar_hide-3">
+            <p> &nbsp; Projects 02</p>
+            <p> &nbsp; Projects 03</p>
+            <p> &nbsp; Projects 04</p>
+          </div>
+          <li>News</li>
+          <div class="navbar_hide-4">
+            <p> &nbsp; News 02</p>
+            <p> &nbsp; News 03</p>
+            <p> &nbsp; News 04</p>
+          </div>
+          <li>Our team</li>
+          <div class="navbar_hide-5">
+            <p> &nbsp; Team 02</p>
+            <p> &nbsp; Team 03</p>
+            <p> &nbsp; Team 04</p>
+            <p> &nbsp; Team 05</p>
+            <p> &nbsp; Team 06</p>
+            <p> &nbsp; Team 07</p>
+            <p> &nbsp; Team 08</p>
+          </div>
+          <li>pages</li>
+          <div class="navbar_hide-6">
+            <p> &nbsp; Pages 02</p>
+            <p> &nbsp; Pages 03</p>
+            <p> &nbsp; Pages 04</p>
+          </div>
+          <li>Contect Us</li>
+        </ul>
+    </div>
+    <div class="navbar_logo">GET AN APPOINTMENT</div>
+
+
+</div>
+
+
+    <div class="container">
+
+
+      <div class="slider-container">
+        <div class="slide active" style="background-image: url(./Business-images/img_slider01.jpg);">
+            <div class="slide_content">
+              <h1>Helping Your Business Build and Grow</h1>
+              <p>With our 10 years experience helping <br> business to find comprehensive solutions</p>
+              <button class="slide_content_btn1" >Our company</button>
+              <button class="slide_content_btn2">Get in Touch</button>
+            </div>
+        </div>
+        <div class="slide" style="background-image: url(./Business-images/img_slider02.jpg);">
+          <div class="slide_content">
+            <h1>Helping Your Business Build and Grow</h1>
+            <p>With our 10 years experience helping <br> business to find comprehensive solutions</p>
+            <button class="slide_content_btn1" >Our company</button>
+            <button class="slide_content_btn2">Get in Touch</button>
+          </div>
+        </div>
+        <div class="slide" style="background-image: url(./Business-images/img_slider03.jpg);">
+          <div class="slide_content">
+            <h1>Helping Your Business Build and Grow</h1>
+            <p>With our 10 years experience helping <br> business to find comprehensive solutions</p>
+            <button class="slide_content_btn1" >Our company</button>
+            <button class="slide_content_btn2">Get in Touch</button>
+          </div>
+        </div>
+  
+        <button class="arrow left-arrow" id="left">
+          <i class="fas fa-angle-left"></i>
+          <!-- <div class="image-show-left"></div> -->
+        </button>
+  
+        <button class="arrow right-arrow" id="right">
+          <i class="fas fa-angle-right"></i>
+          <!-- <div class="image-show-right"></div> -->
+        </button>
+      </div>
+
+    </div>
+
+    <div class="projects" data-aos="fade-right">
+        <div class="projects_1">
+            <img src="./Business-images/img_feature01.jpg" alt="">
+            <div class="projects_1_text"> &nbsp; Why Our Consulting</div>
+        </div>
+        <div class="projects_1">
+          <img src="./Business-images/img_feature02.jpg" alt="">
+          <div class="projects_1_text"> &nbsp; Global consumer insights</div>
+        </div>
+        <div class="projects_1">
+          <img src="./Business-images/img_feature03.jpg" alt="">
+          <div class="projects_1_text"> &nbsp; Thought Leadership</div>
+        </div>
+        
+    </div>
+
+    <div class="services-main"  data-aos="zoom-in">
+        <div class="services_text">
+            Our Services
+            <hr>
+        </div>
+        <div class="services">
+            <div class="services_1">
+                <div class="services_1_icon">
+                  <i class="fas fa-clipboard-list"></i>
+                </div>
+                <div class="services_1_text">
+                    <span>Accumulation</span>
+                    <p>Sed ut perspiciatis unde omnis iste error sit voluptatem accusantium doloremque lau dantium, rem aperiam eaque ipsa ab illo inventore veritatis</p>
+                </div>
+            </div>
+            <div class="services_1">
+              <div class="services_1_icon">
+                <i class="fas fa-chart-line"></i>
+              </div>
+              <div class="services_1_text">
+                  <span>Taxation</span>
+                  <p>Sed ut perspiciatis unde omnis iste error sit voluptatem accusantium doloremque lau dantium, rem aperiam eaque ipsa ab illo inventore veritatis</p>
+              </div>
+          </div>
+          <div class="services_1">
+            <div class="services_1_icon">
+              <i class="far fa-clock"></i>
+            </div>
+            <div class="services_1_text">
+                <span>Risk Management</span>
+                <p>Sed ut perspiciatis unde omnis iste error sit voluptatem accusantium doloremque lau dantium, rem aperiam eaque ipsa ab illo inventore veritatis</p>
+            </div>
+        </div>
+        <div class="services_1">
+          <div class="services_1_icon">
+            <i class="fas fa-wind"></i>
+          </div>
+          <div class="services_1_text">
+              <span>Estate Planning</span>
+              <p>Sed ut perspiciatis unde omnis iste error sit voluptatem accusantium doloremque lau dantium, rem aperiam eaque ipsa ab illo inventore veritatis</p>
+          </div>
+      </div>
+      <div class="services_1">
+        <div class="services_1_icon">
+          <i class="fas fa-chalkboard"></i>
+        </div>
+        <div class="services_1_text">
+            <span>Retirement Planning</span>
+            <p>Sed ut perspiciatis unde omnis iste error sit voluptatem accusantium doloremque lau dantium, rem aperiam eaque ipsa ab illo inventore veritatis</p>
+        </div>
+    </div>
+    <div class="services_1">
+      <div class="services_1_icon">
+        <i class="fas fa-globe-americas"></i>
+      </div>
+      <div class="services_1_text">
+          <span>Business Planning</span>
+          <p>Sed ut perspiciatis unde omnis iste error sit voluptatem accusantium doloremque lau dantium, rem aperiam eaque ipsa ab illo inventore veritatis</p>
+      </div>
+  </div>
+        </div>
+    </div>
+
+    <div class="experts">
+        <div class="experts_image" data-aos="fade-right"></div>
+        <div class="experts_text">
+            <div class="experts_content">
+                <h1>Financial Experts</h1>
+                <span>providing the best financial consultants</span>
+                <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt, neque porro quisquam est</p>
+                <button>Read more</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="team-main"  data-aos="fade-right">
+        <div class="team-text">
+            Our Teams
+            <hr>
+        </div>
+        <div class="team">
+            <div class="team_card">
+                <div class="front_side">
+                      <div class="front_side_image">
+                        <img src="./Business-images/img_mem06.jpg" alt="">
+                      </div>
+                      <div class="front_side_text">
+                          <span>Brandon Copperfield</span>
+                          <p>Founder & CEO</p>
+                      </div>
+                </div>
+                <div class="back_side">
+                    <h3>Brandon Copperfield</h3>
+                    <p>Founder & CEO <br> <br>
+                      He began his career as an investment adviser, financial consultant, and mortgage broker, and was also the founder of a business that sold toiletry kits.</p>
+                      <div class="back_side_icons">
+                        <i class="fab fa-facebook-f"></i>
+                        <i class="fab fa-twitter"></i>
+                        <i class="fab fa-skype"></i>
+                        <i class="fab fa-youtube"></i>
+                      </div>
+                      <span>View Profile &nbsp; ></span>
+                </div>
+            </div>
+            <div class="team_card">
+              <div class="front_side">
+                    <div class="front_side_image">
+                      <img src="./Business-images/img_mem01.jpg" alt="">
+                    </div>
+                    <div class="front_side_text">
+                        <span>Brandon Copperfield</span>
+                        <p>Founder & CEO</p>
+                    </div>
+              </div>
+              <div class="back_side">
+                  <h3>Brandon Copperfield</h3>
+                  <p>Founder & CEO <br> <br>
+                    He began his career as an investment adviser, financial consultant, and mortgage broker, and was also the founder of a business that sold toiletry kits.</p>
+                    <div class="back_side_icons">
+                      <i class="fab fa-facebook-f"></i>
+                      <i class="fab fa-twitter"></i>
+                      <i class="fab fa-skype"></i>
+                      <i class="fab fa-youtube"></i>
+                    </div>
+                    <span>View Profile &nbsp; ></span>
+              </div>
+          </div>
+          <div class="team_card">
+            <div class="front_side">
+                  <div class="front_side_image">
+                    <img src="./Business-images/img_mem02.jpg" alt="">
+                  </div>
+                  <div class="front_side_text">
+                      <span>Cart Robort</span>
+                      <p>Founder & CEO</p>
+                  </div>
+            </div>
+            <div class="back_side">
+                <h3>Brandon Copperfield</h3>
+                <p>Founder & CEO <br> <br>
+                  He began his career as an investment adviser, financial consultant, and mortgage broker, and was also the founder of a business that sold toiletry kits.</p>
+                  <div class="back_side_icons">
+                    <i class="fab fa-facebook-f"></i>
+                    <i class="fab fa-twitter"></i>
+                    <i class="fab fa-skype"></i>
+                    <i class="fab fa-youtube"></i>
+                  </div>
+                  <span>View Profile &nbsp; ></span>
+            </div>
+        </div>
+        <div class="team_card">
+          <div class="front_side">
+                <div class="front_side_image">
+                  <img src="./Business-images/img_mem03.jpg" alt="">
+                </div>
+                <div class="front_side_text">
+                    <span>Brandon Copperfield</span>
+                    <p>Founder & CEO</p>
+                </div>
+          </div>
+          <div class="back_side">
+              <h3>Brandon Copperfield</h3>
+              <p>Founder & CEO <br> <br>
+                He began his career as an investment adviser, financial consultant, and mortgage broker, and was also the founder of a business that sold toiletry kits.</p>
+                <div class="back_side_icons">
+                  <i class="fab fa-facebook-f"></i>
+                  <i class="fab fa-twitter"></i>
+                  <i class="fab fa-skype"></i>
+                  <i class="fab fa-youtube"></i>
+                </div>
+                <span>View Profile &nbsp; ></span>
+          </div>
+      </div>
+      <div class="team_card">
+        <div class="front_side">
+              <div class="front_side_image">
+                <img src="./Business-images/img_mem04.jpg" alt="">
+              </div>
+              <div class="front_side_text">
+                  <span>Peter Himmelman</span>
+                  <p>Founder & CEO</p>
+              </div>
+        </div>
+        <div class="back_side">
+            <h3>Brandon Copperfield</h3>
+            <p>Founder & CEO <br> <br>
+              He began his career as an investment adviser, financial consultant, and mortgage broker, and was also the founder of a business that sold toiletry kits.</p>
+              <div class="back_side_icons">
+                <i class="fab fa-facebook-f"></i>
+                <i class="fab fa-twitter"></i>
+                <i class="fab fa-skype"></i>
+                <i class="fab fa-youtube"></i>
+              </div>
+              <span>View Profile &nbsp; ></span>
+        </div>
+    </div>
+    <div class="team_card">
+      <div class="front_side">
+            <div class="front_side_image">
+              <img src="./Business-images/img_mem05.jpg" alt="">
+            </div>
+            <div class="front_side_text">
+                <span>Brandon Copperfield</span>
+                <p>Founder & CEO</p>
+            </div>
+      </div>
+      <div class="back_side">
+          <h3>Brandon Copperfield</h3>
+          <p>Founder & CEO <br> <br>
+            He began his career as an investment adviser, financial consultant, and mortgage broker, and was also the founder of a business that sold toiletry kits.</p>
+            <div class="back_side_icons">
+              <i class="fab fa-facebook-f"></i>
+              <i class="fab fa-twitter"></i>
+              <i class="fab fa-skype"></i>
+              <i class="fab fa-youtube"></i>
+            </div>
+            <span>View Profile &nbsp; ></span>
+      </div>
+  </div>
+  <div class="team_card">
+    <div class="front_side">
+          <div class="front_side_image">
+            <img src="./Business-images/img_mem06.jpg" alt="">
+          </div>
+          <div class="front_side_text">
+              <span>Brandon Copperfield</span>
+              <p>Founder & CEO</p>
+          </div>
+    </div>
+    <div class="back_side">
+        <h3>Brandon Copperfield</h3>
+        <p>Founder & CEO <br> <br>
+          He began his career as an investment adviser, financial consultant, and mortgage broker, and was also the founder of a business that sold toiletry kits.</p>
+          <div class="back_side_icons">
+            <i class="fab fa-facebook-f"></i>
+            <i class="fab fa-twitter"></i>
+            <i class="fab fa-skype"></i>
+            <i class="fab fa-youtube"></i>
+          </div>
+          <span>View Profile &nbsp; ></span>
+    </div>
+</div>
+<div class="team_card">
+  <div class="front_side">
+        <div class="front_side_image">
+          <img src="./Business-images/img_mem02.jpg" alt="">
+        </div>
+        <div class="front_side_text">
+            <span>Cart Robort</span>
+            <p>Founder & CEO</p>
+        </div>
+  </div>
+  <div class="back_side">
+      <h3>Brandon Copperfield</h3>
+      <p>Founder & CEO <br> <br>
+        He began his career as an investment adviser, financial consultant, and mortgage broker, and was also the founder of a business that sold toiletry kits.</p>
+        <div class="back_side_icons">
+          <i class="fab fa-facebook-f"></i>
+          <i class="fab fa-twitter"></i>
+          <i class="fab fa-skype"></i>
+          <i class="fab fa-youtube"></i>
+        </div>
+        <span>View Profile &nbsp; ></span>
+  </div>
+</div>
+            
+        </div>
+    </div>
+
+    <div class="video_main">
+        <div class="video_text">
+            <h1>We are Consultant</h1>
+            <hr>
+            <p>Challenging established thinking, achieving
+              sustainable advantage</p>
+              <button class="video_btn1">Our Service</button>
+              <button class="video_btn2">Our History</button>
+        </div>
+    </div>
+
+    <div class="client_main" >
+      
+              <div class="client_text">
+                  <h2>1000+ Happy Clients</h2>
+                  <hr>
+              </div>
+ 
+              <div class="client">
+                  <div class="client_slide client_active">
+                      <div class="client_slide_1">
+                          <div class="client_slide_image">
+                              <img src="./Business-images/client_avatar03.jpg" alt="">
+                          </div>
+                          <div class="client_slide_text">
+                                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem commodi laboriosam dicta nemo aliquid! A eius ad debitis excepturi dolorem error, quaerat delectus atque.</p><br><br>
+                                <span>John Deo</span><br>
+                                <p>Customer Service</p>
+                          </div>
+                      </div>
+                      <div class="client_slide_1">
+                        <div class="client_slide_image">
+                          <img src="./Business-images/client_avatar04.jpg" alt="">
+                        </div>
+                        <div class="client_slide_text">
+                              <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem commodi laboriosam dicta nemo aliquid! A eius ad debitis excepturi dolorem error, quaerat delectus atque.</p><br><br>
+                              <span>Robert Huth</span><br>
+                              <p>Finance Director</p>
+                        </div>
+                      </div>
+                  </div>
+                  <div class="client_slide">
+                    <div class="client_slide_1">
+                      <div class="client_slide_image">
+                          <img src="./Business-images/client_avatar03.jpg" alt="">
+                      </div>
+                      <div class="client_slide_text">
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem commodi laboriosam dicta nemo aliquid! A eius ad debitis excepturi dolorem error, quaerat delectus atque.</p><br><br>
+                            <span>John Deo</span><br>
+                            <p>Customer Service</p>
+                      </div>
+                    </div>
+                    <div class="client_slide_1">
+                      <div class="client_slide_image">
+                        <img src="./Business-images/client_avatar04.jpg" alt="">
+                      </div>
+                      <div class="client_slide_text">
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem commodi laboriosam dicta nemo aliquid! A eius ad debitis excepturi dolorem error, quaerat delectus atque.</p><br><br>
+                            <span>Robert Huth</span><br>
+                            <p>Finance Director</p>
+                      </div>
+                    </div>  
+                  </div>
+                  <div class="client_slide">
+                    <div class="client_slide_1">
+                      <div class="client_slide_image">
+                          <img src="./Business-images/client_avatar03.jpg" alt="">
+                      </div>
+                      <div class="client_slide_text">
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem commodi laboriosam dicta nemo aliquid! A eius ad debitis excepturi dolorem error, quaerat delectus atque.</p><br><br>
+                            <span>John Deo</span><br>
+                            <p>Customer Service</p>
+                      </div>
+                    </div>
+                    <div class="client_slide_1">
+                      <div class="client_slide_image">
+                        <img src="./Business-images/client_avatar04.jpg" alt="">
+                      </div>
+                      <div class="client_slide_text">
+                            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem commodi laboriosam dicta nemo aliquid! A eius ad debitis excepturi dolorem error, quaerat delectus atque.</p><br><br>
+                            <span>Robert Huth</span><br>
+                            <p>Finance Director</p>
+                      </div>
+                    </div>      
+                  </div>
+              </div>
+ 
+             <div class="client_circle">
+                  <div class="circle1 client_circle_active"></div>
+                  <div class="circle1"></div>
+                  <div class="circle1"></div>
+              </div>
+    </div>
+
+    <div class="contect">
+        <div class="contect_text">
+            <h1>Request Call Back.</h1>
+            <hr>
+            <p>Would you like to speak to one of our financial advisers over the phone? Just submit your details and we’ll be in touch shortly.You can also email us if you would prefer.</p>
+        </div>
+        <div class="contect_form">
+            <div class="contect_form_1">
+                <label for="select">How can we help?</label> <br>
+                <select name="select" id="">
+                  <option value="I Would like to discuss">I Would like to discuss</option>
+                  <option value="Requienment Planning">Requienment Planning</option>
+                  <option value="Global consumer insights">Global consumer insights</option>
+                  <option value="-none-:">-none-</option>
+                </select>    
+            </div>
+            <div class="contect_form_1">
+                Your Name: <span style="color: red;">*</span><br>
+                <input type="text">
+            </div>
+            <div class="contect_form_1">
+              Your Phone Number: <span style="color: red;">*</span><br>
+                <input type="number">
+            </div>
+            <div class="contect_form_1">
+              Your Email Address: <span style="color: red;">*</span><br>
+                <input type="email">
+            </div>
+            <div class="contect_form_2">
+                <button>Send Message</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="update_main"  data-aos="fade-up">
+      <div class="update_text">
+        <h2>News Update</h2>
+        <hr>
+    </div>
+
+    <div class="update">
+            <div class="update_1">
+                <div class="update_image">
+                    <img src="./Business-images/img_blog08.jpg" alt="">
+                </div>
+                <div class="update_1_text">
+                      <h1>Within the construction industry as their overdraft</h1>
+                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem commodi laboriosam dicta nemo aliquid.</p><br>
+                      <span>Continue Reading &nbsp; <i class="fas fa-long-arrow-alt-right"></i> </span><br>
+                </div>
+            </div>
+            <div class="update_1">
+                <div class="update_image">
+                  <img src="./Business-images/img_blog07.jpg" alt="">
+                </div>
+                <div class="update_1_text">
+                      <h1>Retail banks wake up to digital lending this year 2</h1>
+                      <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Exercitationem commodi laboriosam dicta nemo aliquid.</p><br>
+                      <span>Continue Reading &nbsp; <i class="fas fa-long-arrow-alt-right"></i> </span><br>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    
+      <div class="footer_main">
+
+        <div class="footer_information">
+            <div class="footer_information_text">
+                <h1>Need more information?</h1>
+                <p>We can call you and help with your problem, just leave us your phone number.</p>
+            </div>
+            <div class="footer_information_subscribe">
+                <input type="text">
+                <button>Subscribe</button>
+            </div>
+        </div>
+
+          <div class="footer">
+              <div class="footer_1" data-aos="fade-right">
+                  <h1>Footer Logo</h1>
+                  <p>Lorem ipsum dolor sit consectetur adipiscing elit
+                    sed do eiusmod tempor incididunt ut labore et
+                    dolore magna veniam aliqua.</p>
+                    <br><br>
+                    <span><i class="fas fa-phone"></i> &nbsp; 2700 - 345 - 9889</span>
+                    <p style="margin-top: 0; margin-left: 2vw;"> support24.7@domain.com</p>
+              </div>    
+              <div class="footer_2" data-aos="zoom-in">
+                  <h1>Follow us</h1>
+                  <hr>
+                  <p><i class="fab fa-facebook-f"></i> &nbsp; Facebook</p>
+                  <p><i class="fab fa-twitter"></i> &nbsp; Twitter</p>
+                  <p><i class="fab fa-google-plus-g"></i> &nbsp; Google Plus</p>
+                  <p><i class="fab fa-linkedin-in"></i> &nbsp; Linkedin</p>
+                  <p><i class="fab fa-youtube"></i> &nbsp; Youtube</p>
+              </div>    
+              <div class="footer_3" data-aos="zoom-in">
+                <h1>Our Services</h1>
+                <hr>
+                <p><i class="fas fa-caret-right"></i> &nbsp; Accumulation</p>
+                <p><i class="fas fa-caret-right"></i> &nbsp; Taxation</p>
+                <p><i class="fas fa-caret-right"></i> &nbsp; Risk Management</p>
+                <p><i class="fas fa-caret-right"></i> &nbsp; Estate Planning</p>
+                <p><i class="fas fa-caret-right"></i> &nbsp; Business Planning</p>
+              </div>    
+              <div class="footer_4" data-aos="fade-left">
+                <h1>Business Hours</h1>
+                <hr>
+                <p>Our suppoer available to help you 24 <br> hours a day, seven days week</p>
+                <p>Monday-Saturday: ............... 8.00-18.00</p>
+                <p>Sunday: ............................................ Closed</p>
+                <p>Sunday: ............................................ Closed</p> 
+              </div>    
+          </div>
+
+        <div class="footer_copyright">
+          © 2016 Develop by Innovation theme. All rights reserved
+        </div>
+
+      </div>
+
+
+
+
+
+
+
+    <script>
+
+
+//  PreLoader
+
+
+var preloader = document.getElementById('loader'); 
+          function pre() {
+              preloader.style.display = 'none';
+        }        
+        setInterval(() => {
+           pre() 
+        }, 1500);
+
+
+
+
+// Client slider 
+
+
+  var client_slides = document.querySelectorAll(".client_slide");
+  var client_circles = document.querySelectorAll(".circle1");
+
+  let clientActiveSlide = 0;
+
+      function changeslide() {
+
+        client_slides.forEach(function(e){
+          e.classList.remove("client_active");
+        })
+        client_circles.forEach(function(e){
+          e.classList.remove("client_circle_active");
+        })
+        clientActiveSlide++
+        if(clientActiveSlide > client_slides.length - 1){
+          clientActiveSlide = 0
+        }
+          client_slides[clientActiveSlide].classList.add("client_active")
+          client_circles[clientActiveSlide].classList.add("client_circle_active")
+      }
+
+  setInterval(() => {
+      changeslide();
+  }, 5000);
+
+
+
+
+
+//  Slider
+
+
+const body = document.body
+const slides=document.querySelectorAll(".slide")
+const leftBtn= document.getElementById("left")
+const rightBtn= document.getElementById("right")
+const arrow=document.querySelectorAll(".arrow");
+const image_show_left = document.querySelector(".image-show-left");
+// const arrow_heading=document.querySelector(".slide_content h1");
+// const arrow_para=document.querySelector(".slide_content p");
+// const arrow_btn=document.querySelector(".slide_content_btn1");
+
+var array = [
+  "D:/Js/Business/Business-images/img_slider01.jpg",
+  "D:/Js/Business/Business-images/img_slider02.jpg",
+  "D:/Js/Business/Business-images/img_slider03.jpg",
+  "D:/Js/Business/Business-images/img_slider01.jpg"
+  ]
+var array_2 = [
+  "D:/Js/Business/Business-images/img_slider01.jpg",
+  "D:/Js/Business/Business-images/img_slider03.jpg",
+  "D:/Js/Business/Business-images/img_slider01.jpg",
+  "D:/Js/Business/Business-images/img_slider02.jpg"
+  ]
+
+  let activeSlides=0
+  rightBtn.addEventListener("mouseenter", function(){
+    var image_show = document.createElement("img");
+    image_show.style.display = "block"
+    rightBtn.appendChild(image_show)
+    image_show.classList.add("image-show-right")
+    // if(activeSlides = 3){
+    //   activeSlides = 0
+    // }
+    image_show.setAttribute("src", array[activeSlides + 1]);
+    rightBtn.addEventListener("mouseleave", function(){
+      // rightBtn.removeChild(image_show);
+      image_show.classList.add("image-show-right-leave");
+    })
+  })
+
+
+  leftBtn.addEventListener("mouseenter", function(){
+    
+    var image_show = document.createElement("img");
+    image_show.style.display = "block"
+    leftBtn.appendChild(image_show)
+    image_show.classList.add("image-show-left")
+    image_show.setAttribute("src", array_2[activeSlides + 1]);
+   
+    leftBtn.addEventListener("mouseleave", function(){
+      image_show.classList.add("image-show-left-leave")
+    })
+
+  })
+
+rightBtn.addEventListener("click",function(){
+  activeSlides++
+    console.log(activeSlides);
+    if(activeSlides>slides.length - 1){
+                activeSlides=0
+            }
+            setActiveSlide()
+          })
+leftBtn.addEventListener("click",function(){
+    activeSlides--
+    if(activeSlides < 0){
+        activeSlides=slides.length - 1
+    }
+    setActiveSlide()
+  })
+
+  function setActiveSlide(){
+    slides.forEach(function(slide){
+        slide.classList.remove("active")    
+        slides[activeSlides].classList.add("active")
+      })
+      
+    }
+    
+
+        
+        // Navbar DropDpwn On Hover 
+        
+        var navbar_list = document.querySelectorAll(".navbar ul li");
+               
+    navbar_list.forEach(function(e){
+      e.addEventListener("mouseenter", function(){
+        e.nextElementSibling.style.display = "block";
+        e.nextElementSibling.addEventListener("mouseenter", function(){
+          e.nextElementSibling.style.display = "block"
+        })
+        e.nextElementSibling.addEventListener("mouseleave", function(){
+          e.nextElementSibling.style.display = "none"
+        })
+      })
+      e.addEventListener("mouseleave", function(){
+        e.nextElementSibling.style.display = "none";
+      })
+    })
+    
+    
+    </script>
+
+
+
+
+
+<script>
+  AOS.init();
+</script>
+</body>
+</html>

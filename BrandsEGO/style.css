@@ -1,0 +1,1035 @@
+*{
+  padding: 0px;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container{
+  width: 100%;
+  height: 110vh;
+  /* background-color: darkgreen; */
+}
+.upper{
+  width: 100%;
+  height: 40px;
+  background-color: rgb(27,31,35);
+  position: relative;
+}
+.upper_left{
+  width: 380px;
+  height: 40px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  font-size: 13px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.upper_left i{
+  font-size: 14px;
+}
+
+.upper_right{
+  width: 150px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  color: white;
+  font-size: 13px;
+}
+.upper_right i{
+  font-size: 14px;
+}
+.upper_right p{
+  width: 50%;
+  text-align: center;
+  /* padding: 0 10px; */
+}
+.upper_right p:hover{
+  line-height: 40px;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+}
+.upper_right p:nth-child(2){
+  line-height: 40px;
+  background-color: white;
+  cursor: pointer;
+  color: white;
+  background-color: red;
+}
+.upper_right p:nth-child(2):hover{
+  background-color: white;
+  color: black;
+}
+.navbar_main{
+  width: 100%;
+  height: 120px;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.navbar_logo{
+  width: 220px;
+  height: 40px;
+}
+.navbar{
+  width: 100%;
+  height: 50px;
+  /* background-color: green; */
+  position: relative;
+}
+.navbar_logo img{
+  width: 100%;
+  height: 100%;
+}
+.nav{
+  width: 850px;
+  height: 50px;
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* background-color: darkorange; */
+}
+.nav ul{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+}
+.nav ul li{
+  font-size: 14px;
+  line-height: 50px;
+  border-bottom: 1px solid white;
+}
+.nav ul li:hover{
+  border-color: black;
+  cursor: pointer;
+}
+.nav ul li:nth-child(2){
+  animation: discount 2s linear infinite;
+  padding: 0 5px;
+}
+@keyframes discount {
+  0%, 100%{
+    box-shadow: 0 0 0 white;
+  }
+  50%{
+    box-shadow: 2px 2px 10px rgb(73,148,206);
+  }
+}
+
+
+.search{
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translate(0, -50%);
+  /* background-color: darksalmon; */
+}
+.search_input{
+  width: 80%;
+  height: 30px;
+  padding: 5px 10px;
+  font-size: 18px;
+  border: 1px solid black;
+  border-radius: 30px;
+}
+.search_btn{
+  padding: 10px;
+  border-radius: 50%;
+  background-color: transparent;
+  color: black;
+  border: none;
+  font-size: 20px;
+  position: absolute;
+  right: 20px;
+  top: 0px;
+}
+
+.slider_main{
+  width: 100%;
+  height: 90vh;
+  background-color: violet;
+  position: relative;
+}
+.slides_container{
+  width: 100%;
+  height: 100%;
+  background-color: turquoise;
+  position: relative;
+}
+.slider_main:hover .slider_btn{
+  opacity: 1;
+}
+.slides{
+  width: 100%;
+  height: 100%;
+  top: 0;
+  position: absolute;
+  background-color: turquoise;
+  visibility: hidden;
+  opacity: 0;
+  transition: 400ms;
+}
+.slider_btns{
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.slider_btn{
+  width: 60px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 70px;
+  cursor: pointer;
+  opacity: 0;
+  transition: 400ms;
+}
+.slide1{
+  background-image: url(./images/23769774_1600x.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+.slide2{
+  background-image: url(./images/US_polo_shirts_in_pakistan_1600x.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+.slide3{
+  background-image: url(./images/kids_zipper_Hoodies_1600x.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+.slide4{
+  background-image: url(./images/men_zipper_hoodies_1600x.jpg);
+  background-size: cover;
+  background-position: center center;
+}
+.active{
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+/* --------------------------------------- Products ----------------------------------- */
+
+
+
+.products_main{
+  width: 100%;
+  height: 600px;
+  /* background-color: blueviolet; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 30px 0;
+}
+.products_main a{
+  text-decoration: none;
+  color: black;
+}
+.products{
+  width: 250px;
+  height: 290px;
+  /* background-color: cadetblue; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.products_image{
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  border: 1px solid rgb(219, 218, 218);
+}
+.products_image img{
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+.products p{
+  font-size: 16px;
+  color: black;
+}
+
+
+
+
+
+
+
+
+/* ------------------------------------------ Zippers ----------------------------------- */
+
+
+
+.zipper_main{
+  width: 100%;
+  height: 650px;
+  /* background-color: burlywood; */
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+.zipper_text{
+  width: 80%;
+  height: 90px;
+  /* background-color: chocolate; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: black;
+  border-bottom: 1px solid rgb(219, 218, 218);
+}
+.zippers{
+  width: 100%;
+  height: 550px;
+  /* background-color: rosybrown; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.zippers a{
+  text-decoration: none;
+  color: black;
+}
+.zipper{
+  width: 350px;
+  height: 500px;
+  /* background-color: saddlebrown; */
+  text-align: center;
+  position: relative;
+}
+.zipper_image{
+  width: 100%;
+  height: 430px;
+  border-radius: 6px;
+  border: 1px solid rgb(219, 218, 218);
+  /* background-color: seagreen; */
+}
+.zipper_image img{
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+.zipper p{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.zipper_red{
+  color: red;
+  text-align: center;
+  font-size: 14px;
+}
+.zipper_gray{
+  color: gray;
+  text-decoration: line-through;
+  text-align: center;
+  font-size: 14px;
+}
+.offer_red{
+  width: max-content;
+  height: max-content;
+  padding: 4px;
+  background-color: red;
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.offer_black{
+  width: max-content;
+  height: max-content;
+  padding: 4px;
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: offer 1s linear infinite;
+}
+@keyframes offer {
+  0%, 100%{transform: scale(1);}
+  50%{transform: scale(1.1);}
+}
+
+
+
+
+
+
+/* ------------------------------------------ jackets ----------------------------------- */
+
+
+
+.jacket_main{
+  width: 100%;
+  height: max-content;
+  /* background-color: burlywood; */
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+.jacket_text{
+  width: 80%;
+  height: 90px;
+  /* background-color: chocolate; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: black;
+  border-bottom: 1px solid rgb(219, 218, 218);
+}
+.jackets{
+  width: 80%;
+  height: 400px;
+  /* background-color: rosybrown; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.jackets a{
+  text-decoration: none;
+  color: black;
+}
+.jacket{
+  width: 230px;
+  height: 370px;
+  /* background-color: saddlebrown; */
+  text-align: center;
+  position: relative;
+}
+.jacket_image{
+  width: 100%;
+  height: 300px;
+  border-radius: 6px;
+  border: 1px solid rgb(219, 218, 218);
+  /* background-color: seagreen; */
+}
+.jacket_image img{
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+.jacket p{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.jacket_red{
+  color: red;
+  text-align: center;
+  font-size: 14px;
+}
+.jacket_gray{
+  color: gray;
+  text-decoration: line-through;
+  text-align: center;
+  font-size: 14px;
+}
+.offer_red{
+  width: max-content;
+  height: max-content;
+  padding: 4px;
+  background-color: red;
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.offer_black{
+  width: max-content;
+  height: max-content;
+  padding: 4px;
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: offer 1s linear infinite;
+}
+@keyframes offer {
+  0%, 100%{transform: scale(1);}
+  50%{transform: scale(1.1);}
+}
+
+
+
+
+
+
+
+/* ------------------------------------------ sweatshirts ----------------------------------- */
+
+
+
+.sweatshirt_main{
+  width: 100%;
+  height: max-content;
+  /* background-color: burlywood; */
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+.sweatshirt_text{
+  width: 80%;
+  height: 90px;
+  /* background-color: chocolate; */
+  display: flex;  
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  color: black;
+  border-bottom: 1px solid rgb(219, 218, 218);
+}
+.sweatshirts{
+  width: 80%;
+  height: max-content;
+  padding: 20px 0;
+  /* background-color: rosybrown; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.sweatshirts a{
+  text-decoration: none;
+  color: black;
+}
+.sweatshirt{
+  width: 280px;
+  height: 400px;
+  /* background-color: saddlebrown; */
+  text-align: center;
+  position: relative;
+}
+.sweatshirt_image{
+  width: 100%;
+  height: 330px;
+  border-radius: 6px;
+  border: 1px solid rgb(219, 218, 218);
+  /* background-color: seagreen; */
+}
+.sweatshirt_image img{
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+.sweatshirt p{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.sweatshirt_red{
+  color: red;
+  text-align: center;
+  font-size: 14px;
+}
+.sweatshirt_gray{
+  color: gray;
+  text-decoration: line-through;
+  text-align: center;
+  font-size: 14px;
+}
+.offer_red{
+  width: max-content;
+  height: max-content;
+  padding: 4px;
+  background-color: red;
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.offer_black{
+  width: max-content;
+  height: max-content;
+  padding: 4px;
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: offer 1s linear infinite;
+}
+@keyframes offer {
+  0%, 100%{transform: scale(1);}
+  50%{transform: scale(1.1);}
+}
+
+
+
+
+
+/* ---------------------------------------------- Details -------------------------- */
+
+
+
+
+
+.details_main{
+  width: 100%;
+  height: 130vh;
+  /* background-color: burlywood; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.details_image{
+  width: 48%;
+  height: 100%;
+  /* background-color: chartreuse; */
+}
+.details_image img{
+  width: 100%;
+  height: 100%;
+}
+.details_text{
+  width: 47%;
+  height: 100%;
+  /* background-color: darkkhaki; */
+}
+.details_table table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+.details_table td{
+  border: 1px solid #dddddd;
+  text-align: left;
+  text-align: center;
+  padding: 8px;
+  color: gray;
+}
+.details_table th{
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+  text-align: center;
+  font-style: italic;
+}
+.sale{
+  padding: 8px 10px;
+  background-color: rgb(227,39,26);
+  color: white;
+  font-size: 16px;
+}
+.details_text h2{
+  font-size: 25px;
+  color: rgb(41, 40, 40);
+  margin-top: 4vh;
+}
+.details_text hr{
+  margin: 2vh 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgb(41, 40, 40);
+}
+.details_text .rating{
+  font-size: 20px;
+  color: red;
+  margin-top: 3vh;
+}
+.details_text .rating span{
+  color: gray;
+  text-decoration: line-through;
+}
+.save_red{
+  font-size: 14px;
+  color: red;
+}
+
+.details_size{
+  width: 250px;
+  height: 80px;
+  margin-top: 3vh;
+  /* background-color: green; */
+}
+.details_size p{
+  color: rgb(41, 40, 40);
+  font-size: 16px;
+}
+.sizebtn_container{
+  width: 100%;
+  height: 60px;
+  /* background-color: rosybrown; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.sizebtn{
+  width: max-content;
+  height: max-content;
+  padding: 12px 8px;    
+  font-size: 14px;
+  color: rgb(41, 40, 40);
+  border: 1px solid rgb(219, 218, 218);
+  border-radius: 5px;
+  cursor: pointer;
+}
+.size5{
+  width: max-content;
+  height: max-content;
+  padding: 12px 8px;    
+  font-size: 14px;
+  color: rgb(41, 40, 40);
+  border: 1px solid rgb(219, 218, 218);
+  position: relative;
+  border-radius: 5px;
+  cursor: not-allowed;
+}
+.size5 i{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 40px;
+  color: gray;
+  transform: translate(-50%, -50%);
+}
+.sizeActive{
+  border-color: black;
+}
+
+.details_quantity{
+  width: 400px;
+  height: 80px;
+  margin-top: 3vh;
+  /* background-color: brown; */
+  position: relative;
+}
+.details_quantity p{
+  color: rgb(41, 40, 40);
+  font-size: 16px;
+}
+.quantity_number{
+  width: 200px;
+  height: 40px;
+  border: 1px solid rgb(219, 218, 218);
+  border-radius: 30px;
+  text-align: center;
+  line-height: 40px;
+  font-size: 15px;
+  position: relative;
+  margin-top: 2vh;
+}
+.quantity_number .quantity_min{
+  width: 50px;
+  height: 40px;
+  border: 1px solid rgb(219, 218, 218);
+  border-radius: 30px 0px 0px 30px;
+  font-size: 30px;
+  background-color: rgb(219, 218, 218);
+  color: gray;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.quantity_number .quantity_max{
+  width: 50px;
+  height: 40px;
+  border: 1px solid rgb(219, 218, 218);
+  border-radius: 0px 30px 30px 0px;
+  font-size: 30px;
+  background-color: rgb(219, 218, 218);
+  color: gray;
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.addToCart{
+  padding: 12px 35px;
+  background-color: rgb(227,39,26);
+  color: white;
+  font-size: 15px;
+  border: none;
+  position: absolute;
+  bottom: 5px;
+  right: 0px;
+  border-radius: 30px;
+}
+.details_text ul{
+  margin-left: 1vw;
+  color: rgb(41, 40, 40);
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 3vh;
+}
+.details_text ul li{
+  margin-top: 1vh;
+}
+
+.details_table{
+  margin-top: 5vh;
+}
+.details_table p{
+  color: rgb(41, 40, 40);
+  text-decoration: underline;
+  font-size: 20px;
+  font-weight: bold;
+  font-style: italic;
+}
+.details_table table{
+  margin-top: 2vh;
+}
+
+
+
+
+
+
+
+
+
+/* ------------------------------------------ arrivals ----------------------------------- */
+
+
+
+.arrival_main{
+  width: 100%;
+  height: 650px;
+  /* background-color: burlywood; */
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  align-items: center;
+}
+.arrival_text{
+  width: 80%;
+  height: 90px;
+  /* background-color: chocolate; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: rgb(41, 40, 40);
+  border-bottom: 1px solid rgb(219, 218, 218);
+}
+.arrivals{
+  width: 100%;
+  height: 480px;
+  /* background-color: rosybrown; */
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.arrivals a{
+  text-decoration: none;
+  color: black;
+}
+.arrival{
+  width: 290px;
+  height: 450px;
+  /* background-color: saddlebrown; */
+  text-align: center;
+  position: relative;
+}
+.arrival_image{
+  width: 100%;
+  height: 380px;
+  border-radius: 6px;
+  border: 1px solid rgb(219, 218, 218);
+  /* background-color: seagreen; */
+}
+.arrival_image img{
+  width: 100%;
+  height: 100%;
+  border-radius: 6px;
+}
+.arrival p{
+  text-align: center;
+  font-size: 14px;
+  margin-top: 10px;
+}
+.arrival_red{
+  color: red;
+  text-align: center;
+  font-size: 14px;
+}
+.arrival_gray{
+  color: gray;
+  text-decoration: line-through;
+  text-align: center;
+  font-size: 14px;
+}
+.offer_red{ 
+  width: max-content;
+  height: max-content;
+  padding: 4px;
+  background-color: red;
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+.offer_black{
+  width: max-content;
+  height: max-content;
+  padding: 4px;
+  background-color: black;
+  color: white;
+  font-size: 13px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  animation: offer 1s linear infinite;
+}
+@keyframes offer {
+  0%, 100%{transform: scale(1);}
+  50%{transform: scale(1.1);}
+}
+
+
+
+
+/* -------------------------------------- Subscribe -------------------------------- */
+
+
+
+
+
+.subscribe{
+  width: 100%;
+  height: 200px;
+  background-image: url(https://cdn.shopify.com/s/files/1/0978/2406/files/stacked-bracelets_1630x.jpg);
+  background-size: cover;
+  background-position: center center;
+  display: flex;
+  justify-content: space-evenly;
+  flex-direction: column;
+  margin-top: 10vh;
+}
+.subscribe h2{
+  font-size: 30px;
+  margin-left: 2vw;
+}
+.subscribe p{
+  font-size: 14px;
+  margin-left: 2vw;
+}
+.subscribe input{
+  font-size: 14px;
+  margin-left: 2vw;
+  padding: 10px;
+  width: 300px;
+  background-color: white;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+}
+.subscribe button{
+  font-size: 13px;
+  margin-left: 2vw;
+  padding: 13px 25px;
+  background-color: rgb(227,39,26);
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+/* ------------------------------- Footer ---------------------------------------- */
+
+
+
+.footer_main{
+  width: 100%;
+  height: 400px;
+  background-color: rgb(27,31,35);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.footer{
+  width: 80%;
+  height: 300px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.footer_copyright{
+  width: 80%;
+  height: 80px;
+  display: flex;
+  color: white;
+  align-items: center;
+}
+.footer_text{
+  width: 230px;
+  height: 300px;
+}
+.footer_text h4{
+  color: white;
+  font-size: 17px;
+  margin-top: 2vh;
+}
+.footer_text p{
+  color: white;
+  font-size: 14px;
+  margin-top: 2.5vh;
+}
+.footer_text1{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+.footer_image{
+  width: 150px;
+  height: 150px;
+}
+.footer_image img{
+  width: 100%;
+  height: 100%;
+}
+.footer_icons{
+  width: 180px;
+  display: flex;
+  font-size: 20px;
+  color: white;
+  justify-content: space-evenly;
+  align-items: center;
+}
